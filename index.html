@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TypeScript Showcase</title>
-
+    <title>TypeScript Pro - Advanced TypeScript Learning Platform</title>
+    <meta
+      name="description"
+      content="Master TypeScript with interactive examples, AI assistant, and comprehensive learning resources"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- DaisyUI + Tailwind -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
@@ -12,116 +16,167 @@
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Ace Editor -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ext-language_tools.min.js" defer></script>
-
-    <!-- TypeScript services (for possible future use) -->
-    <script src="https://unpkg.com/typescript@latest/lib/typescriptServices.js" defer></script>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ext-language_tools.min.js"
+      defer
+    ></script>
+    <!-- TypeScript services -->
+    <script
+      src="https://unpkg.com/typescript@latest/lib/typescriptServices.js"
+      defer
+    ></script>
     <!-- Highlight.js for code blocks -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+      defer
+    ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
     />
-
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <style>
-      /* Small custom tweaks */
-      .code-block {
-        font-size: 0.9rem;
-        white-space: pre-wrap;
-      }
-      .feature-card {
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-      .feature-card:hover {
-        transform: translateY(-6px) scale(1.01);
-        box-shadow: 0 16px 40px rgba(8, 15, 52, 0.12);
-      }
-      .tab-active {
-        border-bottom: 3px solid #0369a1;
-        font-weight: 700;
-        color: #034f84;
-      }
-      .article-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.45s ease-out;
-      }
-      .article-content.show {
-        max-height: 2000px;
-      }
-      .nav-hidden {
-        transform: translateY(-110%);
-      }
-      .nav-visible {
-        transform: translateY(0);
-      }
-      #mobile-menu {
-        transition: transform 0.28s ease-in-out;
-      }
-
-      /* Editor sizing */
-      #ace-editor {
-        width: 100%;
-        height: 100%;
-        min-height: 320px;
-      }
-
-      /* Chat UI */
-      .chat-message.user {
-        background: linear-gradient(90deg, rgba(56,189,248,0.08), rgba(99,102,241,0.06));
-      }
-      .chat-message.bot {
-        background: rgba(255,255,255,0.03);
-      }
-
-      /* small mobile spacing */
-      @media (max-width: 768px) {
-        .hero-title { font-size: 1.9rem; }
-      }
-    </style>
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body class="bg-slate-50 min-h-screen text-slate-800 antialiased">
+  <body
+    class="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 min-h-screen text-slate-800 dark:text-slate-200 antialiased transition-colors duration-300"
+  >
+    <!-- Theme Selector -->
+    <div class="fixed top-24 right-4 z-40 dropdown dropdown-end">
+      <div
+        tabindex="0"
+        role="button"
+        class="btn btn-ghost btn-circle shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm"
+      >
+        <i class="fas fa-palette text-lg"></i>
+      </div>
+      <ul
+        tabindex="0"
+        class="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-52 mt-2"
+      >
+        <li class="menu-title"><span>Themes</span></li>
+        <li>
+          <button data-set-theme="light" class="flex justify-between">
+            <span>Light</span> <i class="fas fa-sun text-amber-500"></i>
+          </button>
+        </li>
+        <li>
+          <button data-set-theme="dark" class="flex justify-between">
+            <span>Dark</span> <i class="fas fa-moon text-indigo-500"></i>
+          </button>
+        </li>
+        <li>
+          <button data-set-theme="cupcake" class="flex justify-between">
+            <span>Cupcake</span> <i class="fas fa-cake text-pink-500"></i>
+          </button>
+        </li>
+        <li>
+          <button data-set-theme="bumblebee" class="flex justify-between">
+            <span>Bumblebee</span> <i class="fas fa-bee text-yellow-500"></i>
+          </button>
+        </li>
+        <li>
+          <button data-set-theme="emerald" class="flex justify-between">
+            <span>Emerald</span> <i class="fas fa-gem text-emerald-500"></i>
+          </button>
+        </li>
+        <li>
+          <button data-set-theme="synthwave" class="flex justify-between">
+            <span>Synthwave</span> <i class="fas fa-music text-purple-500"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+
     <!-- Navigation -->
     <nav
       id="navbar"
-      class="bg-white shadow-sm fixed top-0 w-full z-50 transition-transform duration-300 nav-visible"
-      aria-label="Main navigation"
+      class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg fixed top-0 w-full z-50 transition-all duration-500 nav-visible border-b border-slate-200/50 dark:border-slate-700/50"
     >
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-3">
           <div class="flex items-center space-x-3">
-            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-600 text-white">
-              <i class="fas fa-code-branch"></i>
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white shadow-lg transform hover:scale-105 transition-transform"
+            >
+              <i class="fas fa-code-branch text-lg"></i>
             </div>
             <div>
-              <div class="text-lg font-bold">TypeScript Showcase</div>
-              <div class="text-xs text-slate-500 -mt-1">Interactive learning & tools</div>
+              <div
+                class="text-xl font-bold bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent"
+              >
+                TypeScript Pro
+              </div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 -mt-1">
+                Advanced Learning Platform
+              </div>
             </div>
           </div>
 
           <!-- Desktop links -->
-          <div class="hidden md:flex items-center space-x-6">
-            <a href="#features" class="text-slate-600 hover:text-sky-600 transition">Features</a>
-            <a href="#examples" class="text-slate-600 hover:text-sky-600 transition">Examples</a>
-            <a href="#tryit" class="text-slate-600 hover:text-sky-600 transition">Try It</a>
-            <a href="#articles" class="text-slate-600 hover:text-sky-600 transition">Articles</a>
-            <button id="chat-open-btn" class="btn btn-sm btn-outline">Chat AI</button>
+          <div class="hidden lg:flex items-center space-x-6">
+            <a
+              href="#features"
+              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              >Features</a
+            >
+            <a
+              href="#examples"
+              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              >Examples</a
+            >
+            <a
+              href="#tryit"
+              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              >Playground</a
+            >
+            <a
+              href="#articles"
+              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              >Articles</a
+            >
+            <a
+              href="#resources"
+              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              >Resources</a
+            >
+            <button
+              id="chat-open-btn"
+              class="btn btn-primary btn-sm shadow-md transform hover:scale-105 transition-all"
+            >
+              <i class="fas fa-robot mr-2"></i>AI Assistant
+            </button>
           </div>
 
           <!-- Mobile menu button -->
-          <button id="mobile-menu-button" onclick="toggleMobileMenu()" class="md:hidden btn btn-ghost" aria-label="Open menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <button
+            id="mobile-menu-button"
+            onclick="toggleMobileMenu()"
+            class="lg:hidden btn btn-ghost btn-sm"
+            aria-label="Open menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-slate-700 dark:text-slate-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
@@ -131,321 +186,335 @@
     <!-- Mobile Menu -->
     <div
       id="mobile-menu"
-      class="md:hidden fixed top-16 left-0 w-full bg-white shadow-lg z-40 transform -translate-y-full"
+      class="lg:hidden fixed top-16 left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl z-40 transform -translate-y-full transition-transform duration-500"
       aria-hidden="true"
     >
-      <div class="flex flex-col p-4 space-y-2">
-        <a href="#features" class="text-slate-700 hover:text-sky-600 py-2" onclick="toggleMobileMenu()">Features</a>
-        <a href="#examples" class="text-slate-700 hover:text-sky-600 py-2" onclick="toggleMobileMenu()">Examples</a>
-        <a href="#tryit" class="text-slate-700 hover:text-sky-600 py-2" onclick="toggleMobileMenu()">Try It</a>
-        <a href="#articles" class="text-slate-700 hover:text-sky-600 py-2" onclick="toggleMobileMenu()">Articles</a>
-        <button id="chat-open-mobile" class="btn btn-sm btn-outline mt-2" onclick="openChat()">Chat AI</button>
+      <div class="flex flex-col p-6 space-y-4">
+        <a
+          href="#features"
+          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fas fa-star mr-3 text-amber-500"></i>Features
+        </a>
+        <a
+          href="#examples"
+          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fas fa-code mr-3 text-blue-500"></i>Examples
+        </a>
+        <a
+          href="#tryit"
+          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fas fa-play-circle mr-3 text-green-500"></i>Playground
+        </a>
+        <a
+          href="#articles"
+          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fas fa-newspaper mr-3 text-purple-500"></i>Articles
+        </a>
+        <a
+          href="#resources"
+          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="fas fa-book mr-3 text-red-500"></i>Resources
+        </a>
+        <button
+          id="chat-open-mobile"
+          class="btn btn-primary mt-4 w-full"
+          onclick="openChat()"
+        >
+          <i class="fas fa-robot mr-2"></i>AI Assistant
+        </button>
       </div>
     </div>
 
-    <!-- Hero -->
-    <section class="pt-28 pb-12 bg-gradient-to-r from-sky-50 to-indigo-50">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="hero-title text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Professional TypeScript Showcase</h1>
-        <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-6">Explore advanced TypeScript features, live examples, a pro editor and an in-page AI assistant to help you learn faster.</p>
-        <div class="flex justify-center gap-3">
-          <a href="#tryit" class="btn btn-primary shadow-md">Try Examples</a>
-          <a href="#features" class="btn btn-outline">Learn More</a>
+    <!-- Hero Section -->
+    <section
+      class="pt-32 pb-20 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900/30 relative overflow-hidden"
+    >
+      <!-- Background Elements -->
+      <div
+        class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20"
+      >
+        <div
+          class="absolute -top-24 -right-24 w-72 h-72 bg-sky-300 dark:bg-sky-700 rounded-full blur-3xl"
+        ></div>
+        <div
+          class="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-300 dark:bg-indigo-700 rounded-full blur-3xl"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <div
+          class="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+        >
+          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          <span class="text-sm font-medium text-slate-700 dark:text-slate-300"
+            >Master TypeScript with Interactive Learning</span
+          >
+        </div>
+
+        <h1
+          class="hero-title text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight"
+        >
+          <span
+            class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent"
+            >TypeScript</span
+          >
+          <span class="block mt-2">Pro Platform</span>
+        </h1>
+
+        <p
+          class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto mb-8 leading-relaxed"
+        >
+          Advanced TypeScript learning with
+          <span class="font-semibold text-sky-600 dark:text-sky-400"
+            >30+ features</span
+          >,
+          <span class="font-semibold text-indigo-600 dark:text-indigo-400"
+            >interactive playground</span
+          >, and
+          <span class="font-semibold text-emerald-600 dark:text-emerald-400"
+            >AI-powered assistant</span
+          >
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <a
+            href="#tryit"
+            class="btn btn-primary btn-lg shadow-xl transform hover:scale-105 transition-all duration-300 group"
+          >
+            <span>Start Coding Now</span>
+            <i
+              class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"
+            ></i>
+          </a>
+          <a
+            href="#features"
+            class="btn btn-outline btn-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+          >
+            <i class="fas fa-graduation-cap mr-2"></i>
+            Explore Features
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+          <div
+            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+          >
+            <div class="text-2xl font-bold text-sky-600 dark:text-sky-400">
+              30+
+            </div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">
+              Features
+            </div>
+          </div>
+          <div
+            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+          >
+            <div
+              class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
+            >
+              30
+            </div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">
+              Articles
+            </div>
+          </div>
+          <div
+            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+          >
+            <div
+              class="text-2xl font-bold text-emerald-600 dark:text-emerald-400"
+            >
+              AI
+            </div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">
+              Assistant
+            </div>
+          </div>
+          <div
+            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+          >
+            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">
+              Live
+            </div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">
+              Playground
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="py-12">
+    <!-- Features Section -->
+    <section
+      id="features"
+      class="py-20 bg-white dark:bg-slate-800 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-sky-50/50 to-transparent dark:from-slate-900/50"
+      ></div>
+
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">TypeScript Features</h2>
-        <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <!-- cards -->
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
-                <i class="fas fa-code"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Union Types</h3>
-                <p class="text-slate-600 text-sm">Combine multiple types into one — great for flexible APIs and safer runtime checks.</p>
-              </div>
-            </div>
-          </div>
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+          >
+            Advanced
+            <span
+              class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent"
+              >TypeScript Features</span
+            >
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
+          >
+            Explore 30+ powerful TypeScript features with interactive examples
+            and detailed explanations
+          </p>
+        </div>
 
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Type Guards</h3>
-                <p class="text-slate-600 text-sm">Narrow types at runtime so your code can be both dynamic and type-safe.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-violet-100 flex items-center justify-center text-violet-600">
-                <i class="fas fa-link"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Optional Chaining</h3>
-                <p class="text-slate-600 text-sm">Access nested props safely with `?.` and reduce null-check boilerplate.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600">
-                <i class="fas fa-cubes"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Generics</h3>
-                <p class="text-slate-600 text-sm">Write reusable functions/components that preserve type information across types.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-rose-100 flex items-center justify-center text-rose-600">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Type Assertions</h3>
-                <p class="text-slate-600 text-sm">Tell the compiler what you know — useful when interfacing with third-party code.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="feature-card card bg-white rounded-2xl p-5">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600">
-                <i class="fas fa-filter"></i>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Type Predicates</h3>
-                <p class="text-slate-600 text-sm">Create custom runtime checks to refine types in conditional branches.</p>
-              </div>
-            </div>
-          </div>
+        <div
+          class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          id="features-container"
+        >
+          <!-- Features will be dynamically loaded here -->
         </div>
       </div>
     </section>
 
-    <!-- Articles (6 full articles) -->
-    <section id="articles" class="py-12 bg-slate-50 border-t">
+    <!-- Articles Section -->
+    <section
+      id="articles"
+      class="py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700"
+    >
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">TypeScript Articles</h2>
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+          >
+            Comprehensive
+            <span
+              class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+              >TypeScript Articles</span
+            >
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
+          >
+            Deep dive into TypeScript concepts with 30 detailed articles and
+            practical examples
+          </p>
+        </div>
 
-        <div class="space-y-6 max-w-4xl mx-auto">
-          <!-- Article 1 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(0)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Understanding Union Types in TypeScript</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">Union types allow a variable to hold values of different types. They're defined with the pipe <code>|</code>.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">// Defining a union type
-type ID = string | number;
-
-function printID(id: ID) {
-  if (typeof id === "string") {
-    console.log(id.toUpperCase());
-  } else {
-    console.log(id.toFixed(2));
-  }
-}</code></pre>
-                <p class="text-slate-600">Use unions in API responses or helpers where inputs may be one of several types.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article 2 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(1)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Type Guards for Runtime Safety</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">Type guards refine types during runtime, making code safer and clearer.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">// custom type guard
-interface Bird { fly(): void; }
-interface Fish { swim(): void; }
-
-function isBird(pet: Bird | Fish): pet is Bird {
-  return (pet as Bird).fly !== undefined;
-}</code></pre>
-                <p class="text-slate-600">Use type predicates <code>value is Type</code> to let TypeScript know what branch is active.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article 3 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(2)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Optional Chaining & Nullish Coalescing</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">Use <code>?.</code> and <code>??</code> to write concise, safe access and defaults.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">interface User {
-  name: string;
-  address?: { city?: string };
-}
-
-const city = (user: User) => user.address?.city ?? "Unknown";</code></pre>
-                <p class="text-slate-600">Cleaner than long logical checks and helps readability.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article 4 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(3)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Generics: Flexible & Typed</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">Generics let you write reusable functions and components while preserving type info.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">function identity<T>(value: T): T {
-  return value;
-}
-
-const v = identity<number>(42);</code></pre>
-                <p class="text-slate-600">Great for collections, utility functions and generic components.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article 5 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(4)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Type Assertions & Casting</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">When you know more than the compiler, use assertions carefully to avoid runtime errors.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">const input = document.querySelector('#name') as HTMLInputElement;
-console.log(input.value);</code></pre>
-                <p class="text-slate-600">Prefer narrowing and guards over assertions when possible.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Article 6 -->
-          <article class="bg-white rounded-xl shadow-md overflow-hidden">
-            <header class="p-6 border-b cursor-pointer" onclick="toggleArticle(5)">
-              <h3 class="text-xl font-semibold flex justify-between items-center">
-                <span>Type Predicates & Advanced Checks</span>
-                <i class="fas fa-chevron-down text-slate-400"></i>
-              </h3>
-            </header>
-            <div class="article-content">
-              <div class="p-6">
-                <p class="text-slate-600 mb-4">Create robust predicates when you need precise runtime checks.</p>
-                <pre class="bg-slate-800 text-white p-4 rounded-lg mb-4"><code class="language-typescript">function isStringArray(value: any): value is string[] {
-  return Array.isArray(value) && value.every(v => typeof v === 'string');
-}</code></pre>
-                <p class="text-slate-600">Useful for runtime validation before processing data.</p>
-              </div>
-            </div>
-          </article>
+        <div class="space-y-6 max-w-6xl mx-auto" id="articles-container">
+          <!-- Articles will be dynamically loaded here -->
         </div>
       </div>
     </section>
 
-    <!-- Examples -->
-    <section id="examples" class="py-12">
+    <!-- Examples Section -->
+    <section id="examples" class="py-20 bg-white dark:bg-slate-800">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-6">TypeScript Examples</h2>
-
-        <div class="tabs tabs-boxed justify-center mb-6 bg-white p-1 rounded-lg max-w-2xl mx-auto">
-          <button class="tab tab-active" onclick="showExample(0)">Union Types</button>
-          <button class="tab" onclick="showExample(1)">Optional Chaining</button>
-          <button class="tab" onclick="showExample(2)">Type Guards</button>
-          <button class="tab" onclick="showExample(3)">Type Assertions</button>
-          <button class="tab" onclick="showExample(4)">Generics</button>
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+          >
+            Interactive
+            <span
+              class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"
+              >TypeScript Examples</span
+            >
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
+          >
+            Try out TypeScript features with live code execution and instant
+            feedback
+          </p>
         </div>
 
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-4xl mx-auto">
-          <div class="p-6 border-b">
-            <h3 class="text-xl font-semibold" id="example-title">Union Types Example</h3>
-            <p class="text-slate-600 mt-2" id="example-description">Function that accepts both string and number types and returns different results based on the input type.</p>
-          </div>
-          <div class="p-6 bg-slate-800 text-white">
-            <pre class="code-block"><code class="language-typescript" id="example-code">// union example code appears here</code></pre>
-          </div>
-          <div class="p-6 border-t">
-            <div class="flex flex-col md:flex-row md:items-center gap-3">
-              <input type="text" placeholder="Enter a string or number" class="input input-bordered flex-grow" id="example-input" />
-              <button class="btn btn-primary" onclick="runExample()">Run Example</button>
-            </div>
-            <div class="mt-4 p-4 bg-slate-50 rounded-lg">
-              <p class="text-slate-700 font-medium">Output:</p>
-              <p id="example-output" class="mt-2 text-slate-800">// Results will appear here</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Try it + Editor + Chat -->
-    <section id="tryit" class="py-12 bg-slate-50">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <h2 class="text-3xl font-bold text-center mb-6">Try TypeScript Yourself</h2>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Editor Card -->
-          <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-            <div class="p-4 bg-gradient-to-r from-sky-500 to-indigo-600 text-white flex items-center justify-between">
-              <div class="font-semibold">TypeScript Editor (Ace)</div>
-              <div class="text-xs opacity-90">Mode: TypeScript (demo compile → JS)</div>
-            </div>
-
-            <div class="p-4 flex-1 min-h-[360px]">
-              <!-- Ace editor container -->
-              <div id="ace-editor" class="rounded-lg border border-slate-200"></div>
-            </div>
-
-            <div class="p-4 border-t bg-slate-50 flex gap-3">
-              <button class="btn btn-primary" onclick="runEditorCode()">Run</button>
-              <button class="btn btn-ghost" onclick="formatEditor()">Format (basic)</button>
-              <button class="btn btn-outline" onclick="insertExampleIntoEditor(0)">Insert Union Example</button>
-              <button class="btn btn-outline" onclick="insertExampleIntoEditor(4)">Insert Generics</button>
-            </div>
+        <div
+          class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden max-w-6xl mx-auto border border-slate-200 dark:border-slate-700"
+        >
+          <div
+            class="p-6 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900"
+          >
+            <h3
+              class="text-2xl font-bold text-slate-800 dark:text-white"
+              id="example-title"
+            >
+              Union Types Example
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mt-2"
+              id="example-description"
+            >
+              Function that accepts both string and number types and returns
+              different results based on the input type.
+            </p>
           </div>
 
-          <!-- Output + Chat -->
-          <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-            <div class="p-4 bg-slate-100 font-medium">Output</div>
-            <div class="p-4 flex-1 overflow-auto">
-              <pre id="output-code" class="whitespace-pre-wrap text-sm text-slate-800">// Output will appear here</pre>
+          <div class="flex flex-col lg:flex-row">
+            <!-- Tabs Navigation -->
+            <div
+              class="w-full lg:w-64 bg-slate-100 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700"
+            >
+              <div
+                class="p-4 space-y-2 max-h-96 overflow-y-auto"
+                id="examples-tabs"
+              >
+                <!-- Example tabs will be loaded here -->
+              </div>
             </div>
 
-            <div class="p-4 border-t bg-slate-50">
-              <div class="flex items-center gap-2 text-slate-600">
-                <i class="fas fa-info-circle"></i>
-                <span class="text-sm">Editor compiles TypeScript-like code by removing type annotations for demo only — not production safe.</span>
+            <!-- Example Content -->
+            <div class="flex-1">
+              <div class="p-6 bg-slate-800 text-white min-h-64">
+                <pre
+                  class="code-block"
+                ><code class="language-typescript" id="example-code">// union example code appears here</code></pre>
+              </div>
+
+              <div class="p-6 border-t border-slate-200 dark:border-slate-700">
+                <div class="flex flex-col md:flex-row md:items-center gap-4">
+                  <input
+                    type="text"
+                    placeholder="Enter a string or number"
+                    class="input input-bordered flex-grow dark:bg-slate-800 dark:text-white"
+                    id="example-input"
+                  />
+                  <button
+                    class="btn btn-primary shadow-lg transform hover:scale-105 transition-all"
+                    onclick="runExample()"
+                  >
+                    <i class="fas fa-play mr-2"></i>Run Example
+                  </button>
+                </div>
+                <div
+                  class="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700"
+                >
+                  <p
+                    class="text-slate-700 dark:text-slate-300 font-medium flex items-center"
+                  >
+                    <i class="fas fa-terminal mr-2 text-sky-500"></i>Output:
+                  </p>
+                  <p
+                    id="example-output"
+                    class="mt-2 text-slate-800 dark:text-slate-200 font-mono bg-slate-100 dark:bg-slate-800 p-3 rounded border"
+                  >
+                    // Results will appear here
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -453,419 +522,567 @@ console.log(input.value);</code></pre>
       </div>
     </section>
 
-    <!-- Chatbot Drawer (hidden by default) -->
-    <div id="chat-drawer" class="fixed right-6 bottom-6 w-96 md:w-96 max-h-[70vh] bg-gradient-to-br from-white to-slate-50 rounded-2xl shadow-2xl border overflow-hidden transform translate-y-8 opacity-0 pointer-events-none transition-all z-50">
-      <div class="flex items-center justify-between p-4 border-b">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center"><i class="fas fa-robot"></i></div>
-          <div>
-            <div class="font-semibold">TypeScript AI (Demo)</div>
-            <div class="text-xs text-slate-500">Canned helper: quick tips & inserts</div>
+    <!-- Playground Section -->
+    <section
+      id="tryit"
+      class="py-20 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800"
+    >
+      <div class="container mx-auto px-4 max-w-7xl">
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+          >
+            TypeScript
+            <span
+              class="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent"
+              >Playground</span
+            >
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
+          >
+            Write, compile, and execute TypeScript code in real-time with our
+            advanced editor
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <!-- Editor Panel -->
+          <div
+            class="xl:col-span-2 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col"
+          >
+            <div
+              class="p-4 bg-gradient-to-r from-sky-500 to-indigo-600 text-white flex items-center justify-between"
+            >
+              <div class="font-semibold flex items-center">
+                <i class="fas fa-code mr-2"></i>TypeScript Editor
+              </div>
+              <div
+                class="text-xs opacity-90 bg-white/20 px-2 py-1 rounded-full"
+              >
+                Live Compilation
+              </div>
+            </div>
+
+            <div class="p-4 flex-1 min-h-[500px]">
+              <div
+                id="ace-editor"
+                class="rounded-lg border border-slate-200 dark:border-slate-700 h-full"
+              ></div>
+            </div>
+
+            <div
+              class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex flex-wrap gap-3"
+            >
+              <button
+                class="btn btn-primary shadow-lg transform hover:scale-105 transition-all"
+                onclick="runEditorCode()"
+              >
+                <i class="fas fa-play mr-2"></i>Run Code
+              </button>
+              <button
+                class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                onclick="formatEditor()"
+              >
+                <i class="fas fa-indent mr-2"></i>Format
+              </button>
+              <button
+                class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                onclick="clearEditor()"
+              >
+                <i class="fas fa-trash mr-2"></i>Clear
+              </button>
+              <div class="dropdown dropdown-top">
+                <div
+                  tabindex="0"
+                  role="button"
+                  class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                >
+                  <i class="fas fa-plus mr-2"></i>Insert Example
+                </div>
+                <ul
+                  tabindex="0"
+                  class="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto"
+                >
+                  <!-- Example list will be populated by JS -->
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output & Info Panel -->
+          <div class="space-y-8">
+            <!-- Output Panel -->
+            <div
+              class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col h-80"
+            >
+              <div
+                class="p-4 bg-slate-100 dark:bg-slate-800 font-medium flex items-center justify-between"
+              >
+                <span class="flex items-center">
+                  <i class="fas fa-terminal mr-2 text-sky-500"></i>Output
+                </span>
+                <button class="btn btn-ghost btn-xs" onclick="clearOutput()">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              <div
+                class="p-4 flex-1 overflow-auto bg-slate-50 dark:bg-slate-900"
+              >
+                <pre
+                  id="output-code"
+                  class="whitespace-pre-wrap text-sm text-slate-800 dark:text-slate-200 font-mono"
+                >
+// Output will appear here</pre
+                >
+              </div>
+            </div>
+
+            <!-- Info Panel -->
+            <div
+              class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700"
+            >
+              <div
+                class="p-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium"
+              >
+                <i class="fas fa-info-circle mr-2"></i>Editor Information
+              </div>
+              <div class="p-4 space-y-4">
+                <div class="flex items-start gap-3">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400"
+                  >
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                      Live Compilation
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                      TypeScript code is compiled to JavaScript in real-time
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400"
+                  >
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                      Type Checking
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                      Get instant feedback on type errors and suggestions
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div
+                    class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400"
+                  >
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                      Safe Execution
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                      Code runs in a secure sandboxed environment
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button class="btn btn-ghost btn-sm" onclick="clearChat()">Clear</button>
-          <button class="btn btn-ghost btn-sm" onclick="closeChat()"><i class="fas fa-times"></i></button>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-20 bg-white dark:bg-slate-800">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+          >
+            TypeScript
+            <span
+              class="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent"
+              >Resources</span
+            >
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
+          >
+            Essential tools, documentation, and learning materials for mastering
+            TypeScript
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
+          <!-- Resource Cards -->
+          <div
+            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-4"
+            >
+              <i class="fas fa-book text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+              Official Documentation
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">
+              Comprehensive TypeScript documentation and handbook
+            </p>
+            <a
+              href="https://www.typescriptlang.org/docs/"
+              class="text-red-600 dark:text-red-400 font-medium hover:underline flex items-center"
+            >
+              Explore Docs <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <div
+            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4"
+            >
+              <i class="fas fa-play-circle text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+              TypeScript Playground
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">
+              Official TypeScript playground for experimentation
+            </p>
+            <a
+              href="https://www.typescriptlang.org/play"
+              class="text-blue-600 dark:text-blue-400 font-medium hover:underline flex items-center"
+            >
+              Try Playground <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+
+          <div
+            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4"
+            >
+              <i class="fab fa-github text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+              GitHub Repository
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">
+              Source code and contribution guidelines for this project
+            </p>
+            <a
+              href="https://github.com/Kawser420"
+              class="text-green-600 dark:text-green-400 font-medium hover:underline flex items-center"
+            >
+              View on GitHub <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
         </div>
       </div>
-
-      <div id="chat-body" class="p-4 overflow-auto" style="height:340px;">
-        <!-- messages go here -->
-      </div>
-
-      <div class="p-4 border-t bg-white flex gap-2">
-        <input id="chat-input" class="input input-bordered flex-1" placeholder="Ask: e.g. 'How to use generics?'" />
-        <button class="btn btn-primary" onclick="sendChat()">Send</button>
-      </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-800 text-white py-10 mt-12">
+    <footer class="bg-slate-900 text-white py-16 mt-12">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h4 class="text-lg font-semibold mb-2">TypeScript Showcase</h4>
-            <p class="text-slate-300 text-sm">Interactive demos, editor and in-page assistant to help you learn TS faster.</p>
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-600 text-white"
+              >
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div>
+                <div class="text-lg font-bold">TypeScript Pro</div>
+                <div class="text-xs text-slate-400">
+                  Advanced Learning Platform
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-400 text-sm mb-4">
+              Master TypeScript with interactive examples, AI assistance, and
+              comprehensive learning resources.
+            </p>
+            <div class="flex space-x-3">
+              <a
+                href="#"
+                class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"
+              >
+                <i class="fab fa-twitter text-xs"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-800 transition-colors"
+              >
+                <i class="fab fa-linkedin-in text-xs"></i>
+              </a>
+              <a
+                href="https://github.com/Kawser420"
+                class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition-colors"
+              >
+                <i class="fab fa-github text-xs"></i>
+              </a>
+            </div>
           </div>
+
           <div>
-            <h4 class="text-lg font-semibold mb-2">Quick Links</h4>
-            <ul class="text-slate-300 text-sm space-y-1">
-              <li><a href="#features" class="hover:underline">Features</a></li>
-              <li><a href="#examples" class="hover:underline">Examples</a></li>
-              <li><a href="#tryit" class="hover:underline">Try It</a></li>
-              <li><a href="#articles" class="hover:underline">Articles</a></li>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="text-slate-400 text-sm space-y-2">
+              <li>
+                <a href="#features" class="hover:text-white transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#examples" class="hover:text-white transition-colors"
+                  >Examples</a
+                >
+              </li>
+              <li>
+                <a href="#tryit" class="hover:text-white transition-colors"
+                  >Playground</a
+                >
+              </li>
+              <li>
+                <a href="#articles" class="hover:text-white transition-colors"
+                  >Articles</a
+                >
+              </li>
+              <li>
+                <a href="#resources" class="hover:text-white transition-colors"
+                  >Resources</a
+                >
+              </li>
             </ul>
           </div>
+
           <div>
-            <h4 class="text-lg font-semibold mb-2">Resources</h4>
-            <ul class="text-slate-300 text-sm space-y-1">
-              <li><a href="https://www.typescriptlang.org/" class="hover:underline">TypeScript Docs</a></li>
-              <li><a href="https://github.com/Kawser420" class="hover:underline">My GitHub Profile</a></li>
-              <li><a href="https://www.typescriptlang.org/play" class="hover:underline">Playground</a></li>
+            <h4 class="text-lg font-semibold mb-4">TypeScript Resources</h4>
+            <ul class="text-slate-400 text-sm space-y-2">
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/"
+                  class="hover:text-white transition-colors"
+                  >Official Website</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/docs/"
+                  class="hover:text-white transition-colors"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/play"
+                  class="hover:text-white transition-colors"
+                  >Playground</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/microsoft/TypeScript"
+                  class="hover:text-white transition-colors"
+                  >GitHub Repo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.typescriptlang.org/community"
+                  class="hover:text-white transition-colors"
+                  >Community</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Project Info</h4>
+            <ul class="text-slate-400 text-sm space-y-2">
+              <li>
+                <a href="#" class="hover:text-white transition-colors">About</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contribute</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >License</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Changelog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Feedback</a
+                >
+              </li>
             </ul>
           </div>
         </div>
 
-        <div class="mt-8 text-center text-slate-400 text-sm">&copy; 2025 TypeScript Showcase. All rights reserved.</div>
+        <div
+          class="mt-12 pt-8 border-t border-slate-800 text-center text-slate-400 text-sm"
+        >
+          <p>
+            &copy; 2025 TypeScript Pro Platform. Created with ❤️ by
+            <a
+              href="https://github.com/Kawser420"
+              class="text-sky-400 hover:text-sky-300 transition-colors"
+              >Md Abu Kayser</a
+            >. All rights reserved.
+          </p>
+          <p class="mt-2">This project is licensed under the MIT License.</p>
+        </div>
       </div>
     </footer>
 
+    <!-- Enhanced AI Chatbot -->
+    <div
+      id="chat-drawer"
+      class="fixed right-6 bottom-6 w-96 max-h-[85vh] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden transform translate-y-8 opacity-0 pointer-events-none transition-all duration-500 z-50 flex flex-col"
+    >
+      <!-- Chat Header -->
+      <div
+        class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-indigo-500 to-purple-600 text-white"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center"
+          >
+            <i class="fas fa-robot text-lg"></i>
+          </div>
+          <div>
+            <div class="font-semibold">TypeScript AI Assistant</div>
+            <div class="text-xs opacity-90">Powered by Advanced AI</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            class="btn btn-ghost btn-sm text-white hover:bg-white/20"
+            onclick="clearChat()"
+            title="Clear chat"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+          <button
+            class="btn btn-ghost btn-sm text-white hover:bg-white/20"
+            onclick="closeChat()"
+            title="Close chat"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div
+        id="chat-body"
+        class="flex-1 p-4 overflow-auto bg-slate-50 dark:bg-slate-800"
+        style="height: 400px"
+      >
+        <div
+          class="chat-message bot p-4 rounded-2xl mb-4 bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-700"
+        >
+          <div class="flex items-start gap-3">
+            <div
+              class="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0"
+            >
+              <i class="fas fa-robot text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div
+                class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+              >
+                TypeScript Assistant
+              </div>
+              <div class="text-slate-600 dark:text-slate-400 text-sm">
+                Hello! I'm your TypeScript AI assistant. I can help you with
+                TypeScript concepts, provide examples, and even insert code
+                directly into the editor. How can I assist you today?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <div
+        class="p-4 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900"
+      >
+        <div class="flex gap-2">
+          <input
+            id="chat-input"
+            class="input input-bordered flex-1 dark:bg-slate-800 dark:text-white"
+            placeholder="Ask about TypeScript features, examples, or concepts..."
+          />
+          <button class="btn btn-primary" onclick="sendChat()">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <button
+            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            onclick="quickQuestion('How do union types work?')"
+          >
+            Union Types
+          </button>
+          <button
+            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            onclick="quickQuestion('What are generics?')"
+          >
+            Generics
+          </button>
+          <button
+            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            onclick="quickQuestion('Explain type guards')"
+          >
+            Type Guards
+          </button>
+          <button
+            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            onclick="quickQuestion('Show me decorators')"
+          >
+            Decorators
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <button
+      id="chat-floating-btn"
+      onclick="openChat()"
+      class="fixed right-6 bottom-6 w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-2xl z-40 flex items-center justify-center transform hover:scale-110 transition-all duration-300 group"
+    >
+      <i class="fas fa-robot text-xl"></i>
+      <span
+        class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs animate-pulse"
+      ></span>
+    </button>
+
     <!-- Scripts -->
-    <script>
-      // Re-run highlight after DOM loads
-      document.addEventListener('DOMContentLoaded', () => {
-        if (window.hljs) {
-          document.querySelectorAll('pre code').forEach((block) => {
-            try { window.hljs.highlightElement(block); } catch (e) {}
-          });
-        }
-      });
-
-      // ----------------------------
-      // Examples data and logic
-      // ----------------------------
-      const examples = [
-        {
-          title: "Union Types Example",
-          description: "Function that accepts both string and number types and returns different results based on the input type.",
-          code: `function reLengthOrNumber(name: string | number): number {
-  if (typeof name === "string") { return name.length; }
-  return (name as number) * (name as number);
-}`,
-          run: (input) => {
-            try {
-              const parsed = isNaN(input) ? input : Number(input);
-              return reLengthOrNumber(parsed);
-            } catch (e) { return "Error: " + e.message; }
-          }
-        },
-        {
-          title: "Optional Chaining Example",
-          description: "Safely access nested properties with optional chaining.",
-          code: `interface Address { city: string; }
-interface User { name: string; address?: Address; }
-const getAddressCity = (u: User) => u.address?.city ?? "No address";`,
-          run: (input) => {
-            try {
-              const test = input === 'withAddress' ? { name: 'John', address: { city: 'NY' } } : { name: 'John' };
-              return (function(person){ return person.address?.city ?? 'No address'; })(test);
-            } catch (e) { return "Error: " + e.message; }
-          }
-        },
-        {
-          title: "Type Guards Example",
-          description: "Using type guards to narrow down types.",
-          code: `class Cat { meow(){ return "Meow!"; } }
-function isCat(obj: any): obj is Cat { return obj instanceof Cat; }
-function checkCat(obj: any){ return isCat(obj) ? "Cat yes" : "No cat"; }`,
-          run: (input) => {
-            try {
-              return input === 'cat' ? (new Cat()).meow() : 'No cat';
-            } catch (e) { return "Error: " + e.message; }
-          }
-        },
-        {
-          title: "Type Assertions Example",
-          description: "Using assertions to cast types carefully.",
-          code: `const el = document.createElement('input') as HTMLInputElement;
-el.value = '42';
-console.log(Number(el.value) + 8);`,
-          run: (input) => 'Demo: check console in editor run output.'
-        },
-        {
-          title: "Generics Example",
-          description: "Generic function that keeps types intact.",
-          code: `function findFirst<T>(arr: T[], value: T) { return arr.indexOf(value); }
-console.log(findFirst([1,2,3], 2));`,
-          run: (input) => 'Demo: see editor output'
-        }
-      ];
-
-      // fix tab indexing & initial example
-      let currentExample = 0;
-      function showExample(index) {
-        currentExample = index;
-        const ex = examples[currentExample];
-        document.getElementById('example-title').textContent = ex.title;
-        document.getElementById('example-description').textContent = ex.description;
-        document.getElementById('example-code').textContent = ex.code;
-        // placeholder adjustments by index
-        const input = document.getElementById('example-input');
-        if (currentExample === 1) input.placeholder = "Enter 'withAddress' or anything else";
-        else if (currentExample === 2) input.placeholder = "Enter 'cat' or anything else";
-        else if (currentExample === 4) input.placeholder = "Enter 'number' or anything else";
-        else input.placeholder = "Enter a string or number";
-
-        // highlight updated code
-        if (window.hljs) {
-          document.querySelectorAll('pre code').forEach((block) => {
-            try { window.hljs.highlightElement(block); } catch (e) {}
-          });
-        }
-
-        // update tab CSS
-        document.querySelectorAll('.tabs .tab, .tabs button.tab').forEach((t, i) => {
-          t.classList.toggle('tab-active', i === currentExample);
-        });
-      }
-
-      function runExample() {
-        const input = document.getElementById('example-input').value;
-        const out = examples[currentExample].run(input);
-        document.getElementById('example-output').textContent = String(out);
-      }
-
-      // small helper functions used in example runs (simulated)
-      function reLengthOrNumber(name) {
-        if (typeof name === 'string') return name.length;
-        return name * name;
-      }
-
-      // ----------------------------
-      // Article toggles
-      // ----------------------------
-      function toggleArticle(index) {
-        const articles = document.querySelectorAll('.article-content');
-        const article = articles[index];
-        if (!article) return;
-        article.classList.toggle('show');
-
-        // rotate the chevron
-        const chevrons = document.querySelectorAll('.article header .fa-chevron-down, .article-header .fa-chevron-down');
-        // find the correct chevron near this article header
-        const header = article.previousElementSibling;
-        const chevron = header ? header.querySelector('.fa-chevron-down') : null;
-        if (chevron) chevron.classList.toggle('fa-rotate-180');
-
-        // re-highlight in case code blocks revealed
-        if (window.hljs) setTimeout(() => {
-          article.querySelectorAll('pre code').forEach((block) => {
-            try { window.hljs.highlightElement(block); } catch (e) {}
-          });
-        }, 120);
-      }
-
-      // make initial example load
-      showExample(0);
-
-      // ----------------------------
-      // Mobile menu
-      // ----------------------------
-      function toggleMobileMenu() {
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (!mobileMenu) return;
-        mobileMenu.classList.toggle('-translate-y-full');
-        // also manage pointer events & aria
-        const isHidden = mobileMenu.classList.contains('-translate-y-full');
-        mobileMenu.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
-      }
-
-      // close mobile menu when clicking outside (but ignore button press)
-      document.addEventListener('click', function (event) {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const button = document.getElementById('mobile-menu-button');
-        if (!mobileMenu || !button) return;
-        const target = event.target;
-        if (!mobileMenu.contains(target) && !button.contains(target)) {
-          if (!mobileMenu.classList.contains('-translate-y-full')) {
-            mobileMenu.classList.add('-translate-y-full');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-          }
-        }
-      });
-
-      // ----------------------------
-      // Navbar hide on scroll
-      // ----------------------------
-      let lastScrollTop = 0;
-      window.addEventListener('scroll', function () {
-        const navbar = document.getElementById('navbar');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop && scrollTop > 120) {
-          navbar.classList.add('nav-hidden');
-          if (mobileMenu) mobileMenu.classList.add('-translate-y-full');
-        } else {
-          navbar.classList.remove('nav-hidden');
-        }
-        lastScrollTop = scrollTop;
-      });
-
-      // ----------------------------
-      // Ace Editor Setup
-      // ----------------------------
-      let aceEditor = null;
-      function setupAce() {
-        try {
-          aceEditor = ace.edit("ace-editor", {
-            mode: "ace/mode/typescript",
-            theme: "ace/theme/monokai",
-            wrap: true,
-            tabSize: 2,
-            useWorker: false,
-            enableBasicAutocompletion: true,
-            enableSnippets: true,
-            enableLiveAutocompletion: true,
-          });
-
-          // default content
-          const defaultCode = `// Try TypeScript-style code (demo run removes types)
-function greet(name: string): string {
-  return \`Hello, \${name}!\`;
-}
-
-console.log(greet("TypeScript"));`;
-
-          aceEditor.setValue(defaultCode, -1);
-        } catch (e) {
-          console.warn("Ace setup failed:", e);
-        }
-      }
-
-      // insert example into editor
-      function insertExampleIntoEditor(exampleIndex) {
-        if (!aceEditor) return;
-        const txt = examples[exampleIndex].code + "\n";
-        aceEditor.session.insert({row: aceEditor.session.getLength(), column: 0}, "\n" + txt);
-        aceEditor.focus();
-      }
-
-      // very basic "format" (indent) - just replace tabs with 2 spaces
-      function formatEditor() {
-        if (!aceEditor) return;
-        const content = aceEditor.getValue();
-        const formatted = content.replace(/\t/g, '  ');
-        aceEditor.setValue(formatted, -1);
-      }
-
-      // run code from editor: naive TS-to-JS transform (remove simple type annotations) and eval
-      function runEditorCode() {
-        if (!aceEditor) return;
-        const raw = aceEditor.getValue();
-
-        // naive removal of common TS annotations for demo (NOT production safe)
-        let compiled = raw
-          .replace(/:\s*string/g, '')
-          .replace(/:\s*number/g, '')
-          .replace(/:\s*boolean/g, '')
-          .replace(/:\s*any/g, '')
-          .replace(/<\w+>/g, ''); // remove generics markers like <T>
-
-        // remove interfaces and types (very naive)
-        compiled = compiled.replace(/interface\s+[^{]+\{[^}]*\}/g, '')
-                           .replace(/type\s+[^\n]+=/g, '');
-
-        // capture console
-        const outputEl = document.getElementById('output-code');
-        let out = '';
-        const originalLog = console.log;
-        console.log = function(...args) {
-          out += args.map(a => String(a)).join(' ') + '\n';
-        };
-
-        try {
-          // run in new function scope
-          new Function(compiled)();
-          if (!out) out = 'Code executed successfully (no direct console output).';
-        } catch (err) {
-          out = 'Error: ' + (err && err.message ? err.message : String(err));
-        } finally {
-          console.log = originalLog;
-        }
-
-        outputEl.textContent = out;
-      }
-
-      // initialize ace after script load
-      window.addEventListener('load', () => {
-        setupAce();
-        // highlight code blocks
-        if (window.hljs) {
-          document.querySelectorAll('pre code').forEach((block) => {
-            try { window.hljs.highlightElement(block); } catch (e) {}
-          });
-        }
-      });
-
-      // ----------------------------
-      // Chatbot UI (local/canned)
-      // ----------------------------
-      const chatDrawer = document.getElementById('chat-drawer');
-      const chatBody = document.getElementById('chat-body');
-      function openChat() {
-        if (!chatDrawer) return;
-        chatDrawer.style.transform = 'translateY(0)';
-        chatDrawer.style.opacity = '1';
-        chatDrawer.style.pointerEvents = 'auto';
-        document.getElementById('chat-input').focus();
-      }
-      function closeChat() {
-        if (!chatDrawer) return;
-        chatDrawer.style.transform = 'translateY(8px)';
-        chatDrawer.style.opacity = '0';
-        chatDrawer.style.pointerEvents = 'none';
-      }
-      // open via header button(s)
-      document.getElementById('chat-open-btn')?.addEventListener('click', openChat);
-      document.getElementById('chat-open-mobile')?.addEventListener('click', openChat);
-
-      function appendChat(message, who='bot') {
-        if (!chatBody) return;
-        const wrap = document.createElement('div');
-        wrap.className = 'chat-message p-3 rounded-lg mb-3 ' + (who === 'user' ? 'user self-end' : 'bot');
-        wrap.innerHTML = `<div class="text-sm ${who==='user' ? 'text-slate-800' : 'text-slate-700'}">${message}</div>`;
-        chatBody.appendChild(wrap);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-
-      function clearChat() {
-        if (!chatBody) return;
-        chatBody.innerHTML = '';
-      }
-
-      function sendChat() {
-        const input = document.getElementById('chat-input');
-        const text = input.value.trim();
-        if (!text) return;
-        appendChat(text, 'user');
-        input.value = '';
-        // simple canned responses
-        setTimeout(() => {
-          const reply = cannedReply(text);
-          appendChat(reply);
-          // special actions if reply contains insert suggestion
-          if (reply.includes('[insert example')) {
-            // parse index
-            const found = reply.match(/\[insert example:(\d)\]/);
-            if (found && found[1]) {
-              const idx = Number(found[1]);
-              insertExampleIntoEditor(idx);
-              appendChat('Inserted example into editor. You can edit and run it.');
-            }
-          }
-        }, 550);
-      }
-
-      function cannedReply(userText) {
-        const t = userText.toLowerCase();
-        if (t.includes('union')) return "Union types let a value be multiple types (e.g. `string | number`). Try: [insert example:0]";
-        if (t.includes('optional') || t.includes('chaining')) return "Optional chaining `?.` helps when properties may be undefined. Try: [insert example:1]";
-        if (t.includes('guard') || t.includes('type guard')) return "Type guards refine types at runtime by returning `value is Type`. Try: [insert example:2]";
-        if (t.includes('assert') || t.includes('cast')) return "Type assertions tell the compiler to treat a value as a type — use sparingly.";
-        if (t.includes('generics')) return "Generics create reusable typed functions/components. Try: [insert example:4]";
-        if (t.includes('run') || t.includes('execute')) return "Click the Run button below the editor to compile (demo) and execute your code.";
-        return "I can suggest examples (union, optional chaining, guards, generics) or insert them into the editor. Try: 'Show me generics' or 'Insert union example'.";
-      }
-
-      // allow press Enter in chat input
-      document.getElementById('chat-input').addEventListener('keydown', function(e){
-        if (e.key === 'Enter') { e.preventDefault(); sendChat(); }
-      });
-
-      // expose openChat to global for mobile button
-      window.openChat = openChat;
-      window.closeChat = closeChat;
-
-    </script>
+    <script src="js/script.js"></script>
   </body>
 </html>
