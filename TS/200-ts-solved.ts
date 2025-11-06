@@ -174,10 +174,13 @@ export function ex17(): void {
 // Example 18: Conditional types
 // -----------------------------
 export type IsString<T> = T extends string ? "yes" : "no";
+
 export function ex18(): void {
-  type A = IsString<string>;
-  type B = IsString<number>;
-  console.log("ex18 ->", null as any, A, B);
+  // Create dummy values that match the types
+  const a: IsString<string> = "yes";
+  const b: IsString<number> = "no";
+
+  console.log("ex18 ->", a, b);
 }
 
 // -----------------------------
@@ -637,7 +640,20 @@ export function ex60() {
 export function ex61(): void {
   const tuple = ["x", "y"] as const;
   type Tup = (typeof tuple)[number];
-  console.log("ex61 ->", tuple, null as Tup);
+
+  // Instead of invalid 'null as Tup', create a valid value
+  const example: Tup = "x"; // This can be "x" or "y"
+  console.log("ex61 ->", tuple, example);
+
+  // Or if you want to demonstrate the type:
+  console.log(
+    "ex61 -> tuple:",
+    tuple,
+    "type Tup can be:",
+    tuple[0],
+    "or",
+    tuple[1]
+  );
 }
 
 // -----------------------------
@@ -1728,6 +1744,17 @@ export class LeakyBucket160 {
 // -----------------------------
 // ex161 - Simple signer with crypto placeholder
 // -----------------------------
+export interface Signer63 {
+  sign(msg: string): string;
+  verify(msg: string, sig: string): boolean;
+}
+
+export function ex75Xor(input: string, key: number): string {
+  return [...input]
+    .map((char) => String.fromCharCode(char.charCodeAt(0) ^ key))
+    .join("");
+}
+
 export class XorSigner161 implements Signer63 {
   private key = 42;
   sign(msg: string): string {
@@ -1741,6 +1768,11 @@ export class XorSigner161 implements Signer63 {
 // -----------------------------
 // ex162 - Reverse linked list
 // -----------------------------
+export interface LinkedNode64<T> {
+  value: T;
+  next?: LinkedNode64<T>;
+}
+
 export function ex162Reverse<T>(
   head: LinkedNode64<T> | undefined
 ): LinkedNode64<T> | undefined {
@@ -1758,9 +1790,13 @@ export function ex162Reverse<T>(
 // -----------------------------
 // ex163 - Preorder tree traversal
 // -----------------------------
-export function ex163Preorder<T>(root?: Tree65<T>): T[] {
+export function ex163Preorder<T>(root?: {
+  value: T;
+  left?: any;
+  right?: any;
+}): T[] {
   const res: T[] = [];
-  function recurse(node?: Tree65<T>) {
+  function recurse(node?: { value: T; left?: any; right?: any }) {
     if (!node) return;
     res.push(node.value);
     recurse(node.left);
@@ -1839,10 +1875,16 @@ export function ex169ParseCSVObjects(csv: string): Record<string, string>[] {
 export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
   fn: F
 ): (...args: Parameters<F>) => ReturnType<F> {
-  const cache = new Map<string, Promise<any>>();
-  return (...args) => {
+  const cache = new Map<string, ReturnType<F>>();
+
+  return (...args: Parameters<F>) => {
     const key = JSON.stringify(args);
-    if (!cache.has(key)) cache.set(key, fn(...args));
+
+    if (!cache.has(key)) {
+      const result = fn(...args) as ReturnType<F>;
+      cache.set(key, result);
+    }
+
     return cache.get(key)!;
   };
 }
@@ -1850,11 +1892,19 @@ export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
 // -----------------------------
 // ex171 - Binary tree height balanced check
 // -----------------------------
+// Define the Tree65 type
+export interface Tree65<T> {
+  value: T;
+  left?: Tree65<T>;
+  right?: Tree65<T>;
+}
+
+// Function to check if the tree is height-balanced
 export function ex171IsBalanced<T>(root?: Tree65<T>): boolean {
   function height(node?: Tree65<T>): number {
     if (!node) return 0;
-    const lh = height(node.left),
-      rh = height(node.right);
+    const lh = height(node.left);
+    const rh = height(node.right);
     if (lh === -1 || rh === -1 || Math.abs(lh - rh) > 1) return -1;
     return Math.max(lh, rh) + 1;
   }
@@ -1949,13 +1999,18 @@ export async function ex180Sequence<T>(
 // -----------------------------
 // ex181 - CSV stringify with quotes
 // -----------------------------
-export function ex181StringifyCSVWithHeaders(
-  rows: Record<string, any>[],
-  headers?: string[]
-): string {
-  const h = headers || Object.keys(rows[0]);
-  const data = [h, ...rows.map((r) => h.map((k) => r[k]))];
-  return ex83StringifyCSV(data as string[][]);
+export function ex183StringifyCSV(data: string[][]): string {
+  return data
+    .map((row) =>
+      row
+        .map((cell) =>
+          typeof cell === "string" && /[",\n]/.test(cell)
+            ? `"${cell.replace(/"/g, '""')}"`
+            : cell
+        )
+        .join(",")
+    )
+    .join("\n");
 }
 
 // -----------------------------
@@ -2018,11 +2073,17 @@ export function ex186Abortable<T>(
 // -----------------------------
 // ex187 - URL safe base64
 // -----------------------------
+// Base64 encoder
+export function ex89B64Encode(s: string): string {
+  return Buffer.from(s, "utf-8").toString("base64");
+}
+
+// URL-safe Base64 encoder
 export function ex187UrlSafeB64Encode(s: string): string {
   return ex89B64Encode(s)
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
+    .replace(/\+/g, "-") // Replace '+' with '-'
+    .replace(/\//g, "_") // Replace '/' with '_'
+    .replace(/=+$/, ""); // Remove trailing '='
 }
 
 // -----------------------------
@@ -2053,6 +2114,26 @@ export function ex190Union<T>(a: T[], b: T[]): T[] {
 // -----------------------------
 // ex191 - Unflatten object from dot notation
 // -----------------------------
+// Helper function to set a value at a nested path
+export function ex99Set(obj: any, path: string, value: any): void {
+  const keys = path.split(".");
+  let current = obj;
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+
+    if (i === keys.length - 1) {
+      current[key] = value;
+    } else {
+      if (!(key in current)) {
+        current[key] = {};
+      }
+      current = current[key];
+    }
+  }
+}
+
+// Unflatten a dot-notated object into a nested structure
 export function ex191Unflatten(dotObj: Record<string, any>): any {
   const res: any = {};
   for (const [path, val] of Object.entries(dotObj)) {
@@ -2347,7 +2428,7 @@ const Examples = {
   ex178IsLeapAdvanced,
   ex179MultiBy,
   ex180Sequence,
-  ex181StringifyCSVWithHeaders,
+  ex183StringifyCSV,
   ex182NanoId,
   ex183IsSafeMethod,
   ex184CollectKeys,

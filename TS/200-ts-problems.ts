@@ -918,11 +918,32 @@ export function ex88WithTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 // -----------------------------
 // ex89 - Simple base64 encode/decode typed
 // -----------------------------
-export function ex89B64Encode(s: string) {
-  return Buffer ? Buffer.from(s).toString("base64") : btoa(s);
+export function ex89B64Encode(s: string): string {
+  // @ts-ignore: Allow Buffer in Node.js
+  if (typeof Buffer !== "undefined" && typeof Buffer.from === "function") {
+    // Node.js environment
+    // @ts-ignore
+    return Buffer.from(s, "utf8").toString("base64");
+  } else if (typeof btoa !== "undefined") {
+    // Browser environment
+    return btoa(s);
+  } else {
+    throw new Error("No base64 encoding support in this environment");
+  }
 }
-export function ex89B64Decode(s: string) {
-  return Buffer ? Buffer.from(s, "base64").toString("utf8") : atob(s);
+
+export function ex89B64Decode(s: string): string {
+  // @ts-ignore: Allow Buffer in Node.js
+  if (typeof Buffer !== "undefined" && typeof Buffer.from === "function") {
+    // Node.js environment
+    // @ts-ignore
+    return Buffer.from(s, "base64").toString("utf8");
+  } else if (typeof atob !== "undefined") {
+    // Browser environment
+    return atob(s);
+  } else {
+    throw new Error("No base64 decoding support in this environment");
+  }
 }
 
 // -----------------------------
