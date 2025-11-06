@@ -48,84 +48,189 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body
-    class="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 min-h-screen text-slate-800 dark:text-slate-200 antialiased transition-colors duration-300"
+    class="min-h-screen antialiased transition-colors duration-300 bg-theme-primary text-theme-primary"
   >
     <!-- Theme Selector -->
-    <div class="fixed top-24 right-4 z-40 dropdown dropdown-end">
-      <div
-        tabindex="0"
-        role="button"
-        class="btn btn-ghost btn-circle shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm"
-      >
-        <i class="fas fa-palette text-lg"></i>
+    <!-- Theme Selector (improved & scrollable) -->
+    <div class="fixed top-16 right-4 z-50">
+      <!-- Toggle button -->
+      <div class="dropdown dropdown-end theme-dropdown" id="theme-dropdown">
+        <button
+          id="theme-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="btn btn-ghost btn-circle shadow-lg bg-theme-secondary backdrop-blur-sm"
+        >
+          <span class="sr-only">Open theme menu</span>
+          <i class="fas fa-palette text-lg" aria-hidden="true"></i>
+        </button>
+
+        <!-- Scrollable menu -->
+        <ul
+          id="theme-menu"
+          role="menu"
+          aria-label="Themes"
+          class="dropdown-content z-[60] menu p-2 shadow-2xl bg-theme-secondary rounded-box w-52 mt-2 max-h-80 overflow-y-auto theme-scroll space-y-1"
+        >
+          <li class="menu-title"><span>Themes</span></li>
+
+          <!-- Theme items: data-set-theme stores the theme name -->
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="light"
+            >
+              <span>Light</span>
+              <span class="flex items-center gap-2">
+                <i class="fas fa-sun text-amber-500" aria-hidden="true"></i>
+                <svg
+                  class="w-4 h-4 check-icon invisible"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414L8.414 15 5 11.586a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="dark"
+            >
+              <span>Dark</span>
+              <span class="flex items-center gap-2">
+                <i class="fas fa-moon text-indigo-500" aria-hidden="true"></i>
+                <svg
+                  class="w-4 h-4 check-icon invisible"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414L8.414 15 5 11.586a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+          </li>
+
+          <!-- Add more theme items (kept compact for brevity) -->
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="cupcake"
+            >
+              <span>Cupcake</span
+              ><i class="fas fa-cake text-pink-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="bumblebee"
+            >
+              <span>Bumblebee</span
+              ><i class="fas fa-bee text-yellow-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="emerald"
+            >
+              <span>Emerald</span
+              ><i class="fas fa-gem text-emerald-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="synthwave"
+            >
+              <span>Synthwave</span
+              ><i class="fas fa-music text-purple-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="corporate"
+            >
+              <span>Corporate</span
+              ><i class="fas fa-briefcase text-blue-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="forest"
+            >
+              <span>Forest</span
+              ><i class="fas fa-tree text-green-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="cyberpunk"
+            >
+              <span>Cyberpunk</span
+              ><i class="fas fa-robot text-pink-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="valentine"
+            >
+              <span>Valentine</span
+              ><i class="fas fa-heart text-red-500" aria-hidden="true"></i>
+            </button>
+          </li>
+
+          <li role="none">
+            <button
+              role="menuitem"
+              class="theme-item flex justify-between w-full px-2 py-2 rounded hover:bg-base-200"
+              data-set-theme="halloween"
+            >
+              <span>Halloween</span
+              ><i class="fas fa-ghost text-orange-500" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ul>
       </div>
-      <ul
-        tabindex="0"
-        class="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-52 mt-2"
-      >
-        <li class="menu-title"><span>Themes</span></li>
-        <li>
-          <button data-set-theme="light" class="flex justify-between">
-            <span>Light</span> <i class="fas fa-sun text-amber-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="dark" class="flex justify-between">
-            <span>Dark</span> <i class="fas fa-moon text-indigo-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="cupcake" class="flex justify-between">
-            <span>Cupcake</span> <i class="fas fa-cake text-pink-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="bumblebee" class="flex justify-between">
-            <span>Bumblebee</span> <i class="fas fa-bee text-yellow-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="emerald" class="flex justify-between">
-            <span>Emerald</span> <i class="fas fa-gem text-emerald-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="synthwave" class="flex justify-between">
-            <span>Synthwave</span> <i class="fas fa-music text-purple-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="corporate" class="flex justify-between">
-            <span>Corporate</span>
-            <i class="fas fa-briefcase text-blue-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="forest" class="flex justify-between">
-            <span>Forest</span> <i class="fas fa-tree text-green-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="cyberpunk" class="flex justify-between">
-            <span>Cyberpunk</span> <i class="fas fa-robot text-pink-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="valentine" class="flex justify-between">
-            <span>Valentine</span> <i class="fas fa-heart text-red-500"></i>
-          </button>
-        </li>
-        <li>
-          <button data-set-theme="halloween" class="flex justify-between">
-            <span>Halloween</span> <i class="fas fa-ghost text-orange-500"></i>
-          </button>
-        </li>
-      </ul>
     </div>
     <!-- Navigation -->
     <nav
       id="navbar"
-      class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg fixed top-0 w-full z-50 transition-all duration-500 nav-visible border-b border-slate-200/50 dark:border-slate-700/50"
+      class="bg-theme-secondary backdrop-blur-md shadow-lg fixed top-0 w-full z-50 transition-all duration-500 nav-visible border-b border-theme"
     >
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-3">
@@ -141,7 +246,7 @@
               >
                 TypeScript Pro
               </div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 -mt-1">
+              <div class="text-xs text-theme-secondary -mt-1">
                 Advanced Learning Platform
               </div>
             </div>
@@ -150,27 +255,27 @@
           <div class="hidden lg:flex items-center space-x-6">
             <a
               href="#features"
-              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              class="text-theme-secondary hover:text-sky-600 transition-all duration-300 font-medium hover:scale-105"
               >Features</a
             >
             <a
               href="#examples"
-              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              class="text-theme-secondary hover:text-sky-600 transition-all duration-300 font-medium hover:scale-105"
               >Examples</a
             >
             <a
               href="#tryit"
-              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              class="text-theme-secondary hover:text-sky-600 transition-all duration-300 font-medium hover:scale-105"
               >Playground</a
             >
             <a
               href="#articles"
-              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              class="text-theme-secondary hover:text-sky-600 transition-all duration-300 font-medium hover:scale-105"
               >Articles</a
             >
             <a
               href="#resources"
-              class="text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 font-medium hover:scale-105"
+              class="text-theme-secondary hover:text-sky-600 transition-all duration-300 font-medium hover:scale-105"
               >Resources</a
             >
             <button
@@ -189,7 +294,7 @@
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-slate-700 dark:text-slate-300"
+              class="h-6 w-6 text-theme-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -208,41 +313,41 @@
     <!-- Mobile Menu -->
     <div
       id="mobile-menu"
-      class="lg:hidden fixed top-16 left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl z-40 transform -translate-y-full transition-transform duration-500"
+      class="lg:hidden fixed top-16 left-0 w-full bg-theme-secondary backdrop-blur-xl shadow-2xl z-40 transform -translate-y-full transition-transform duration-500"
       aria-hidden="true"
     >
       <div class="flex flex-col p-6 space-y-4">
         <a
           href="#features"
-          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          class="text-theme-primary hover:text-sky-600 py-3 text-lg font-medium border-b border-theme"
           onclick="toggleMobileMenu()"
         >
           <i class="fas fa-star mr-3 text-amber-500"></i>Features
         </a>
         <a
           href="#examples"
-          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          class="text-theme-primary hover:text-sky-600 py-3 text-lg font-medium border-b border-theme"
           onclick="toggleMobileMenu()"
         >
           <i class="fas fa-code mr-3 text-blue-500"></i>Examples
         </a>
         <a
           href="#tryit"
-          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          class="text-theme-primary hover:text-sky-600 py-3 text-lg font-medium border-b border-theme"
           onclick="toggleMobileMenu()"
         >
           <i class="fas fa-play-circle mr-3 text-green-500"></i>Playground
         </a>
         <a
           href="#articles"
-          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          class="text-theme-primary hover:text-sky-600 py-3 text-lg font-medium border-b border-theme"
           onclick="toggleMobileMenu()"
         >
           <i class="fas fa-newspaper mr-3 text-purple-500"></i>Articles
         </a>
         <a
           href="#resources"
-          class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800"
+          class="text-theme-primary hover:text-sky-600 py-3 text-lg font-medium border-b border-theme"
           onclick="toggleMobileMenu()"
         >
           <i class="fas fa-book mr-3 text-red-500"></i>Resources
@@ -273,10 +378,10 @@
       </div>
       <div class="container mx-auto px-4 text-center relative z-10">
         <div
-          class="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+          class="inline-flex items-center gap-2 bg-theme-secondary backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg border border-theme"
         >
           <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-          <span class="text-sm font-medium text-slate-700 dark:text-slate-300"
+          <span class="text-sm font-medium text-theme-primary"
             >Master TypeScript with Interactive Learning</span
           >
         </div>
@@ -290,7 +395,7 @@
           <span class="block mt-2">Pro Platform</span>
         </h1>
         <p
-          class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto mb-8 leading-relaxed"
+          class="text-xl md:text-2xl text-theme-secondary max-w-4xl mx-auto mb-8 leading-relaxed"
         >
           Advanced TypeScript learning with
           <span class="font-semibold text-sky-600 dark:text-sky-400"
@@ -324,48 +429,40 @@
         <!-- Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
           <div
-            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+            class="bg-theme-secondary backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-theme"
           >
             <div class="text-2xl font-bold text-sky-600 dark:text-sky-400">
               50+
             </div>
-            <div class="text-sm text-slate-600 dark:text-slate-400">
-              Features
-            </div>
+            <div class="text-sm text-theme-secondary">Features</div>
           </div>
           <div
-            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+            class="bg-theme-secondary backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-theme"
           >
             <div
               class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
             >
               50
             </div>
-            <div class="text-sm text-slate-600 dark:text-slate-400">
-              Articles
-            </div>
+            <div class="text-sm text-theme-secondary">Articles</div>
           </div>
           <div
-            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+            class="bg-theme-secondary backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-theme"
           >
             <div
               class="text-2xl font-bold text-emerald-600 dark:text-emerald-400"
             >
               AI
             </div>
-            <div class="text-sm text-slate-600 dark:text-slate-400">
-              Assistant
-            </div>
+            <div class="text-sm text-theme-secondary">Assistant</div>
           </div>
           <div
-            class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-slate-200/50 dark:border-slate-700/50"
+            class="bg-theme-secondary backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-theme"
           >
             <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">
               Live
             </div>
-            <div class="text-sm text-slate-600 dark:text-slate-400">
-              Playground
-            </div>
+            <div class="text-sm text-theme-secondary">Playground</div>
           </div>
         </div>
       </div>
@@ -373,25 +470,21 @@
     <!-- Features Section -->
     <section
       id="features"
-      class="py-20 bg-white dark:bg-slate-800 relative overflow-hidden"
+      class="py-20 bg-theme-primary relative overflow-hidden"
     >
       <div
         class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-sky-50/50 to-transparent dark:from-slate-900/50"
       ></div>
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
-          >
+          <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-4">
             Advanced
             <span
               class="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent"
               >TypeScript Features</span
             >
           </h2>
-          <p
-            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-theme-secondary max-w-3xl mx-auto">
             Explore 50+ powerful TypeScript features with interactive examples
             and detailed explanations
           </p>
@@ -405,24 +498,17 @@
       </div>
     </section>
     <!-- Articles Section -->
-    <section
-      id="articles"
-      class="py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700"
-    >
+    <section id="articles" class="py-20 bg-theme-primary border-t border-theme">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
-          >
+          <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-4">
             Comprehensive
             <span
               class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
               >TypeScript Articles</span
             >
           </h2>
-          <p
-            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-theme-secondary max-w-3xl mx-auto">
             Deep dive into TypeScript concepts with 50 detailed articles and
             practical examples
           </p>
@@ -433,50 +519,41 @@
       </div>
     </section>
     <!-- Examples Section -->
-    <section id="examples" class="py-20 bg-white dark:bg-slate-800">
+    <section id="examples" class="py-20 bg-theme-primary">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
-          >
+          <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-4">
             Interactive
             <span
               class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"
               >TypeScript Examples</span
             >
           </h2>
-          <p
-            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-theme-secondary max-w-3xl mx-auto">
             Try out TypeScript features with live code execution and instant
             feedback
           </p>
         </div>
         <div
-          class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden max-w-6xl mx-auto border border-slate-200 dark:border-slate-700"
+          class="bg-theme-secondary rounded-2xl shadow-2xl overflow-hidden max-w-6xl mx-auto border border-theme"
         >
           <div
-            class="p-6 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900"
+            class="p-6 border-b border-theme bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900"
           >
             <h3
-              class="text-2xl font-bold text-slate-800 dark:text-white"
+              class="text-2xl font-bold text-theme-primary"
               id="example-title"
             >
               Union Types Example
             </h3>
-            <p
-              class="text-slate-600 dark:text-slate-300 mt-2"
-              id="example-description"
-            >
+            <p class="text-theme-secondary mt-2" id="example-description">
               Function that accepts both string and number types and returns
               different results based on the input type.
             </p>
           </div>
           <div class="flex flex-col lg:flex-row">
             <!-- Tabs Navigation -->
-            <div
-              class="w-full lg:w-64 bg-slate-100 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700"
-            >
+            <div class="w-full lg:w-64 bg-theme-primary border-r border-theme">
               <div
                 class="p-4 space-y-2 max-h-96 overflow-y-auto"
                 id="examples-tabs"
@@ -491,12 +568,12 @@
                   class="code-block"
                 ><code class="language-typescript" id="example-code">// union example code appears here</code></pre>
               </div>
-              <div class="p-6 border-t border-slate-200 dark:border-slate-700">
+              <div class="p-6 border-t border-theme">
                 <div class="flex flex-col md:flex-row md:items-center gap-4">
                   <input
                     type="text"
                     placeholder="Enter a string or number"
-                    class="input input-bordered flex-grow dark:bg-slate-800 dark:text-white"
+                    class="input input-bordered flex-grow bg-theme-secondary text-theme-primary"
                     id="example-input"
                   />
                   <button
@@ -507,16 +584,14 @@
                   </button>
                 </div>
                 <div
-                  class="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700"
+                  class="mt-6 p-4 bg-theme-primary rounded-lg border border-theme"
                 >
-                  <p
-                    class="text-slate-700 dark:text-slate-300 font-medium flex items-center"
-                  >
+                  <p class="text-theme-secondary font-medium flex items-center">
                     <i class="fas fa-terminal mr-2 text-sky-500"></i>Output:
                   </p>
                   <p
                     id="example-output"
-                    class="mt-2 text-slate-800 dark:text-slate-200 font-mono bg-slate-100 dark:bg-slate-800 p-3 rounded border"
+                    class="mt-2 text-theme-primary font-mono bg-theme-secondary p-3 rounded border"
                   >
                     // Results will appear here
                   </p>
@@ -534,18 +609,14 @@
     >
       <div class="container mx-auto px-4 max-w-7xl">
         <div class="text-center mb-16">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
-          >
+          <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-4">
             TypeScript
             <span
               class="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent"
               >Playground</span
             >
           </h2>
-          <p
-            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-theme-secondary max-w-3xl mx-auto">
             Write, compile, and execute TypeScript code in real-time with our
             advanced editor
           </p>
@@ -553,7 +624,7 @@
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
           <!-- Editor Panel -->
           <div
-            class="xl:col-span-2 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col"
+            class="xl:col-span-2 bg-theme-secondary rounded-2xl shadow-2xl overflow-hidden border border-theme flex flex-col"
           >
             <div
               class="p-4 bg-gradient-to-r from-sky-500 to-indigo-600 text-white flex items-center justify-between"
@@ -570,11 +641,11 @@
             <div class="p-4 flex-1 min-h-[500px]">
               <div
                 id="ace-editor"
-                class="rounded-lg border border-slate-200 dark:border-slate-700 h-full"
+                class="rounded-lg border border-theme h-full"
               ></div>
             </div>
             <div
-              class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex flex-wrap gap-3"
+              class="p-4 border-t border-theme bg-theme-primary flex flex-wrap gap-3"
             >
               <button
                 class="btn btn-primary shadow-lg transform hover:scale-105 transition-all"
@@ -583,13 +654,13 @@
                 <i class="fas fa-play mr-2"></i>Run Code
               </button>
               <button
-                class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                class="btn btn-outline border-theme text-theme-primary"
                 onclick="formatEditor()"
               >
                 <i class="fas fa-indent mr-2"></i>Format
               </button>
               <button
-                class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                class="btn btn-outline border-theme text-theme-primary"
                 onclick="clearEditor()"
               >
                 <i class="fas fa-trash mr-2"></i>Clear
@@ -598,13 +669,13 @@
                 <div
                   tabindex="0"
                   role="button"
-                  class="btn btn-outline dark:border-slate-600 dark:text-slate-300"
+                  class="btn btn-outline border-theme text-theme-primary"
                 >
                   <i class="fas fa-plus mr-2"></i>Insert Example
                 </div>
                 <ul
                   tabindex="0"
-                  class="dropdown-content z-[1] menu p-2 shadow-2xl bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto"
+                  class="dropdown-content z-[1] menu p-2 shadow-2xl bg-theme-secondary rounded-box w-64 max-h-80 overflow-y-auto"
                 >
                   <!-- Example list will be populated by JS -->
                 </ul>
@@ -615,10 +686,10 @@
           <div class="space-y-8">
             <!-- Output Panel -->
             <div
-              class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col h-80"
+              class="bg-theme-secondary rounded-2xl shadow-2xl overflow-hidden border border-theme flex flex-col h-80"
             >
               <div
-                class="p-4 bg-slate-100 dark:bg-slate-800 font-medium flex items-center justify-between"
+                class="p-4 bg-theme-primary font-medium flex items-center justify-between"
               >
                 <span class="flex items-center">
                   <i class="fas fa-terminal mr-2 text-sky-500"></i>Output
@@ -627,12 +698,10 @@
                   <i class="fas fa-trash"></i>
                 </button>
               </div>
-              <div
-                class="p-4 flex-1 overflow-auto bg-slate-50 dark:bg-slate-900"
-              >
+              <div class="p-4 flex-1 overflow-auto bg-theme-primary">
                 <pre
                   id="output-code"
-                  class="whitespace-pre-wrap text-sm text-slate-800 dark:text-slate-200 font-mono"
+                  class="whitespace-pre-wrap text-sm text-theme-primary font-mono"
                 >
 // Output will appear here</pre
                 >
@@ -640,7 +709,7 @@
             </div>
             <!-- Info Panel -->
             <div
-              class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700"
+              class="bg-theme-secondary rounded-2xl shadow-2xl overflow-hidden border border-theme"
             >
               <div
                 class="p-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium"
@@ -655,10 +724,10 @@
                     <i class="fas fa-bolt"></i>
                   </div>
                   <div>
-                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                    <h4 class="font-semibold text-theme-primary">
                       Live Compilation
                     </h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                    <p class="text-sm text-theme-secondary">
                       TypeScript code is compiled to JavaScript in real-time
                     </p>
                   </div>
@@ -670,10 +739,10 @@
                     <i class="fas fa-code"></i>
                   </div>
                   <div>
-                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                    <h4 class="font-semibold text-theme-primary">
                       Type Checking
                     </h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                    <p class="text-sm text-theme-secondary">
                       Get instant feedback on type errors and suggestions
                     </p>
                   </div>
@@ -685,10 +754,10 @@
                     <i class="fas fa-shield-alt"></i>
                   </div>
                   <div>
-                    <h4 class="font-semibold text-slate-800 dark:text-white">
+                    <h4 class="font-semibold text-theme-primary">
                       Safe Execution
                     </h4>
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                    <p class="text-sm text-theme-secondary">
                       Code runs in a secure sandboxed environment
                     </p>
                   </div>
@@ -700,21 +769,17 @@
       </div>
     </section>
     <!-- Resources Section -->
-    <section id="resources" class="py-20 bg-white dark:bg-slate-800">
+    <section id="resources" class="py-20 bg-theme-primary">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2
-            class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4"
-          >
+          <h2 class="text-4xl md:text-5xl font-bold text-theme-primary mb-4">
             TypeScript
             <span
               class="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent"
               >Resources</span
             >
           </h2>
-          <p
-            class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-theme-secondary max-w-3xl mx-auto">
             Essential tools, documentation, and learning materials for mastering
             TypeScript
           </p>
@@ -724,17 +789,17 @@
         >
           <!-- Resource Cards -->
           <div
-            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            class="bg-theme-primary rounded-2xl p-6 shadow-lg border border-theme hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <div
               class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 mb-4"
             >
               <i class="fas fa-book text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+            <h3 class="text-xl font-bold text-theme-primary mb-2">
               Official Documentation
             </h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">
+            <p class="text-theme-secondary mb-4">
               Comprehensive TypeScript documentation and handbook
             </p>
             <a
@@ -745,17 +810,17 @@
             </a>
           </div>
           <div
-            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            class="bg-theme-primary rounded-2xl p-6 shadow-lg border border-theme hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <div
               class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4"
             >
               <i class="fas fa-play-circle text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+            <h3 class="text-xl font-bold text-theme-primary mb-2">
               TypeScript Playground
             </h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">
+            <p class="text-theme-secondary mb-4">
               Official TypeScript playground for experimentation
             </p>
             <a
@@ -766,17 +831,17 @@
             </a>
           </div>
           <div
-            class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            class="bg-theme-primary rounded-2xl p-6 shadow-lg border border-theme hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             <div
               class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4"
             >
               <i class="fab fa-github text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">
+            <h3 class="text-xl font-bold text-theme-primary mb-2">
               GitHub Repository
             </h3>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">
+            <p class="text-theme-secondary mb-4">
               Source code and contribution guidelines for this project
             </p>
             <a
@@ -949,11 +1014,11 @@
     <!-- Enhanced AI Chatbot -->
     <div
       id="chat-drawer"
-      class="fixed right-6 bottom-6 w-96 max-h-[85vh] bg-white/95 dark:bg-slate-900/95 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden transform translate-y-8 opacity-0 pointer-events-none transition-all duration-500 z-50 flex flex-col backdrop-blur-md"
+      class="fixed right-6 bottom-6 w-96 max-h-[85vh] bg-theme-secondary rounded-2xl shadow-2xl border border-theme overflow-hidden transform translate-y-8 opacity-0 pointer-events-none transition-all duration-500 z-50 flex flex-col backdrop-blur-md"
     >
       <!-- Chat Header -->
       <div
-        class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-indigo-500 to-purple-600 text-white"
+        class="flex items-center justify-between p-4 border-b border-theme bg-gradient-to-r from-indigo-500 to-purple-600 text-white"
       >
         <div class="flex items-center gap-3">
           <div
@@ -986,11 +1051,11 @@
       <!-- Chat Messages -->
       <div
         id="chat-body"
-        class="flex-1 p-4 overflow-auto bg-slate-50/95 dark:bg-slate-800/95"
+        class="flex-1 p-4 overflow-auto bg-theme-primary"
         style="height: 400px"
       >
         <div
-          class="chat-message bot p-4 rounded-2xl mb-4 bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-700"
+          class="chat-message bot p-4 rounded-2xl mb-4 bg-theme-secondary shadow-sm border border-theme"
         >
           <div class="flex items-start gap-3">
             <div
@@ -999,12 +1064,10 @@
               <i class="fas fa-robot text-sm"></i>
             </div>
             <div class="flex-1">
-              <div
-                class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
-              >
+              <div class="text-sm font-medium text-theme-secondary mb-1">
                 TypeScript Assistant
               </div>
-              <div class="text-slate-600 dark:text-slate-400 text-sm">
+              <div class="text-theme-secondary text-sm">
                 Hello! I'm your TypeScript AI assistant. I can help you with
                 TypeScript concepts, provide examples, and even insert code
                 directly into the editor. How can I assist you today?
@@ -1014,13 +1077,11 @@
         </div>
       </div>
       <!-- Chat Input -->
-      <div
-        class="p-4 border-t border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95"
-      >
+      <div class="p-4 border-t border-theme bg-theme-secondary">
         <div class="flex gap-2">
           <input
             id="chat-input"
-            class="input input-bordered flex-1 dark:bg-slate-800 dark:text-white"
+            class="input input-bordered flex-1 bg-theme-primary text-theme-primary"
             placeholder="Ask about TypeScript features, examples, or concepts..."
           />
           <button class="btn btn-primary" onclick="sendChat()">
@@ -1029,25 +1090,25 @@
         </div>
         <div class="flex flex-wrap gap-2 mt-3">
           <button
-            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            class="btn btn-xs btn-outline border-theme text-theme-primary"
             onclick="quickQuestion('How do union types work?')"
           >
             Union Types
           </button>
           <button
-            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            class="btn btn-xs btn-outline border-theme text-theme-primary"
             onclick="quickQuestion('What are generics?')"
           >
             Generics
           </button>
           <button
-            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            class="btn btn-xs btn-outline border-theme text-theme-primary"
             onclick="quickQuestion('Explain type guards')"
           >
             Type Guards
           </button>
           <button
-            class="btn btn-xs btn-outline dark:border-slate-600 dark:text-slate-300"
+            class="btn btn-xs btn-outline border-theme text-theme-primary"
             onclick="quickQuestion('Show me decorators')"
           >
             Decorators
