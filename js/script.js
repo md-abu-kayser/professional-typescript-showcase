@@ -1,4 +1,5 @@
-// TypeScript Pro Platform - Enhanced JavaScript
+// all javascript code here:
+// ------------------------------------------------------->>>
 // Theme Management
 const availableThemes = [
   "light",
@@ -14,10 +15,8 @@ const availableThemes = [
   "halloween",
 ];
 let currentTheme = localStorage.getItem("theme") || "light";
-// Initialize theme
 function initTheme() {
   setTheme(currentTheme);
-  // Add theme change listener to all theme buttons
   document.querySelectorAll("[data-set-theme]").forEach((button) => {
     button.addEventListener("click", () => {
       const theme = button.getAttribute("data-set-theme");
@@ -31,20 +30,17 @@ function setTheme(theme) {
   currentTheme = theme;
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
-  // Update theme selector UI
   updateThemeSelector(theme);
-  // Apply theme-specific styles
+  // Theme-specific
   applyThemeStyles(theme);
 }
-// Apply theme-specific styles
+// Theme-specific styles
 function applyThemeStyles(theme) {
   const body = document.body;
-  // Remove existing theme classes
+  // Remove
   body.classList.remove(...availableThemes.map((t) => `theme-${t}`));
-  // Add current theme class
   body.classList.add(`theme-${theme}`);
 }
-// Update theme selector UI
 function updateThemeSelector(theme) {
   const themeButtons = document.querySelectorAll("[data-set-theme]");
   themeButtons.forEach((button) => {
@@ -56,7 +52,6 @@ function updateThemeSelector(theme) {
     }
   });
 }
-// Enhanced Examples Data (50 examples)
 const examples = [
   {
     id: 1,
@@ -632,7 +627,6 @@ let alignment: Alignment = "top-left"; // Valid`,
     run: (input) => "Merging demo",
   },
 ];
-// Helper functions for examples
 function processInput(input) {
   if (typeof input === "string") {
     return input.length;
@@ -650,10 +644,8 @@ function handlePet(pet) {
     return "It's a dog: " + pet.bark();
   }
 }
-// Initialize examples
 let currentExample = 0;
 function initExamples() {
-  // Load examples tabs
   const tabsContainer = document.getElementById("examples-tabs");
   if (tabsContainer) {
     tabsContainer.innerHTML = examples
@@ -674,7 +666,6 @@ function initExamples() {
       )
       .join("");
   }
-  // Load example insert dropdown
   const insertDropdown = document.querySelector(".dropdown-content");
   if (insertDropdown) {
     insertDropdown.innerHTML = examples
@@ -685,17 +676,14 @@ function initExamples() {
       )
       .join("");
   }
-  // Show first example
   showExample(0);
 }
 function showExample(index) {
   currentExample = index;
   const ex = examples[currentExample];
-  // Update UI
   document.getElementById("example-title").textContent = ex.title;
   document.getElementById("example-description").textContent = ex.description;
   document.getElementById("example-code").textContent = ex.code;
-  // Update input placeholder based on example
   const input = document.getElementById("example-input");
   switch (currentExample) {
     case 1:
@@ -710,7 +698,6 @@ function showExample(index) {
     default:
       input.placeholder = "Input value (varies by example)";
   }
-  // Highlight code
   if (window.hljs) {
     document.querySelectorAll("pre code").forEach((block) => {
       try {
@@ -718,7 +705,6 @@ function showExample(index) {
       } catch (e) {}
     });
   }
-  // Update active tab
   document.querySelectorAll("#examples-tabs button").forEach((t, i) => {
     t.classList.toggle("bg-theme-secondary", i === currentExample);
     t.classList.toggle("shadow-sm", i === currentExample);
@@ -730,7 +716,6 @@ function runExample() {
   const output = examples[currentExample].run(input);
   document.getElementById("example-output").textContent = String(output);
 }
-// Enhanced Features Data (50 features)
 const features = [
   {
     id: 1,
@@ -1189,7 +1174,6 @@ const features = [
     articleId: 50,
   },
 ];
-// Initialize features
 function initFeatures() {
   const container = document.getElementById("features-container");
   if (container) {
@@ -1216,7 +1200,6 @@ function initFeatures() {
       .join("");
   }
 }
-// Enhanced Articles Data (50 articles)
 const articles = [
   {
     id: 1,
@@ -2803,7 +2786,8 @@ namespace Validation {
     `,
   },
 ];
-// Initialize articles
+
+// Articles
 function initArticles() {
   const container = document.getElementById("articles-container");
   if (container) {
@@ -2828,18 +2812,15 @@ function initArticles() {
       .join("");
   }
 }
-// Article toggle functionality
 function toggleArticle(index) {
   const articles = document.querySelectorAll(".article-content");
   const article = articles[index];
   if (!article) return;
   article.classList.toggle("show");
-  // Rotate the chevron
   const headers = document.querySelectorAll(".article header");
   const header = headers[index];
   const chevron = header ? header.querySelector(".fa-chevron-down") : null;
   if (chevron) chevron.classList.toggle("fa-rotate-180");
-  // Re-highlight code blocks if revealed
   if (window.hljs) {
     setTimeout(() => {
       article.querySelectorAll("pre code").forEach((block) => {
@@ -2850,12 +2831,10 @@ function toggleArticle(index) {
     }, 300);
   }
 }
-// Scroll to article function
 function scrollToArticle(articleId) {
   const articleElement = document.getElementById(`article-${articleId}`);
   if (articleElement) {
     articleElement.scrollIntoView({ behavior: "smooth" });
-    // Open the article if it's closed
     const index = articles.findIndex((a) => a.id === articleId);
     if (index !== -1) {
       const articleContent =
@@ -2866,17 +2845,14 @@ function scrollToArticle(articleId) {
     }
   }
 }
-// Mobile menu functionality
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById("mobile-menu");
   if (!mobileMenu) return;
   mobileMenu.classList.toggle("-translate-y-full");
   const isHidden = mobileMenu.classList.contains("-translate-y-full");
   mobileMenu.setAttribute("aria-hidden", isHidden ? "true" : "false");
-  // Toggle body scroll
   document.body.style.overflow = isHidden ? "" : "hidden";
 }
-// Close mobile menu when clicking outside
 document.addEventListener("click", function (event) {
   const mobileMenu = document.getElementById("mobile-menu");
   const button = document.getElementById("mobile-menu-button");
@@ -2890,7 +2866,6 @@ document.addEventListener("click", function (event) {
     }
   }
 });
-// Navbar hide on scroll
 let lastScrollTop = 0;
 window.addEventListener("scroll", function () {
   const navbar = document.getElementById("navbar");
@@ -2908,7 +2883,6 @@ window.addEventListener("scroll", function () {
   }
   lastScrollTop = scrollTop;
 });
-// Ace Editor Setup
 let aceEditor = null;
 function setupAce() {
   try {
@@ -2924,7 +2898,6 @@ function setupAce() {
       fontSize: "14px",
       showPrintMargin: false,
     });
-    // Default content
     const defaultCode = `// Welcome to TypeScript Pro Playground!
 // Try writing TypeScript code and click Run to see the output
 // Basic type annotations
@@ -2956,7 +2929,6 @@ console.log("User:", user);
 console.log("Identity result:", identity<string>("test"));`;
     aceEditor.setValue(defaultCode, -1);
     aceEditor.clearSelection();
-    // Add some basic TypeScript types to autocomplete
     aceEditor.completers = [
       {
         getCompletions: function (editor, session, pos, prefix, callback) {
@@ -3018,13 +2990,11 @@ function insertExampleIntoEditor(exampleIndex) {
     "\n" + txt
   );
   aceEditor.focus();
-  // Show notification with improved styling
   showNotification(`Added "${examples[exampleIndex].title}" example to editor`);
 }
 function formatEditor() {
   if (!aceEditor) return;
   const content = aceEditor.getValue();
-  // Basic formatting - replace tabs with 2 spaces and clean up empty lines
   const formatted = content
     .replace(/\t/g, " ")
     .replace(/\n\s*\n\s*\n/g, "\n\n");
@@ -3042,12 +3012,10 @@ function clearOutput() {
 function runEditorCode() {
   if (!aceEditor) return;
   const raw = aceEditor.getValue();
-  // Show loading state
   const outputEl = document.getElementById("output-code");
   outputEl.innerHTML =
     '<div class="flex items-center gap-2 text-sky-600"><div class="spinner"></div> Compiling and running TypeScript...</div>';
   setTimeout(() => {
-    // Naive TypeScript-to-JavaScript transformation for demo
     let compiled = raw
       .replace(/:\s*string\s*(?=[,=){};]|$)/g, "")
       .replace(/:\s*number\s*(?=[,=){};]|$)/g, "")
@@ -3056,14 +3024,13 @@ function runEditorCode() {
       .replace(/:\s*void\s*(?=[,=){};]|$)/g, "")
       .replace(/:\s*never\s*(?=[,=){};]|$)/g, "")
       .replace(/:\s*unknown\s*(?=[,=){};]|$)/g, "")
-      .replace(/<\w+>/g, "") // Remove simple generics
-      .replace(/interface\s+\w+\s*{[^}]*}/g, "") // Remove interfaces
-      .replace(/type\s+\w+\s*=([^;]+);/g, "") // Remove type aliases
+      .replace(/<\w+>/g, "")
+      .replace(/interface\s+\w+\s*{[^}]*}/g, "")
+      .replace(/type\s+\w+\s*=([^;]+);/g, "")
       .replace(/readonly\s+/g, "")
       .replace(/private\s+/g, "")
       .replace(/protected\s+/g, "")
       .replace(/public\s+/g, "");
-    // Capture console output
     let out = "";
     const originalLog = console.log;
     const originalError = console.error;
@@ -3083,7 +3050,6 @@ function runEditorCode() {
       out += "WARNING: " + args.map(String).join(" ") + "\n";
     };
     try {
-      // Execute in a try-catch to handle runtime errors
       new Function(compiled)();
       if (!out.trim()) {
         out = "Code executed successfully (no console output).";
@@ -3092,7 +3058,6 @@ function runEditorCode() {
       out =
         "Runtime Error: " + (err && err.message ? err.message : String(err));
     } finally {
-      // Restore original console methods
       console.log = originalLog;
       console.error = originalError;
       console.warn = originalWarn;
@@ -3101,7 +3066,6 @@ function runEditorCode() {
     showNotification("Code executed successfully");
   }, 500);
 }
-// Enhanced Chatbot functionality
 const chatDrawer = document.getElementById("chat-drawer");
 const chatBody = document.getElementById("chat-body");
 const chatFloatingBtn = document.getElementById("chat-floating-btn");
@@ -3217,22 +3181,16 @@ function sendChat() {
   const input = document.getElementById("chat-input");
   const text = input.value.trim();
   if (!text) return;
-  // Add user message
   appendChat(text, "user");
   input.value = "";
-  // Show typing indicator
   const typingId = appendChat("", "bot", true);
-  // Simulate AI thinking
   setTimeout(() => {
-    // Remove typing indicator
     const typingEl = document.getElementById(typingId);
     if (typingEl) {
       typingEl.remove();
     }
-    // Add AI response
     const reply = generateAIResponse(text);
     appendChat(reply, "bot");
-    // Handle special actions
     if (reply.includes("[insert example")) {
       const found = reply.match(/\[insert example:(\d+)\]/);
       if (found && found[1]) {
@@ -3244,7 +3202,6 @@ function sendChat() {
 }
 function generateAIResponse(userText) {
   const text = userText.toLowerCase();
-  // Enhanced response system with more context
   if (text.includes("union") || text.includes("multiple types")) {
     return "Union types allow a variable to hold values of different types (e.g., `string | number`). They're perfect for functions that can accept different input types while maintaining type safety. Try the union types example: [insert example:0]";
   }
@@ -3312,12 +3269,9 @@ function generateAIResponse(userText) {
   if (text.includes("thank")) {
     return "You're welcome! I'm glad I could help. Feel free to ask more questions about TypeScript features, best practices, or anything else!";
   }
-  // Default response with suggestions
   return "I can help you with TypeScript concepts like union types, generics, type guards, interfaces, and more. Try asking about specific features or use the quick buttons below for common questions. You can also say 'insert example' followed by a topic to add code to the editor.";
 }
-// Notification system with improved styling
 function showNotification(message, type = "info") {
-  // Create notification element
   const notification = document.createElement("div");
   notification.className = `fixed top-24 right-6 z-50 p-4 rounded-xl shadow-2xl border transform transition-all duration-500 translate-x-full notification`;
   notification.style.backdropFilter = "blur(10px)";
@@ -3334,11 +3288,9 @@ function showNotification(message, type = "info") {
     </div>
   `;
   document.body.appendChild(notification);
-  // Animate in
   setTimeout(() => {
     notification.classList.remove("translate-x-full");
   }, 10);
-  // Remove after delay
   setTimeout(() => {
     notification.classList.add("translate-x-full");
     setTimeout(() => {
@@ -3348,15 +3300,11 @@ function showNotification(message, type = "info") {
     }, 500);
   }, 3000);
 }
-// Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize theme
   initTheme();
-  // Initialize components
   initFeatures();
   initArticles();
   initExamples();
-  // Set up highlight.js
   if (window.hljs) {
     document.querySelectorAll("pre code").forEach((block) => {
       try {
@@ -3364,7 +3312,6 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (e) {}
     });
   }
-  // Set up chat input event listener
   document
     .getElementById("chat-input")
     .addEventListener("keydown", function (e) {
@@ -3373,18 +3320,14 @@ document.addEventListener("DOMContentLoaded", () => {
         sendChat();
       }
     });
-  // Set up chat open buttons
   document.getElementById("chat-open-btn")?.addEventListener("click", openChat);
   document
     .getElementById("chat-open-mobile")
     ?.addEventListener("click", openChat);
-  // Show initial example
   showExample(0);
 });
-// Initialize Ace editor when window loads
 window.addEventListener("load", () => {
   setupAce();
-  // Re-highlight code blocks
   if (window.hljs) {
     document.querySelectorAll("pre code").forEach((block) => {
       try {
@@ -3393,7 +3336,6 @@ window.addEventListener("load", () => {
     });
   }
 });
-// Expose functions to global scope for HTML onclick handlers
 window.openChat = openChat;
 window.closeChat = closeChat;
 window.toggleMobileMenu = toggleMobileMenu;
@@ -3410,3 +3352,6 @@ window.clearChat = clearChat;
 window.quickQuestion = quickQuestion;
 window.setTheme = setTheme;
 window.scrollToArticle = scrollToArticle;
+
+// Javascript code end
+// -------------------------------------------------------------------->

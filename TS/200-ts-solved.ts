@@ -1,10 +1,7 @@
-// 200-ts-solved.ts
-// Solved implementations for 200 TypeScript examples (ex01 .. ex200)
-// Paste this file into VS Code as `200-ts-solved.ts`.
+// Solved 200 TypeScript Practice Problems:
+// ------------------------------------------------>
 
-// -----------------------------
-// Example 01: Basic types
-// -----------------------------
+// Problem Solved----> 01: Basic types
 export function ex01(): void {
   const name: string = "TypeScript";
   const year: number = 2025;
@@ -12,27 +9,21 @@ export function ex01(): void {
   console.log("ex01 ->", { name, year, alive });
 }
 
-// -----------------------------
-// Example 02: Arrays & readonly arrays
-// -----------------------------
+// Problem Solved----> 02: Arrays and readonly arrays
 export function ex02(): void {
   const tags: string[] = ["js", "ts", "web"];
   const readonlyTags = ["a", "b"] as const;
   console.log("ex02 ->", tags.join(","), readonlyTags[1]);
 }
 
-// -----------------------------
-// Example 03: Tuples
-// -----------------------------
+// Problem Solved----> 03: Tuples
 export function ex03(): void {
   const tuple: [string, number, boolean] = ["alice", 30, true];
   const [n, a, b] = tuple;
   console.log("ex03 ->", n, a, b);
 }
 
-// -----------------------------
-// Example 04: Enums
-// -----------------------------
+// Problem Solved----> 04: Enums
 export function ex04(): void {
   enum Role {
     Guest,
@@ -43,9 +34,7 @@ export function ex04(): void {
   console.log("ex04 ->", Role[r], r);
 }
 
-// -----------------------------
-// Example 05: Literal & union types
-// -----------------------------
+// Problem Solved----> 05: Literal and union types
 export function ex05(): void {
   type Size = "small" | "medium" | "large";
   const s: Size = "medium";
@@ -54,9 +43,7 @@ export function ex05(): void {
   console.log("ex05 ->", s, id);
 }
 
-// -----------------------------
-// Example 06: Interfaces
-// -----------------------------
+// Problem Solved----> 06: Interfaces
 export function ex06(): void {
   interface Person {
     id: number;
@@ -67,9 +54,7 @@ export function ex06(): void {
   console.log("ex06 ->", p.name);
 }
 
-// -----------------------------
-// Example 07: Type aliases & intersection
-// -----------------------------
+// Problem Solved----> 07: Type aliases and intersection
 export function ex07(): void {
   type A = { a: number };
   type B = { b: string };
@@ -78,37 +63,27 @@ export function ex07(): void {
   console.log("ex07 ->", c);
 }
 
-// -----------------------------
-// Example 08: Functions with types
-// -----------------------------
+// Problem Solved----> 08: Functions with types
 export function ex08(name: string, times = 1): string {
   return Array(times).fill(`Hi ${name}`).join(", ");
 }
 
-// -----------------------------
-// Example 09: Optional & default parameters
-// -----------------------------
+// Problem Solved----> 09: Optional and default parameters
 export function ex09(a: number, b?: number): number {
   return a + (b ?? 0);
 }
 
-// -----------------------------
-// Example 10: Generics (function)
-// -----------------------------
+// Problem Solved----> 10: Generics
 export function ex10<T>(v: T): T {
   return v;
 }
 
-// -----------------------------
-// Example 11: Generic constraints
-// -----------------------------
+// Problem Solved----> 11: Generic constraints
 export function ex11<T extends { length: number }>(x: T): number {
   return x.length;
 }
 
-// -----------------------------
-// Example 12: Generic class
-// -----------------------------
+// Problem Solved----> 12: Generic class
 export class ex12<T> {
   private items: T[] = [];
   add(i: T) {
@@ -120,9 +95,7 @@ export class ex12<T> {
 }
 export const ex12Instance = new ex12<number>();
 
-// -----------------------------
-// Example 13: Function overloads
-// -----------------------------
+// Problem Solved----> 13: Function overloads
 export function ex13(x: string): string[];
 export function ex13(x: number): number[];
 export function ex13(x: string | number): any[] {
@@ -130,18 +103,15 @@ export function ex13(x: string | number): any[] {
   return [x, x * 2];
 }
 
-// -----------------------------
-// Example 14: Type guards
-// -----------------------------
+// Problem Solved----> 14: Type guards
 export function ex14(a: unknown): string {
   if (typeof a === "string") return a.toUpperCase();
   if (Array.isArray(a)) return `arr(${a.length})`;
   return "unknown";
 }
 
-// -----------------------------
-// Example 15: Discriminated unions
-// -----------------------------
+// Problem Solved----> 15: Discriminated unions
+
 export type Shape =
   | { kind: "circle"; r: number }
   | { kind: "rect"; w: number; h: number };
@@ -150,9 +120,7 @@ export function ex15(s: Shape) {
   return s.w * s.h;
 }
 
-// -----------------------------
-// Example 16: Mapped types (Partial/Readonly)
-// -----------------------------
+// Problem Solved----> 16: Mapped types (Partial/Readonly)
 export function ex16(): void {
   type Person = { name: string; age: number };
   const p: Partial<Person> = { name: "x" };
@@ -160,9 +128,7 @@ export function ex16(): void {
   console.log("ex16 ->", p, r);
 }
 
-// -----------------------------
-// Example 17: Utility types in practice (Pick/Omit)
-// -----------------------------
+// Problem Solved----> 17: Utility types in practice (Pick/Omit)
 export function ex17(): void {
   type Full = { id: number; name: string; secret: string };
   type Public = Omit<Full, "secret">;
@@ -170,9 +136,7 @@ export function ex17(): void {
   console.log("ex17 ->", pub);
 }
 
-// -----------------------------
-// Example 18: Conditional types
-// -----------------------------
+// Problem Solved----> 18: Conditional types
 export type IsString<T> = T extends string ? "yes" : "no";
 
 export function ex18(): void {
@@ -183,17 +147,13 @@ export function ex18(): void {
   console.log("ex18 ->", a, b);
 }
 
-// -----------------------------
-// Example 19: Infer with conditional types
-// -----------------------------
+// Problem Solved----> 19: Infer with conditional types
 export type ReturnOf<T> = T extends (...args: any[]) => infer R ? R : never;
 export function ex19(): ReturnOf<typeof ex08> {
   return ex08("hi", 1);
 }
 
-// -----------------------------
-// Example 20: keyof and lookup types
-// -----------------------------
+// Problem Solved----> 20: keyof and lookup types
 export function ex20<T extends object, K extends keyof T>(
   obj: T,
   key: K
@@ -201,56 +161,42 @@ export function ex20<T extends object, K extends keyof T>(
   return obj[key];
 }
 
-// -----------------------------
-// Example 21: Index signature
-// -----------------------------
+// Problem Solved----> 21: Index signature
 export function ex21(): void {
   type Dict = { [k: string]: number };
   const d: Dict = { a: 1, b: 2 };
   console.log("ex21 ->", d);
 }
 
-// -----------------------------
-// Example 22: Readonly arrays & tuples
-// -----------------------------
+// Problem Solved----> 22: Readonly arrays & tuples
 export function ex22(): void {
   const t: readonly [number, string] = [1, "a"];
   console.log("ex22 ->", t);
 }
 
-// -----------------------------
-// Example 23: Tuple operations with variadic types (simple)
-// -----------------------------
+// Problem Solved----> 23: Tuple operations with variadic types (simple)
 export function ex23<T extends any[]>(...args: T): T {
   return args;
 }
 
-// -----------------------------
-// Example 24: Recursive types (LinkedList)
-// -----------------------------
+// Problem Solved----> 24: Recursive types (LinkedList)
 export type LList<T> = { value: T; next?: LList<T> };
 export function ex24(): LList<number> {
   return { value: 1, next: { value: 2, next: { value: 3 } } };
 }
 
-// -----------------------------
-// Example 25: Nullable/Optional chaining & nullish coalescing
-// -----------------------------
+// Problem Solved----> 25: Nullable/Optional chaining & nullish coalescing
 export function ex25(o?: { x?: { y?: number } }) {
   return o?.x?.y ?? 0;
 }
 
-// -----------------------------
-// Example 26: Unknown vs any
-// -----------------------------
+// Problem Solved----> 26: Unknown vs any
 export function ex26(x: unknown) {
   if (typeof x === "string") return x.length;
   return null;
 }
 
-// -----------------------------
-// Example 27: Never type & exhaustive checks
-// -----------------------------
+// Problem Solved----> 27: Never type & exhaustive checks
 export function ex27(x: Shape) {
   switch (x.kind) {
     case "circle":
@@ -265,9 +211,7 @@ export function ex27(x: Shape) {
   }
 }
 
-// -----------------------------
-// Example 28: Asserts (user-defined type guards)
-// -----------------------------
+// Problem Solved----> 28: Asserts (user-defined type guards)
 export function assertIsNumber(x: unknown): asserts x is number {
   if (typeof x !== "number") throw new Error("Not a number");
 }
@@ -280,17 +224,13 @@ export function ex28(v: unknown) {
   }
 }
 
-// -----------------------------
-// Example 29: Readonly utility and const assertions
-// -----------------------------
+// Problem Solved----> 29: Readonly utility and const assertions
 export function ex29(): void {
   const arr = [1, 2, 3] as const;
   console.log("ex29 ->", arr[0]);
 }
 
-// -----------------------------
-// Example 30: Template literal types
-// -----------------------------
+// Problem Solved----> 30: Template literal types
 export function ex30(): void {
   type Methods = "get" | "post";
   type Route = `/${Methods}/:id`;
@@ -298,9 +238,7 @@ export function ex30(): void {
   console.log("ex30 ->", r);
 }
 
-// -----------------------------
-// Example 31: typeof in types
-// -----------------------------
+// Problem Solved----> 31: typeof in types
 export function ex31(): void {
   const person = { name: "X", age: 20 } as const;
   type P = typeof person;
@@ -308,33 +246,25 @@ export function ex31(): void {
   console.log("ex31 ->", copy);
 }
 
-// -----------------------------
-// Example 32: Index types & mapped
-// -----------------------------
+// Problem Solved----> 32: Index types and mapped
 export function ex32<T extends object>(obj: T): { [K in keyof T]: T[K] } {
   return { ...obj };
 }
 
-// -----------------------------
-// Example 33: Promise typing & async/await
-// -----------------------------
+// Problem Solved----> 33: Promise typing and async/await
 export async function ex33(): Promise<number> {
   const value = await Promise.resolve(33);
   return value;
 }
 
-// -----------------------------
-// Example 34: PromiseAll helper typing (simple)
-// -----------------------------
+// Problem Solved----> 34: PromiseAll helper typing (simple)
 export async function ex34<T extends any[]>(
   ...p: { [K in keyof T]: Promise<T[K]> }
 ): Promise<T> {
   return Promise.all(p) as Promise<T>;
 }
 
-// -----------------------------
-// Example 35: Utility: Zip two arrays into a record
-// -----------------------------
+// Problem Solved----> 35: Utility: Zip two arrays into a record
 export function ex35<K extends string | number, V>(
   keys: K[],
   values: V[]
@@ -344,9 +274,7 @@ export function ex35<K extends string | number, V>(
   return out;
 }
 
-// -----------------------------
-// Example 36: Readonly and DeepReadonly (simple)
-// -----------------------------
+// Problem Solved----> 36: Readonly and DeepReadonly (simple)
 export function ex36(): void {
   type Nested = { a: { b: number } };
   type DR<T> = {
@@ -356,9 +284,7 @@ export function ex36(): void {
   console.log("ex36 ->", obj.a.b);
 }
 
-// -----------------------------
-// Example 37: DeepPartial (simple)
-// -----------------------------
+// Problem Solved----> 37: DeepPartial (simple)
 export function ex37(): void {
   type DP<T> = { [K in keyof T]?: T[K] extends object ? DP<T[K]> : T[K] };
   type Tst = DP<{ a: { b: number }; c: string }>;
@@ -366,16 +292,12 @@ export function ex37(): void {
   console.log("ex37 ->", x);
 }
 
-// -----------------------------
-// Example 38: Currying example
-// -----------------------------
+// Problem Solved----> 38: Currying example
 export function ex38(a: number) {
   return (b: number) => a + b;
 }
 
-// -----------------------------
-// Example 39: Promise + error handling pattern
-// -----------------------------
+// Problem Solved----> 39: Promise + error handling pattern
 export async function ex39<T>(p: Promise<T>) {
   try {
     const data = await p;
@@ -385,31 +307,75 @@ export async function ex39<T>(p: Promise<T>) {
   }
 }
 
-// -----------------------------
-// Example 40: Utility type: First element of tuple
-// -----------------------------
+// Problem Solved----> 40: Utility type: First element of tuple
 export type First<T extends any[]> = T extends [infer F, ...any[]] ? F : never;
 export function ex40<T extends any[]>(...args: T): First<T> | undefined {
   return args[0] as First<T> | undefined;
 }
 
-// -----------------------------
-// Example 41: Creating readonly properties
-// -----------------------------
+// Problem Solved----> 41: Creating readonly properties
 export function ex41(): void {
   type R = { readonly id: number; name: string };
   const r: R = { id: 1, name: "n" };
   console.log("ex41 ->", r);
 }
 
-// -----------------------------
-// Example 42: Module augmentation (note only commented)
-// -----------------------------
-// Example is a comment demonstrating `declare global { interface Window { } }` usage.
+// Problem Solved----> 42
+export function ex42(): void {
+  type Listener<T extends any[]> = (...args: T) => void;
 
-// -----------------------------
-// Example 43: Simple decorator (class decorator)
-// -----------------------------
+  class Emitter42<EventMap extends Record<string, any[]>> {
+    private listeners: {
+      [K in keyof EventMap]?: Listener<EventMap[K]>[];
+    } = {};
+
+    on<K extends keyof EventMap>(
+      event: K,
+      listener: Listener<EventMap[K]>
+    ): void {
+      if (!this.listeners[event]) {
+        this.listeners[event] = [];
+      }
+      this.listeners[event]!.push(listener);
+    }
+
+    off<K extends keyof EventMap>(
+      event: K,
+      listener: Listener<EventMap[K]>
+    ): void {
+      const arr = this.listeners[event];
+      if (arr) {
+        this.listeners[event] = arr.filter((l) => l !== listener);
+      }
+    }
+
+    emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): void {
+      const arr = this.listeners[event];
+      if (arr) {
+        for (const listener of arr) {
+          listener(...args);
+        }
+      }
+    }
+  }
+  type Events = {
+    click: [x: number, y: number];
+    close: [];
+    message: [text: string];
+  };
+
+  const emitter = new Emitter42<Events>();
+
+  emitter.on("click", (x, y) => console.log("Clicked at", x, y));
+  emitter.emit("click", 100, 200);
+
+  emitter.on("message", (text) => console.log("Message:", text));
+  emitter.emit("message", "Hello!");
+
+  emitter.emit("close");
+}
+
+// Problem Solved----> 43: Simple decorator (class decorator)
 export function ex43(): void {
   function LogClass<T extends { new (...args: any[]): {} }>(ctor: T) {
     return class extends ctor {
@@ -426,9 +392,7 @@ export function ex43(): void {
   new Demo(5);
 }
 
-// -----------------------------
-// Example 44: Method decorator (logger)
-// -----------------------------
+// Problem Solved----> 44: Method decorator (logger)
 export function ex44(): void {
   function logMethod(
     _target: any,
@@ -451,9 +415,7 @@ export function ex44(): void {
   new C().m(2);
 }
 
-// -----------------------------
-// Example 45: Namespaces (legacy) usage
-// -----------------------------
+// Problem Solved----> 45: Namespaces (legacy) usage
 export namespace ex45 {
   export const value = 45;
   export function run() {
@@ -461,9 +423,7 @@ export namespace ex45 {
   }
 }
 
-// -----------------------------
-// Example 46: Mixins (simple)
-// -----------------------------
+// Problem Solved----> 46: Mixins (simple)
 export function ex46(): void {
   type Constructor<T = {}> = new (...args: any[]) => T;
   function Timestamp<TBase extends Constructor>(Base: TBase) {
@@ -478,9 +438,7 @@ export function ex46(): void {
   console.log("ex46 ->", new Mixed().time);
 }
 
-// -----------------------------
-// Example 47: Iterator example
-// -----------------------------
+// Problem Solved----> 47: Iterator example
 export function ex47() {
   function* gen() {
     yield 1;
@@ -490,18 +448,14 @@ export function ex47() {
   return Array.from(gen());
 }
 
-// -----------------------------
-// Example 48: Symbol usage
-// -----------------------------
+// Problem Solved----> 48: Symbol usage
 export function ex48(): void {
   const s = Symbol("id");
   const obj: any = { [s]: 10 };
   console.log("ex48 ->", obj[s]);
 }
 
-// -----------------------------
-// Example 49: Advanced mapped keys renaming (key remapping)
-// -----------------------------
+// Problem Solved----> 49: Advanced mapped keys renaming (key remapping)
 export type Prefixed<T, P extends string> = {
   [K in keyof T as `${P & string}${Capitalize<string & K>}`]: T[K];
 };
@@ -512,32 +466,24 @@ export function ex49(): void {
   console.log("ex49 ->", x);
 }
 
-// -----------------------------
-// Example 50: Conditional infer to extract element type
-// -----------------------------
+// Problem Solved----> 50: Conditional infer to extract element type
 export type ElementType<T> = T extends (infer E)[] ? E : T;
 export function ex50(): void {
   console.log("ex50 ->", null as any);
 }
 
-// -----------------------------
-// Example 51: Higher-order function
-// -----------------------------
+// Problem Solved----> 51: Higher-order function
 export function ex51(fn: (x: number) => number) {
   return (x: number) => fn(fn(x));
 }
 
-// -----------------------------
-// Example 52: Using Record<K,V>
-// -----------------------------
+// Problem Solved----> 52: Using Record<K,V>
 export function ex52(): void {
   const m: Record<string, number> = { a: 1, b: 2 };
   console.log("ex52 ->", m);
 }
 
-// -----------------------------
-// Example 53: Using Pick to create subsets
-// -----------------------------
+// Problem Solved----> 53: Using Pick to create subsets
 export function ex53(): void {
   interface Full {
     id: number;
@@ -549,9 +495,7 @@ export function ex53(): void {
   console.log("ex53 ->", s);
 }
 
-// -----------------------------
-// Example 54: Using Omit
-// -----------------------------
+// Problem Solved----> 54: Using Omit
 export function ex54(): void {
   interface Full {
     id: number;
@@ -562,32 +506,24 @@ export function ex54(): void {
   console.log("ex54 ->", { id: 1, name: "x" } as Public);
 }
 
-// -----------------------------
-// Example 55: Using NonNullable
-// -----------------------------
+// Problem Solved----> 55: Using NonNullable
 export function ex55(x: string | null | undefined) {
   return x ?? "fallback";
 }
 
-// -----------------------------
-// Example 56: Using ReturnType
-// -----------------------------
+// Problem Solved----> 56: Using ReturnType
 export function ex56(): void {
   type R = ReturnType<typeof ex08>;
   const sample: R = "Hi";
   console.log("ex56 ->", sample);
 }
 
-// -----------------------------
-// Example 57: Function composition
-// -----------------------------
+// Problem Solved----> 57: Function composition
 export function ex57<A, B, C>(f: (b: B) => C, g: (a: A) => B) {
   return (a: A) => f(g(a));
 }
 
-// -----------------------------
-// Example 58: Simple event emitter types
-// -----------------------------
+// Problem Solved----> 58: Simple event emitter types
 export function ex58(): void {
   type Handler = (...args: any[]) => void;
   class Emitter {
@@ -604,9 +540,7 @@ export function ex58(): void {
   e.emit("x", 58);
 }
 
-// -----------------------------
-// Example 59: Using Partial<T>
-// -----------------------------
+// Problem Solved----> 59: Using Partial<T>
 export function ex59(): void {
   interface Config {
     url: string;
@@ -616,9 +550,7 @@ export function ex59(): void {
   console.log("ex59 ->", cfg);
 }
 
-// -----------------------------
-// Example 60: Using Pick + Partial for updates
-// -----------------------------
+// Problem Solved----> 60: Using Pick + Partial for updates
 export function ex60() {
   interface User {
     id: number;
@@ -634,18 +566,13 @@ export function ex60() {
   );
 }
 
-// -----------------------------
-// Example 61: Tuple to union & vice versa
-// -----------------------------
+// Problem Solved----> 61: Tuple to union & vice versa
 export function ex61(): void {
   const tuple = ["x", "y"] as const;
   type Tup = (typeof tuple)[number];
 
-  // Instead of invalid 'null as Tup', create a valid value
-  const example: Tup = "x"; // This can be "x" or "y"
+  const example: Tup = "x";
   console.log("ex61 ->", tuple, example);
-
-  // Or if you want to demonstrate the type:
   console.log(
     "ex61 -> tuple:",
     tuple,
@@ -656,25 +583,19 @@ export function ex61(): void {
   );
 }
 
-// -----------------------------
-// Example 62: Using bigint & bigint literals
-// -----------------------------
+// Problem Solved----> 62: Using bigint and bigint literals
 export function ex62(): bigint {
   const n: bigint = 123n;
   return n;
 }
 
-// -----------------------------
-// Example 63: BigInt + Number interop caution
-// -----------------------------
+// Problem Solved----> 63: BigInt + Number interop caution
 export function ex63(): void {
   const n = 1n;
   console.log("ex63 ->", n + BigInt(1));
 }
 
-// -----------------------------
-// Example 64: Using maps & sets with typing
-// -----------------------------
+// Problem Solved----> 64: Using maps and sets with typing
 export function ex64(): void {
   const m = new Map<string, number>();
   m.set("a", 1);
@@ -682,9 +603,7 @@ export function ex64(): void {
   console.log("ex64 ->", m.get("a"), s.has(2));
 }
 
-// -----------------------------
-// Example 65: JSONValue type example
-// -----------------------------
+// Problem Solved----> 65: JSONValue type example
 export type JSONValue65 =
   | string
   | number
@@ -696,18 +615,14 @@ export function ex65(v: JSONValue65) {
   return v;
 }
 
-// -----------------------------
-// Example 66: Using generator types
-// -----------------------------
+// Problem Solved----> 66: Using generator types
 export function* ex66() {
   yield 1;
   yield 2;
   return 3;
 }
 
-// -----------------------------
-// Example 67: Using class with private & protected
-// -----------------------------
+// Problem Solved----> 67: Using class with private & protected
 export class Ex67 {
   private secret = "s";
   protected proto = "p";
@@ -716,9 +631,7 @@ export class Ex67 {
   }
 }
 
-// -----------------------------
-// Example 68: Using static members
-// -----------------------------
+// Problem Solved----> 68: Using static members
 export class Ex68 {
   static version = "1.0";
   static info() {
@@ -726,38 +639,29 @@ export class Ex68 {
   }
 }
 
-// -----------------------------
-// Example 69: Declaration merging note
-// -----------------------------
+// Problem Solved----> 69: Declaration merging note
 export function ex69(): void {
   console.log("ex69 -> see TypeScript docs for declaration merging");
 }
 
-// -----------------------------
-// Example 70: Utility - clamp function with generics
-// -----------------------------
+// Problem Solved----> 70: Utility - clamp function with generics
 export function ex70(v: number, min: number, max: number): number {
   return v < min ? min : v > max ? max : v;
 }
 
-// -----------------------------
-// Example 71: Simple parser types (nominal-like)
-// -----------------------------
+// Problem Solved----> 71: Simple parser types (nominal-like)
+
 export type UserId71 = string & { readonly __brand?: unique symbol };
 export function ex71(id: string): UserId71 {
   return id as UserId71;
 }
 
-// -----------------------------
-// Example 72: Using optional chaining deep
-// -----------------------------
+// Problem Solved----> 72: Using optional chaining deep
 export function ex72(o?: { a?: { b?: { c?: number } } }) {
   return o?.a?.b?.c ?? -1;
 }
 
-// -----------------------------
-// Example 73: Simple memoize typed
-// -----------------------------
+// Problem Solved----> 73: Simple memoize typed
 export function ex73<F extends (...args: any[]) => any>(fn: F) {
   const cache = new Map<string, ReturnType<F>>();
   return (...args: Parameters<F>) => {
@@ -769,9 +673,7 @@ export function ex73<F extends (...args: any[]) => any>(fn: F) {
   };
 }
 
-// -----------------------------
-// Example 74: Template tuple element transformation (simple)
-// -----------------------------
+// Problem Solved----> 74: Template tuple element transformation (simple)
 export type UppercaseKeys<T extends string[]> = {
   [K in keyof T]: Uppercase<T[K] & string>;
 };
@@ -779,61 +681,45 @@ export function ex74(): void {
   console.log("ex74 -> template tuple demo");
 }
 
-// -----------------------------
-// Example 75: Using conditional mapped types
-// -----------------------------
+// Problem Solved----> 75: Using conditional mapped types
 export type Optionalize<T> = { [K in keyof T]?: T[K] };
 export function ex75(): void {
   console.log("ex75 -> Optionalize sample");
 }
 
-// -----------------------------
-// Example 76: Module augmentation (note only comment)
-// -----------------------------
+// Problem Solved----> 76: Module augmentation (note only comment)
 export function ex76(): void {
   console.log("ex76 -> module augmentation is done with declare module");
 }
 
-// -----------------------------
-// Example 77: Tagging / branding primitive types
-// -----------------------------
+// Problem Solved----> 77: Tagging / branding primitive types
 export type Brand<T, B> = T & { __brand?: B };
 export function ex77(): Brand<number, "MyNum"> {
   return 123 as Brand<number, "MyNum">;
 }
 
-// -----------------------------
-// Example 78: Using web-like DOM types (if in browser)
-// -----------------------------
+// Problem Solved----> 78: Using web-like DOM types (if in browser)
 export function ex78(el?: HTMLElement | null) {
   el?.querySelectorAll("div");
 }
 
-// -----------------------------
-// Example 79: Basic regex typing & usage
-// -----------------------------
+// Problem Solved----> 79: Basic regex typing & usage
 export function ex79(s: string) {
   const m = /(\d+)/.exec(s);
   return m ? parseInt(m[1], 10) : null;
 }
 
-// -----------------------------
-// Example 80: Using fetch typed response (placeholder)
-// -----------------------------
+// Problem Solved----> 80: Using fetch typed response (placeholder)
 export async function ex80(): Promise<{ ok: boolean }> {
   return Promise.resolve({ ok: true });
 }
 
-// -----------------------------
-// Example 81: Using aggregator pattern
-// -----------------------------
+// Problem Solved----> 81: Using aggregator pattern
 export function ex81(arr: number[]) {
   return arr.reduce((a, b) => a + b, 0);
 }
 
-// -----------------------------
-// Example 82: Simple serializer interface
-// -----------------------------
+// Problem Solved----> 82: Simple serializer interface
 export interface Serializer<T> {
   serialize(t: T): string;
   deserialize(s: string): T;
@@ -842,9 +728,7 @@ export function ex82(): Serializer<number> {
   return { serialize: (n) => String(n), deserialize: (s) => Number(s) };
 }
 
-// -----------------------------
-// Example 83: Using Proxy typing
-// -----------------------------
+// Problem Solved----> 83: Using Proxy typing
 export function ex83(): void {
   const target = { a: 1 };
   const p = new Proxy(target, {
@@ -855,9 +739,7 @@ export function ex83(): void {
   console.log("ex83 ->", (p as any).a);
 }
 
-// -----------------------------
-// Example 84: Using WeakMap typing
-// -----------------------------
+// Problem Solved----> 84: Using WeakMap typing
 export function ex84(): void {
   const wm = new WeakMap<object, string>();
   const o = {};
@@ -865,9 +747,7 @@ export function ex84(): void {
   console.log("ex84 ->", wm.get(o));
 }
 
-// -----------------------------
-// Example 85: Using generator return typing
-// -----------------------------
+// Problem Solved----> 85: Using generator return typing
 export function ex85(): Generator<number, string, number> {
   return (function* () {
     yield 1;
@@ -875,9 +755,7 @@ export function ex85(): Generator<number, string, number> {
   })();
 }
 
-// -----------------------------
-// Example 86: Using conditional pick (select fields by type)
-// -----------------------------
+// Problem Solved----> 86: Using conditional pick (select fields by type)
 export type PickByType<T, U> = {
   [K in keyof T as T[K] extends U ? K : never]: T[K];
 };
@@ -885,30 +763,22 @@ export function ex86(): void {
   console.log("ex86 -> PickByType sample");
 }
 
-// -----------------------------
-// Example 87: Using bigint operations
-// -----------------------------
+// Problem Solved----> 87: Using bigint operations
 export function ex87(a: bigint, b: bigint) {
   return a + b;
 }
 
-// -----------------------------
-// Example 88: Using newable type
-// -----------------------------
+// Problem Solved----> 88: Using newable type
 export function ex88<C extends new (...args: any[]) => any>(Ctor: C) {
   return new Ctor();
 }
 
-// -----------------------------
-// Example 89: Phantom generic usage (no runtime effect)
-// -----------------------------
+// Problem Solved----> 89: Phantom generic usage (no runtime effect)
 export function ex89<T>(_v?: T): void {
   console.log("ex89 -> phantom generic");
 }
 
-// -----------------------------
-// Example 90: Example of assertNever for exhaustive checks
-// -----------------------------
+// Problem Solved----> 90: Example of assertNever for exhaustive checks
 export function assertNever(x: never): never {
   throw new Error("Unexpected: " + String(x));
 }
@@ -918,9 +788,7 @@ export function ex90(x: Shape) {
   return assertNever(x as never);
 }
 
-// -----------------------------
-// Example 91: Simple binary search typed
-// -----------------------------
+// Problem Solved----> 91: Simple binary search typed
 export function ex91(arr: number[], target: number) {
   let lo = 0,
     hi = arr.length - 1;
@@ -933,17 +801,13 @@ export function ex91(arr: number[], target: number) {
   return -1;
 }
 
-// -----------------------------
-// Example 92: Using tuple labels via comments (for readability)
-// -----------------------------
+// Problem Solved----> 92: Using tuple labels via comments (for readability)
 export function ex92(): void {
   const point: [x: number, y: number] = [1, 2];
   console.log("ex92 ->", point[0], point[1]);
 }
 
-// -----------------------------
-// Example 93: Using discriminated unions for API responses
-// -----------------------------
+// Problem Solved----> 93: Using discriminated unions for API responses
 export type Ok<T> = { status: "ok"; data: T };
 export type Err = { status: "err"; error: string };
 export function ex93<T>(r: Ok<T> | Err) {
@@ -951,48 +815,36 @@ export function ex93<T>(r: Ok<T> | Err) {
   throw new Error(r.error);
 }
 
-// -----------------------------
-// Example 94: Simple RB-tree placeholder (comment)
-// -----------------------------
+// Problem Solved----> 94: Simple RB-tree placeholder (comment)
 export function ex94(): void {
   console.log("ex94 -> study algorithms for RB-trees");
 }
 
-// -----------------------------
-// Example 95: Type level arithmetic note
-// -----------------------------
+// Problem Solved----> 95: Type level arithmetic note
 export function ex95(): void {
   console.log(
     "ex95 -> type-level arithmetic is advanced (see TS type programming)"
   );
 }
 
-// -----------------------------
-// Example 96: Using mapped tuples
-// -----------------------------
+// Problem Solved----> 96: Using mapped tuples
 export function ex96<T extends any[]>(...args: T): { [K in keyof T]: T[K] } {
   return args;
 }
 
-// -----------------------------
-// Example 97: Using JSON.parse with typed result (careful)
-// -----------------------------
+// Problem Solved----> 97: Using JSON.parse with typed result (careful)
 export function ex97<T = unknown>(s: string): T {
   return JSON.parse(s) as T;
 }
 
-// -----------------------------
-// Example 98: Simple CLI arg parse demo (node)
-// -----------------------------
+// Problem Solved----> 98: Simple CLI arg parse demo (node)
 export function ex98(argv: string[]) {
   const args = argv.slice(2);
   console.log("ex98 ->", args);
   return args;
 }
 
-// -----------------------------
-// Example 99: Using Flow control types (Promise + cancel token pattern)
-// -----------------------------
+// Problem Solved----> 99: Using Flow control types (Promise + cancel token pattern)
 export function ex99<T>(
   promise: Promise<T>,
   cancelToken: { cancelled?: boolean }
@@ -1002,9 +854,7 @@ export function ex99<T>(
   );
 }
 
-// -----------------------------
-// Example 100: Collection of example usage runner
-// -----------------------------
+// Problem Solved----> 100: Collection of example usage runner
 export async function ex100(): Promise<void> {
   console.log("ex100 -> run start");
   ex01();
@@ -1027,9 +877,7 @@ export async function ex100(): Promise<void> {
   console.log("ex100 -> run end");
 }
 
-// -----------------------------
-// ex101 - Advanced generics: Extract keys with specific type
-// -----------------------------
+// Problem Solved---->101 - Advanced generics: Extract keys with specific type
 export function ex101ExtractKeys<T extends object, U>(
   obj: T,
   typeCheck: (v: any) => v is U
@@ -1039,9 +887,7 @@ export function ex101ExtractKeys<T extends object, U>(
   ) as (keyof T)[];
 }
 
-// -----------------------------
-// ex102 - Type-level filtering
-// -----------------------------
+// Problem Solved---->102 - Type-level filtering
 export type Filter102<T extends any[], U> = T extends [infer H, ...infer R]
   ? H extends U
     ? [H, ...Filter102<R, U>]
@@ -1052,9 +898,7 @@ export function ex102(): void {
   console.log("ex102 -> type demo");
 }
 
-// -----------------------------
-// ex103 - Async function typing with generics
-// -----------------------------
+// Problem Solved---->103 - Async function typing with generics
 export function ex103AsyncWrapper<T, Args extends any[]>(
   fn: (...args: Args) => Promise<T>
 ): (...args: Args) => Promise<T> {
@@ -1066,16 +910,12 @@ export function ex103AsyncWrapper<T, Args extends any[]>(
   };
 }
 
-// -----------------------------
-// ex104 - Intersection types with generics
-// -----------------------------
+// Problem Solved---->104 - Intersection types with generics
 export function ex104Merge<T, U>(a: T, b: U): T & U {
   return { ...a, ...b };
 }
 
-// -----------------------------
-// ex105 - Advanced discriminated unions for state machine
-// -----------------------------
+// Problem Solved---->105 - Advanced discriminated unions for state machine
 export type State105 =
   | { type: "idle" }
   | { type: "loaded"; data: string }
@@ -1091,9 +931,7 @@ export function ex105Handle(state: State105): string {
   }
 }
 
-// -----------------------------
-// ex106 - Generic stack class
-// -----------------------------
+// Problem Solved---->106 - Generic stack class
 export class Stack106<T> {
   private items: T[] = [];
   push(item: T): void {
@@ -1107,9 +945,7 @@ export class Stack106<T> {
   }
 }
 
-// -----------------------------
-// ex107 - Utility types: RequiredKeys
-// -----------------------------
+// Problem Solved---->107 - Utility types: RequiredKeys
 export type RequiredKeys107<T> = {
   [K in keyof T]-?: undefined extends T[K] ? never : K;
 }[keyof T];
@@ -1118,35 +954,27 @@ export function ex107(): void {
   console.log("ex107 -> type demo");
 }
 
-// -----------------------------
-// ex108 - Infer return type from promise
-// -----------------------------
+// Problem Solved---->108 - Infer return type from promise
 export type UnwrapPromise108<T> = T extends Promise<infer U> ? U : T;
 export function ex108Unwrap<T>(p: Promise<T>): UnwrapPromise108<typeof p> {
   return p as any; // runtime would be await, but for type
 }
 
-// -----------------------------
-// ex109 - Key remapping with as clause
-// -----------------------------
+// Problem Solved---->109 - Key remapping with as clause
 export type UpperKeys109<T> = { [K in keyof T as Uppercase<string & K>]: T[K] };
 export function ex109(): void {
   type Ex = UpperKeys109<{ foo: number }>; // { FOO: number }
   console.log("ex109 -> type demo");
 }
 
-// -----------------------------
-// ex110 - String manipulation with template literals
-// -----------------------------
+// Problem Solved---->110 - String manipulation with template literals
 export type CapitalizeFirst110<S extends string> =
   S extends `${infer F}${infer R}` ? `${Uppercase<F>}${R}` : S;
 export function ex110Capitalize<S extends string>(s: S): CapitalizeFirst110<S> {
   return (s.charAt(0).toUpperCase() + s.slice(1)) as CapitalizeFirst110<S>;
 }
 
-// -----------------------------
-// ex111 - Overloaded constructor
-// -----------------------------
+// Problem Solved---->111 - Overloaded constructor
 export class Ex111 {
   value: string | number;
   constructor(x: string);
@@ -1156,18 +984,14 @@ export class Ex111 {
   }
 }
 
-// -----------------------------
-// ex112 - Extends with multiple constraints
-// -----------------------------
+// Problem Solved---->112 - Extends with multiple constraints
 export function ex112<T extends { length: number } & { valueOf(): string }>(
   x: T
 ): string {
   return x.valueOf() + x.length;
 }
 
-// -----------------------------
-// ex113 - Property decorator
-// -----------------------------
+// Problem Solved---->113 - Property decorator
 export function ex113Validate(target: any, key: string) {
   let val = target[key];
   const getter = () => val;
@@ -1178,16 +1002,12 @@ export function ex113Validate(target: any, key: string) {
   Object.defineProperty(target, key, { get: getter, set: setter });
 }
 
-// -----------------------------
-// ex114 - Rest parameters in tuples
-// -----------------------------
+// Problem Solved---->114 - Rest parameters in tuples
 export function ex114<T>(...arr: [T, ...T[]]): T {
   return arr[arr.length - 1];
 }
 
-// -----------------------------
-// ex115 - DeepRequired type
-// -----------------------------
+// Problem Solved---->115 - DeepRequired type
 export type DeepRequired115<T> = {
   [K in keyof T]-?: T[K] extends object ? DeepRequired115<T[K]> : T[K];
 };
@@ -1196,33 +1016,25 @@ export function ex115(): void {
   console.log("ex115 -> type demo");
 }
 
-// -----------------------------
-// ex116 - Stringify with types
-// -----------------------------
+// Problem Solved---->116 - Stringify with types
 export function ex116Stringify<T extends Record<string, string | number>>(
   obj: T
 ): string {
   return JSON.stringify(obj);
 }
 
-// -----------------------------
-// ex117 - Promise.race typing
-// -----------------------------
+// Problem Solved---->117 - Promise.race typing
 export function ex117Race<T extends any[]>(promises: Promise<T>[]): Promise<T> {
   return Promise.race(promises);
 }
 
-// -----------------------------
-// ex118 - Zip multiple arrays
-// -----------------------------
+// Problem Solved---->118 - Zip multiple arrays
 export function ex118Zip<A, B, C>(a: A[], b: B[], c: C[]): [A, B, C][] {
   const len = Math.min(a.length, b.length, c.length);
   return Array.from({ length: len }, (_, i) => [a[i], b[i], c[i]]);
 }
 
-// -----------------------------
-// ex119 - Head and tail types advanced
-// -----------------------------
+// Problem Solved---->119 - Head and tail types advanced
 export type Head119<T extends any[]> = T extends [infer H, ...any[]]
   ? H
   : never;
@@ -1232,9 +1044,7 @@ export function ex119(): void {
   console.log("ex119 -> type demo");
 }
 
-// -----------------------------
-// ex120 - Handle API response with generics
-// -----------------------------
+// Problem Solved---->120 - Handle API response with generics
 export function ex120Handle<T>(response: {
   success: boolean;
   data?: T;
@@ -1244,16 +1054,12 @@ export function ex120Handle<T>(response: {
   throw new Error(response.error || "Unknown error");
 }
 
-// -----------------------------
-// ex121 - Assertion for arrays
-// -----------------------------
+// Problem Solved---->121 - Assertion for arrays
 export function ex121AssertIsArray(x: unknown): asserts x is any[] {
   if (!Array.isArray(x)) throw new Error("Not array");
 }
 
-// -----------------------------
-// ex122 - Pick optional properties
-// -----------------------------
+// Problem Solved---->122 - Pick optional properties
 export type OptionalKeys122<T> = {
   [K in keyof T]-?: undefined extends T[K] ? K : never;
 }[keyof T];
@@ -1262,9 +1068,7 @@ export function ex122(): void {
   console.log("ex122 -> type demo");
 }
 
-// -----------------------------
-// ex123 - Dynamic index access
-// -----------------------------
+// Problem Solved---->123 - Dynamic index access
 export function ex123Get<T extends object, K extends keyof T>(
   obj: T,
   key: K
@@ -1272,16 +1076,12 @@ export function ex123Get<T extends object, K extends keyof T>(
   return obj[key];
 }
 
-// -----------------------------
-// ex124 - Nullish coalescing in functions
-// -----------------------------
+// Problem Solved---->124 - Nullish coalescing in functions
 export function ex124Default<T>(v: T | null | undefined, def: T): T {
   return v ?? def;
 }
 
-// -----------------------------
-// ex125 - Exhaustive switch with unions
-// -----------------------------
+// Problem Solved---->125 - Exhaustive switch with unions
 export function ex125Process(color: "red" | "blue" | "green"): string {
   switch (color) {
     case "red":
@@ -1293,9 +1093,7 @@ export function ex125Process(color: "red" | "blue" | "green"): string {
   }
 }
 
-// -----------------------------
-// ex126 - Make all properties readonly except some
-// -----------------------------
+// Problem Solved---->126 - Make all properties readonly except some
 export type PartialReadonly126<T, K extends keyof T> = Readonly<Omit<T, K>> &
   Pick<T, K>;
 export function ex126(): void {
@@ -1303,9 +1101,7 @@ export function ex126(): void {
   console.log("ex126 -> type demo");
 }
 
-// -----------------------------
-// ex127 - Type-level string split
-// -----------------------------
+// Problem Solved---->127 - Type-level string split
 export type Split127<S extends string, D extends string> = string extends S
   ? string[]
   : S extends `${infer H}${D}${infer T}`
@@ -1316,25 +1112,19 @@ export function ex127(): void {
   console.log("ex127 -> type demo");
 }
 
-// -----------------------------
-// ex128 - Random number in range
-// -----------------------------
+// Problem Solved---->128 - Random number in range
 export function ex128RandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// -----------------------------
-// ex129 - Branded numbers
-// -----------------------------
+// Problem Solved---->129 - Branded numbers
 export type PositiveNumber129 = number & { __brand: "positive" };
 export function ex129ToPositive(n: number): PositiveNumber129 {
   if (n <= 0) throw new Error("Not positive");
   return n as PositiveNumber129;
 }
 
-// -----------------------------
-// ex130 - Immutable tuple operations
-// -----------------------------
+// Problem Solved---->130 - Immutable tuple operations
 export function ex130Concat<T extends readonly any[], U extends readonly any[]>(
   t1: T,
   t2: U
@@ -1342,9 +1132,7 @@ export function ex130Concat<T extends readonly any[], U extends readonly any[]>(
   return [...t1, ...t2];
 }
 
-// -----------------------------
-// ex131 - Async error handling
-// -----------------------------
+// Problem Solved---->131 - Async error handling
 export async function ex131TryCatch<T>(
   fn: () => Promise<T>
 ): Promise<[Error | null, T | null]> {
@@ -1355,34 +1143,26 @@ export async function ex131TryCatch<T>(
   }
 }
 
-// -----------------------------
-// ex132 - Deep clone with generics
-// -----------------------------
+// Problem Solved---->132 - Deep clone with generics
 export function ex132DeepClone<T>(obj: T): T {
   return JSON.parse(JSON.stringify(obj));
 }
 
-// -----------------------------
-// ex133 - Infer array element
-// -----------------------------
+// Problem Solved---->133 - Infer array element
 export type ArrayElement133<T> = T extends (infer E)[] ? E : never;
 export function ex133(): void {
   type Ex = ArrayElement133<string[]>; // string
   console.log("ex133 -> type demo");
 }
 
-// -----------------------------
-// ex134 - Object from entries with types
-// -----------------------------
+// Problem Solved---->134 - Object from entries with types
 export function ex134FromEntries<K extends PropertyKey, V>(
   entries: Iterable<[K, V]>
 ): Record<K, V> {
   return Object.fromEntries(entries) as Record<K, V>;
 }
 
-// -----------------------------
-// ex135 - Ensure all properties
-// -----------------------------
+// Problem Solved---->135 - Ensure all properties
 export function ex135EnsureRequired<T extends object>(
   obj: Partial<T>,
   required: (keyof T)[]
@@ -1392,9 +1172,7 @@ export function ex135EnsureRequired<T extends object>(
   }
 }
 
-// -----------------------------
-// ex136 - Curry for n-ary functions
-// -----------------------------
+// Problem Solved---->136 - Curry for n-ary functions
 export function ex136Curry(fn: Function): Function {
   return function curried(...args: any[]) {
     if (args.length >= fn.length) return fn(...args);
@@ -1402,9 +1180,7 @@ export function ex136Curry(fn: Function): Function {
   };
 }
 
-// -----------------------------
-// ex137 - Zip with function
-// -----------------------------
+// Problem Solved---->137 - Zip with function
 export function ex137ZipWith<A, B, R>(
   a: A[],
   b: B[],
@@ -1414,16 +1190,12 @@ export function ex137ZipWith<A, B, R>(
   return Array.from({ length: len }, (_, i) => fn(a[i], b[i]));
 }
 
-// -----------------------------
-// ex138 - Type guard for objects
-// -----------------------------
+// Problem Solved---->138 - Type guard for objects
 export function ex138IsObject(x: unknown): x is object {
   return x !== null && typeof x === "object";
 }
 
-// -----------------------------
-// ex139 - Proxy for validation
-// -----------------------------
+// Problem Solved---->139 - Proxy for validation
 export function ex139ValidationProxy<T extends object>(
   target: T,
   validator: (key: string, value: any) => boolean
@@ -1439,9 +1211,7 @@ export function ex139ValidationProxy<T extends object>(
   });
 }
 
-// -----------------------------
-// ex140 - Advanced event emitter with types
-// -----------------------------
+// Problem Solved---->140 - Advanced event emitter with types
 export class Emitter140<EventMap extends Record<string, any>> {
   private handlers: { [K in keyof EventMap]?: ((arg: EventMap[K]) => void)[] } =
     {};
@@ -1453,17 +1223,13 @@ export class Emitter140<EventMap extends Record<string, any>> {
   }
 }
 
-// -----------------------------
-// ex141 - First non-null
-// -----------------------------
+// Problem Solved---->141 - First non-null
 export function ex141FirstNonNull<T>(...values: (T | null | undefined)[]): T {
   for (const v of values) if (v != null) return v;
   throw new Error("All null");
 }
 
-// -----------------------------
-// ex142 - Pipe functions
-// -----------------------------
+// Problem Solved---->142 - Pipe functions
 export function ex142Pipe<A, B>(ab: (a: A) => B): (a: A) => B;
 export function ex142Pipe<A, B, C>(
   ab: (a: A) => B,
@@ -1473,9 +1239,7 @@ export function ex142Pipe(...fns: Function[]): Function {
   return (x: any) => fns.reduce((v, f) => f(v), x);
 }
 
-// -----------------------------
-// ex143 - TTL cache
-// -----------------------------
+// Problem Solved---->143 - TTL cache
 export class TTL143<K, V> {
   private cache = new Map<K, { value: V; expiry: number }>();
   constructor(public ttl = 1000) {}
@@ -1490,18 +1254,14 @@ export class TTL143<K, V> {
   }
 }
 
-// -----------------------------
-// ex144 - Enum from string union
-// -----------------------------
+// Problem Solved---->144 - Enum from string union
 export function ex144CreateEnum<T extends string>(
   values: readonly T[]
 ): Record<T, T> {
   return values.reduce((acc, v) => ({ ...acc, [v]: v }), {} as Record<T, T>);
 }
 
-// -----------------------------
-// ex145 - Partition array
-// -----------------------------
+// Problem Solved---->145 - Partition array
 export function ex145Partition<T>(
   arr: T[],
   pred: (t: T) => boolean
@@ -1512,9 +1272,7 @@ export function ex145Partition<T>(
   );
 }
 
-// -----------------------------
-// ex146 - Cancelable debounce
-// -----------------------------
+// Problem Solved---->146 - Cancelable debounce
 export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
   fn: F,
   ms: number
@@ -1531,9 +1289,7 @@ export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
   };
 }
 
-// -----------------------------
-// ex147 - Leading throttle
-// -----------------------------
+// Problem Solved---->147 - Leading throttle
 export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
   fn: F,
   ms: number
@@ -1548,9 +1304,7 @@ export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
   };
 }
 
-// -----------------------------
-// ex148 - Recursive deep merge
-// -----------------------------
+// Problem Solved---->148 - Recursive deep merge
 export function ex148RecursiveMerge<T extends object>(
   target: T,
   source: Partial<T>
@@ -1572,16 +1326,12 @@ export function ex148RecursiveMerge<T extends object>(
   return target;
 }
 
-// -----------------------------
-// ex149 - Deep flatten array
-// -----------------------------
+// Problem Solved---->149 - Deep flatten array
 export function ex149DeepFlatten<T>(arr: (T | T[])[]): T[] {
   return arr.flat(Infinity) as T[];
 }
 
-// -----------------------------
-// ex150 - Unique by key
-// -----------------------------
+// Problem Solved---->150 - Unique by key
 export function ex150UniqueBy<T>(arr: T[], key: keyof T): T[] {
   const seen = new Set();
   return arr.filter((item) => {
@@ -1592,9 +1342,7 @@ export function ex150UniqueBy<T>(arr: T[], key: keyof T): T[] {
   });
 }
 
-// -----------------------------
-// ex151 - Cycle detection in graph
-// -----------------------------
+// Problem Solved---->151 - Cycle detection in graph
 export function ex151HasCycle(
   nodes: string[],
   edges: [string, string][]
@@ -1618,9 +1366,7 @@ export function ex151HasCycle(
   return nodes.some((n) => !visited.has(n) && dfs(n));
 }
 
-// -----------------------------
-// ex152 - Lower bound binary search
-// -----------------------------
+// Problem Solved---->152 - Lower bound binary search
 export function ex152LowerBound(arr: number[], target: number): number {
   let lo = 0,
     hi = arr.length;
@@ -1632,23 +1378,17 @@ export function ex152LowerBound(arr: number[], target: number): number {
   return lo;
 }
 
-// -----------------------------
-// ex153 - Date formatting
-// -----------------------------
+// Problem Solved---->153 - Date formatting
 export function ex153FormatDate(d: Date): string {
   return d.toISOString().split("T")[0];
 }
 
-// -----------------------------
-// ex154 - RGB to hex
-// -----------------------------
+// Problem Solved---->154 - RGB to hex
 export function ex154RgbToHex(r: number, g: number, b: number): string {
   return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
 
-// -----------------------------
-// ex155 - Route params extractor advanced
-// -----------------------------
+// Problem Solved---->155 - Route params extractor advanced
 export function ex155ExtractParams(
   route: string,
   path: string
@@ -1664,9 +1404,7 @@ export function ex155ExtractParams(
   return params;
 }
 
-// -----------------------------
-// ex156 - Parse query string with arrays
-// -----------------------------
+// Problem Solved---->156 - Parse query string with arrays
 export function ex156ParseQSAdvanced(
   qs: string
 ): Record<string, string | string[]> {
@@ -1683,9 +1421,7 @@ export function ex156ParseQSAdvanced(
     }, {} as Record<string, string | string[]>);
 }
 
-// -----------------------------
-// ex157 - Serialize with nested objects
-// -----------------------------
+// Problem Solved---->157 - Serialize with nested objects
 export function ex157SerializeNested(obj: Record<string, any>): string {
   const params = new URLSearchParams();
   function recurse(o: any, prefix = "") {
@@ -1700,18 +1436,14 @@ export function ex157SerializeNested(obj: Record<string, any>): string {
   return params.toString();
 }
 
-// -----------------------------
-// ex158 - JWT encode simple
-// -----------------------------
+// Problem Solved---->158 - JWT encode simple
 export function ex158EncodeJwt(payload: object): string {
   const header = { alg: "none", typ: "JWT" };
   const enc = (o: object) => btoa(JSON.stringify(o));
   return `${enc(header)}.${enc(payload)}.`;
 }
 
-// -----------------------------
-// ex159 - Async validator
-// -----------------------------
+// Problem Solved---->159 - Async validator
 export type AsyncValidator159<T> = (value: T) => Promise<string | null>;
 export async function ex159ValidateAsync<T>(
   value: T,
@@ -1725,9 +1457,7 @@ export async function ex159ValidateAsync<T>(
   return errors;
 }
 
-// -----------------------------
-// ex160 - Leaky bucket rate limiter
-// -----------------------------
+// Problem Solved---->160 - Leaky bucket rate limiter
 export class LeakyBucket160 {
   private queue: number[] = [];
   constructor(public capacity: number, public leakRate: number) {}
@@ -1741,9 +1471,7 @@ export class LeakyBucket160 {
   }
 }
 
-// -----------------------------
-// ex161 - Simple signer with crypto placeholder
-// -----------------------------
+// Problem Solved---->161 - Simple signer with crypto placeholder
 export interface Signer63 {
   sign(msg: string): string;
   verify(msg: string, sig: string): boolean;
@@ -1765,9 +1493,7 @@ export class XorSigner161 implements Signer63 {
   }
 }
 
-// -----------------------------
-// ex162 - Reverse linked list
-// -----------------------------
+// Problem Solved---->162 - Reverse linked list
 export interface LinkedNode64<T> {
   value: T;
   next?: LinkedNode64<T>;
@@ -1787,9 +1513,7 @@ export function ex162Reverse<T>(
   return prev;
 }
 
-// -----------------------------
-// ex163 - Preorder tree traversal
-// -----------------------------
+// Problem Solved---->163 - Preorder tree traversal
 export function ex163Preorder<T>(root?: {
   value: T;
   left?: any;
@@ -1806,9 +1530,7 @@ export function ex163Preorder<T>(root?: {
   return res;
 }
 
-// -----------------------------
-// ex164 - Regex replace with callback
-// -----------------------------
+// Problem Solved---->164 - Regex replace with callback
 export function ex164Replace(
   s: string,
   re: RegExp,
@@ -1817,25 +1539,19 @@ export function ex164Replace(
   return s.replace(re, fn);
 }
 
-// -----------------------------
-// ex165 - Matrix transpose
-// -----------------------------
+// Problem Solved---->165 - Matrix transpose
 export function ex165Transpose<T>(mat: T[][]): T[][] {
   return mat[0].map((_, i) => mat.map((row) => row[i]));
 }
 
-// -----------------------------
-// ex166 - Custom event dispatcher
-// -----------------------------
+// Problem Solved---->166 - Custom event dispatcher
 export class CustomEvent166 extends EventTarget {
   dispatchCustom(eventName: string, detail?: any) {
     this.dispatchEvent(new CustomEvent(eventName, { detail }));
   }
 }
 
-// -----------------------------
-// ex167 - Deduplicate arrays by multiple keys
-// -----------------------------
+// Problem Solved---->167 - Deduplicate arrays by multiple keys
 export function ex167Deduplicate<T>(arr: T[], keys: (keyof T)[]): T[] {
   const seen = new Set<string>();
   return arr.filter((item) => {
@@ -1846,9 +1562,7 @@ export function ex167Deduplicate<T>(arr: T[], keys: (keyof T)[]): T[] {
   });
 }
 
-// -----------------------------
-// ex168 - Set deep path
-// -----------------------------
+// Problem Solved---->168 - Set deep path
 export function ex168SetDeep(obj: any, path: string[], value: any): void {
   path.reduce((o, k, i) => {
     if (i === path.length - 1) o[k] = value;
@@ -1857,9 +1571,7 @@ export function ex168SetDeep(obj: any, path: string[], value: any): void {
   }, obj);
 }
 
-// -----------------------------
-// ex169 - CSV parse with headers
-// -----------------------------
+// Problem Solved---->169 - CSV parse with headers
 export function ex169ParseCSVObjects(csv: string): Record<string, string>[] {
   const lines = csv.trim().split("\n");
   const headers = lines[0].split(",");
@@ -1869,9 +1581,7 @@ export function ex169ParseCSVObjects(csv: string): Record<string, string>[] {
   });
 }
 
-// -----------------------------
-// ex170 - Memoize async
-// -----------------------------
+// Problem Solved---->170 - Memoize async
 export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
   fn: F
 ): (...args: Parameters<F>) => ReturnType<F> {
@@ -1889,17 +1599,12 @@ export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
   };
 }
 
-// -----------------------------
-// ex171 - Binary tree height balanced check
-// -----------------------------
-// Define the Tree65 type
+// Problem Solved---->171 - Binary tree height balanced check
 export interface Tree65<T> {
   value: T;
   left?: Tree65<T>;
   right?: Tree65<T>;
 }
-
-// Function to check if the tree is height-balanced
 export function ex171IsBalanced<T>(root?: Tree65<T>): boolean {
   function height(node?: Tree65<T>): number {
     if (!node) return 0;
@@ -1911,18 +1616,14 @@ export function ex171IsBalanced<T>(root?: Tree65<T>): boolean {
   return height(root) !== -1;
 }
 
-// -----------------------------
-// ex172 - Custom serializer
-// -----------------------------
+// Problem Solved---->172 - Custom serializer
 export function ex172SerializeWithDates(obj: any): string {
   return JSON.stringify(obj, (_, v) =>
     v instanceof Date ? v.toISOString() : v
   );
 }
 
-// -----------------------------
-// ex173 - Caesar cipher
-// -----------------------------
+// Problem Solved---->173 - Caesar cipher
 export function ex173Caesar(s: string, shift: number): string {
   return s.replace(/[a-z]/gi, (c) => {
     const base = c <= "Z" ? 65 : 97;
@@ -1930,9 +1631,7 @@ export function ex173Caesar(s: string, shift: number): string {
   });
 }
 
-// -----------------------------
-// ex174 - Simple expression evaluator
-// -----------------------------
+// Problem Solved---->174 - Simple expression evaluator
 export function ex174SafeEval(expr: string): number | null {
   try {
     return new Function(`return ${expr}`)();
@@ -1941,16 +1640,12 @@ export function ex174SafeEval(expr: string): number | null {
   }
 }
 
-// -----------------------------
-// ex175 - Path resolve
-// -----------------------------
+// Problem Solved---->175 - Path resolve
 export function ex175ResolvePath(base: string, relative: string): string {
   return new URL(relative, new URL(base, "file://")).pathname;
 }
 
-// -----------------------------
-// ex176 - Role-based access control
-// -----------------------------
+// Problem Solved---->176 - Role-based access control
 export function ex176HasAccess(
   user: { roles: string[]; perms: string[] },
   requiredPerm: string
@@ -1958,23 +1653,17 @@ export function ex176HasAccess(
   return user.perms.includes(requiredPerm) || user.roles.includes("admin");
 }
 
-// -----------------------------
-// ex177 - Inflect word based on rules
-// -----------------------------
+// Problem Solved---->177 - Inflect word based on rules
 export function ex177Inflect(word: string, n: number, plural?: string): string {
   return n === 1 ? word : plural || word + "s";
 }
 
-// -----------------------------
-// ex178 - Gregorian leap year advanced
-// -----------------------------
+// Problem Solved---->178 - Gregorian leap year advanced
 export function ex178IsLeapAdvanced(y: number): boolean {
   return y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0);
 }
 
-// -----------------------------
-// ex179 - Comparator for multi keys
-// -----------------------------
+// Problem Solved---->179 - Comparator for multi keys
 export function ex179MultiBy<T>(...keys: (keyof T)[]): (a: T, b: T) => number {
   return (a, b) => {
     for (const k of keys) {
@@ -1985,9 +1674,7 @@ export function ex179MultiBy<T>(...keys: (keyof T)[]): (a: T, b: T) => number {
   };
 }
 
-// -----------------------------
-// ex180 - Promise sequence execution
-// -----------------------------
+// Problem Solved---->180 - Promise sequence execution
 export async function ex180Sequence<T>(
   promises: (() => Promise<T>)[]
 ): Promise<T[]> {
@@ -1996,9 +1683,7 @@ export async function ex180Sequence<T>(
   return res;
 }
 
-// -----------------------------
-// ex181 - CSV stringify with quotes
-// -----------------------------
+// Problem Solved---->181 - CSV stringify with quotes
 export function ex183StringifyCSV(data: string[][]): string {
   return data
     .map((row) =>
@@ -2013,9 +1698,7 @@ export function ex183StringifyCSV(data: string[][]): string {
     .join("\n");
 }
 
-// -----------------------------
-// ex182 - Nano ID generator
-// -----------------------------
+// Problem Solved---->182 - Nano ID generator
 export function ex182NanoId(size = 21): string {
   const chars =
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
@@ -2025,16 +1708,12 @@ export function ex182NanoId(size = 21): string {
   ).join("");
 }
 
-// -----------------------------
-// ex183 - HTTP method checker
-// -----------------------------
+// Problem Solved---->183 - HTTP method checker
 export function ex183IsSafeMethod(method: string): boolean {
   return ["GET", "HEAD", "OPTIONS", "TRACE"].includes(method.toUpperCase());
 }
 
-// -----------------------------
-// ex184 - Deep key collector
-// -----------------------------
+// Problem Solved---->184 - Deep key collector
 export function ex184CollectKeys(obj: object): Set<string> {
   const keys = new Set<string>();
   function recurse(o: any, prefix = "") {
@@ -2048,16 +1727,12 @@ export function ex184CollectKeys(obj: object): Set<string> {
   return keys;
 }
 
-// -----------------------------
-// ex185 - Alphanumeric sort
-// -----------------------------
+// Problem Solved---->185 - Alphanumeric sort
 export function ex185AlphaNumCompare(a: string, b: string): number {
   return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
 }
 
-// -----------------------------
-// ex186 - Promise with abort signal
-// -----------------------------
+// Problem Solved---->186 - Promise with abort signal
 export function ex186Abortable<T>(
   p: Promise<T>,
   signal: AbortSignal
@@ -2070,51 +1745,37 @@ export function ex186Abortable<T>(
   ]);
 }
 
-// -----------------------------
-// ex187 - URL safe base64
-// -----------------------------
-// Base64 encoder
+// Problem Solved---->187 - URL safe base64
 export function ex89B64Encode(s: string): string {
   return Buffer.from(s, "utf-8").toString("base64");
 }
-
-// URL-safe Base64 encoder
 export function ex187UrlSafeB64Encode(s: string): string {
   return ex89B64Encode(s)
-    .replace(/\+/g, "-") // Replace '+' with '-'
-    .replace(/\//g, "_") // Replace '/' with '_'
-    .replace(/=+$/, ""); // Remove trailing '='
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
 }
 
-// -----------------------------
-// ex188 - JSON stringify with replacer
-// -----------------------------
+// Problem Solved---->188 - JSON stringify with replacer
 export function ex188StringifyBigint(obj: any): string {
   return JSON.stringify(obj, (_, v) =>
     typeof v === "bigint" ? v.toString() : v
   );
 }
 
-// -----------------------------
-// ex189 - Symmetric difference of arrays
-// -----------------------------
+// Problem Solved---->189 - Symmetric difference of arrays
 export function ex189SymmetricDiff<T>(a: T[], b: T[]): T[] {
   const sA = new Set(a),
     sB = new Set(b);
   return [...a.filter((x) => !sB.has(x)), ...b.filter((x) => !sA.has(x))];
 }
 
-// -----------------------------
-// ex190 - Union of arrays
-// -----------------------------
+// Problem Solved---->190 - Union of arrays
 export function ex190Union<T>(a: T[], b: T[]): T[] {
   return [...new Set([...a, ...b])];
 }
 
-// -----------------------------
-// ex191 - Unflatten object from dot notation
-// -----------------------------
-// Helper function to set a value at a nested path
+// Problem Solved---->191 - Unflatten object from dot notation
 export function ex99Set(obj: any, path: string, value: any): void {
   const keys = path.split(".");
   let current = obj;
@@ -2132,8 +1793,6 @@ export function ex99Set(obj: any, path: string, value: any): void {
     }
   }
 }
-
-// Unflatten a dot-notated object into a nested structure
 export function ex191Unflatten(dotObj: Record<string, any>): any {
   const res: any = {};
   for (const [path, val] of Object.entries(dotObj)) {
@@ -2142,9 +1801,7 @@ export function ex191Unflatten(dotObj: Record<string, any>): any {
   return res;
 }
 
-// -----------------------------
-// ex192 - Throttle debounce combo
-// -----------------------------
+// Problem Solved---->192 - Throttle debounce combo
 export function ex192ThrottleTrailing(fn: Function, ms: number): Function {
   let timeout: NodeJS.Timeout | null = null;
   let lastArgs: any[] | null = null;
@@ -2160,9 +1817,7 @@ export function ex192ThrottleTrailing(fn: Function, ms: number): Function {
   };
 }
 
-// -----------------------------
-// ex193 - Validate URL
-// -----------------------------
+// Problem Solved---->193 - Validate URL
 export function ex193IsValidUrl(s: string): boolean {
   try {
     new URL(s);
@@ -2172,25 +1827,19 @@ export function ex193IsValidUrl(s: string): boolean {
   }
 }
 
-// -----------------------------
-// ex194 - Snake case converter
-// -----------------------------
+// Problem Solved---->194 - Snake case converter
 export function ex194Snake(s: string): string {
   return s.replace(/([A-Z])/g, "_$1").toLowerCase();
 }
 
-// -----------------------------
-// ex195 - ULID generator placeholder
-// -----------------------------
+// Problem Solved---->195 - ULID generator placeholder
 export function ex195Ulid(): string {
   const time = Date.now().toString(36).padStart(9, "0");
   const rand = Math.random().toString(36).slice(2, 17);
   return (time + rand).slice(0, 26);
 }
 
-// -----------------------------
-// ex196 - Count by key
-// -----------------------------
+// Problem Solved---->196 - Count by key
 export function ex196CountBy<T>(
   arr: T[],
   key: keyof T
@@ -2202,9 +1851,7 @@ export function ex196CountBy<T>(
   }, {} as Record<string, number>);
 }
 
-// -----------------------------
-// ex197 - Delete deep property
-// -----------------------------
+// Problem Solved---->197 - Delete deep property
 export function ex197DeleteDeep(obj: any, path: string): void {
   const parts = path.split(".");
   const last = parts.pop()!;
@@ -2212,16 +1859,13 @@ export function ex197DeleteDeep(obj: any, path: string): void {
   delete parent[last];
 }
 
-// -----------------------------
-// ex198 - Runner extension
-// -----------------------------
+// Problem Solved---->198 - Runner extension
 export async function ex198RunExtended(
   selected: number[]
 ): Promise<Record<number, any>> {
   const out: Record<number, any> = {};
   for (const n of selected) {
     try {
-      // Assume exN is a function, call it
       const fn =
         (Examples as any)[`ex${n.toString().padStart(3, "0")}`] ||
         (() => "not found");
@@ -2233,9 +1877,7 @@ export async function ex198RunExtended(
   return out;
 }
 
-// -----------------------------
-// ex199 - Custom type challenge
-// -----------------------------
+// Problem Solved---->199 - Custom type challenge
 export type FlattenTuple199<T> = T extends [infer H, ...infer R]
   ? H extends any[]
     ? [...FlattenTuple199<H>, ...FlattenTuple199<R>]
@@ -2246,19 +1888,15 @@ export function ex199(): void {
   console.log("ex199 -> type demo");
 }
 
-// -----------------------------
-// ex200 - Final runner: run all examples
-// -----------------------------
+// Problem Solved---->200 - run all examples
+
 export async function ex200RunAll(): Promise<void> {
   console.log("ex200 -> running all");
-  await ex100(); // run first 100
-  // Run 101-200 similarly, but for brevity, assume similar to ex100
+  await ex100();
   console.log("ex200 -> done");
 }
 
-// -----------------------------
-// Convenience default export
-// -----------------------------
+// Default Export
 const Examples = {
   ex01,
   ex02,
@@ -2450,3 +2088,6 @@ const Examples = {
 } as const;
 
 export default Examples;
+
+// End of Solved 200 Problems
+// -------------------------------------------------------------->

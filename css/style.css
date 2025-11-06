@@ -1,5 +1,6 @@
-/* Enhanced TypeScript Pro Platform Styles */
-/* CSS Variables for Theming */
+/* CSS Start */
+/* --------------------------------------------------------------------------------------------------- */
+/* CSS Theme */
 :root {
   --primary-gradient: linear-gradient(135deg, #0ea5e9, #6366f1);
   --secondary-gradient: linear-gradient(135deg, #10b981, #059669);
@@ -93,7 +94,7 @@
   --border-color: #7c3aed;
 }
 
-/* Base Styles with Enhanced Animations */
+/* body */
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
@@ -135,7 +136,7 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Enhanced Code Block Styling */
+/* Block */
 .code-block {
   font-size: 0.9rem;
   white-space: pre-wrap;
@@ -147,7 +148,7 @@ body {
   color: #f8fafc;
 }
 
-/* Feature Cards with Enhanced Animations */
+/* Feature Card */
 .feature-card {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid var(--border-color);
@@ -183,7 +184,7 @@ body {
   border-color: rgba(14, 165, 233, 0.3);
 }
 
-/* Tab Styling */
+/* Tab */
 .tab-active {
   position: relative;
   border-bottom: 3px solid #0369a1;
@@ -235,7 +236,7 @@ body {
   background-color: var(--bg-secondary);
 }
 
-/* Editor Styling */
+/* Editor */
 #ace-editor {
   width: 100%;
   height: 100%;
@@ -244,7 +245,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Enhanced Chat UI */
+/* Chat UI */
 .chat-message.user {
   background: linear-gradient(
     135deg,
@@ -303,7 +304,7 @@ body {
   }
 }
 
-/* Pulse Animation for Interactive Elements */
+/* Pulse Animation */
 .pulse-glow {
   animation: pulse-glow 2s infinite;
 }
@@ -404,7 +405,7 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* Enhanced Chat Drawer */
+/* Chat Drawer */
 #chat-drawer {
   background: var(--bg-secondary);
   backdrop-filter: blur(20px);
@@ -412,7 +413,7 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* Mobile Optimizations */
+/* Mobile Optimizations @media */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
@@ -453,7 +454,7 @@ body {
   }
 }
 
-/* High Contrast Mode Support */
+/* High Contrast Mode */
 @media (prefers-contrast: high) {
   .feature-card {
     border: 2px solid;
@@ -464,7 +465,7 @@ body {
   }
 }
 
-/* Reduced Motion Support */
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -473,7 +474,7 @@ body {
   }
 }
 
-/* Focus Styles for Accessibility */
+/* Focus */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
@@ -490,7 +491,7 @@ input:focus-visible {
   background: rgba(14, 165, 233, 0.3);
 }
 
-/* Backdrop Blur Support */
+/* Backdrop Blur */
 @supports (backdrop-filter: blur(20px)) {
   .backdrop-blur {
     backdrop-filter: blur(20px);
@@ -503,12 +504,12 @@ input:focus-visible {
   }
 }
 
-/* Article hover improvements */
+/* Article hover */
 .article header:hover h3 {
   color: #0ea5e9;
 }
 
-/* Theme-specific styles */
+/* Theme hover*/
 [data-theme="cupcake"] .feature-card:hover {
   border-color: rgba(101, 195, 200, 0.3);
 }
@@ -545,7 +546,7 @@ input:focus-visible {
   border-color: rgba(249, 115, 22, 0.3);
 }
 
-/* Responsive grid improvements */
+/* Responsive Grid */
 @media (max-width: 1024px) {
   .grid-cols-3 {
     grid-template-columns: repeat(2, 1fr);
@@ -559,14 +560,14 @@ input:focus-visible {
   }
 }
 
-/* Enhanced dropdown styles */
+/* dropdown */
 .dropdown-content {
   background: var(--bg-secondary);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
 }
 
-/* Custom theme-aware background classes */
+/* Custom theme-aware BG */
 .bg-theme-primary {
   background-color: var(--bg-primary);
 }
@@ -586,3 +587,5 @@ input:focus-visible {
 .border-theme {
   border-color: var(--border-color);
 }
+
+/* CSS End -----> */

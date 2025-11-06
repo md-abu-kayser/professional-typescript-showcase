@@ -8,14 +8,16 @@
       name="description"
       content="Master TypeScript with interactive examples, AI assistant, and comprehensive learning resources"
     />
+    <!-- CSS Style -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- DaisyUI + Tailwind -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- DaisyUI Component CDN -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
       rel="stylesheet"
       type="text/css"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Ace Editor -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"
@@ -25,12 +27,12 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ext-language_tools.min.js"
       defer
     ></script>
-    <!-- TypeScript services -->
+    <!-- TypeScript Services -->
     <script
       src="https://unpkg.com/typescript@latest/lib/typescriptServices.js"
       defer
     ></script>
-    <!-- Highlight.js for code blocks -->
+    <!-- Highlight.js For Code Blocks -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
       defer
@@ -44,16 +46,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Chart.js for visualizations -->
+    <!-- Chart.js For Visualizations CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body
     class="min-h-screen antialiased transition-colors duration-300 bg-theme-primary text-theme-primary"
   >
-    <!-- Theme Selector -->
-    <!-- Theme Selector (improved & scrollable) -->
+    <!-- Theme -->
     <div class="fixed top-16 right-4 z-50">
-      <!-- Toggle button -->
       <div class="dropdown dropdown-end theme-dropdown" id="theme-dropdown">
         <button
           id="theme-toggle"
@@ -73,8 +73,6 @@
           class="dropdown-content z-[60] menu p-2 shadow-2xl bg-theme-secondary rounded-box w-52 mt-2 max-h-80 overflow-y-auto theme-scroll space-y-1"
         >
           <li class="menu-title"><span>Themes</span></li>
-
-          <!-- Theme items: data-set-theme stores the theme name -->
           <li role="none">
             <button
               role="menuitem"
@@ -124,8 +122,6 @@
               </span>
             </button>
           </li>
-
-          <!-- Add more theme items (kept compact for brevity) -->
           <li role="none">
             <button
               role="menuitem"
@@ -251,7 +247,7 @@
               </div>
             </div>
           </div>
-          <!-- Desktop links -->
+          <!-- Desktop Links -->
           <div class="hidden lg:flex items-center space-x-6">
             <a
               href="#features"
@@ -285,7 +281,7 @@
               <i class="fas fa-robot mr-2"></i>AI Assistant
             </button>
           </div>
-          <!-- Mobile menu button -->
+          <!-- Mobile Menu Button -->
           <button
             id="mobile-menu-button"
             onclick="toggleMobileMenu()"
@@ -399,13 +395,16 @@
         >
           Advanced TypeScript learning with
           <span class="font-semibold text-sky-600 dark:text-sky-400"
-            >50+ features</span
+            >50+ Features</span
           >,
           <span class="font-semibold text-indigo-600 dark:text-indigo-400"
-            >interactive playground</span
-          >, and
+            >Interactive Playground</span
+          >
+          <span class="font-semibold text-indigo-800 dark:text-indigo-800"
+            >, and</span
+          >
           <span class="font-semibold text-emerald-600 dark:text-emerald-400"
-            >AI-powered assistant</span
+            >AI-Powered Assistant</span
           >
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
@@ -493,7 +492,8 @@
           class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           id="features-container"
         >
-          <!-- Features will be dynamically loaded here -->
+          <!-- Features will be Loaded Here: -->
+          <!-- ------------------------------------------------------------------------ -->
         </div>
       </div>
     </section>
@@ -514,7 +514,8 @@
           </p>
         </div>
         <div class="space-y-6 max-w-6xl mx-auto" id="articles-container">
-          <!-- Articles will be dynamically loaded here -->
+          <!-- Articles will be Loaded Here: -->
+          <!-- ------------------------------------------------------------------------ -->
         </div>
       </div>
     </section>
@@ -558,7 +559,8 @@
                 class="p-4 space-y-2 max-h-96 overflow-y-auto"
                 id="examples-tabs"
               >
-                <!-- Example tabs will be loaded here -->
+                <!-- All Example tabs will be Loaded Here: -->
+                <!-- ------------------------------------------------------------------------ -->
               </div>
             </div>
             <!-- Example Content -->
@@ -676,13 +678,11 @@
                 <ul
                   tabindex="0"
                   class="dropdown-content z-[1] menu p-2 shadow-2xl bg-theme-secondary rounded-box w-64 max-h-80 overflow-y-auto"
-                >
-                  <!-- Example list will be populated by JS -->
-                </ul>
+                ></ul>
               </div>
             </div>
           </div>
-          <!-- Output & Info Panel -->
+          <!-- Output and Info Panel -->
           <div class="space-y-8">
             <!-- Output Panel -->
             <div
@@ -758,7 +758,7 @@
                       Safe Execution
                     </h4>
                     <p class="text-sm text-theme-secondary">
-                      Code runs in a secure sandboxed environment
+                      Code runs in a secure sand boxed environment
                     </p>
                   </div>
                 </div>
@@ -845,7 +845,7 @@
               Source code and contribution guidelines for this project
             </p>
             <a
-              href="https://github.com/Kawser420"
+              href="https://github.com/md-abu-kayser/"
               class="text-green-600 dark:text-green-400 font-medium hover:underline flex items-center"
             >
               View on GitHub <i class="fas fa-arrow-right ml-2"></i>
@@ -873,7 +873,7 @@
               </div>
             </div>
             <p class="text-slate-400 text-sm mb-4">
-              Master TypeScript with interactive examples, AI assistance, and
+              Master TypeScript with interactive examples, AI Assistance and
               comprehensive learning resources.
             </p>
             <div class="flex space-x-3">
@@ -890,7 +890,7 @@
                 <i class="fab fa-linkedin-in text-xs"></i>
               </a>
               <a
-                href="https://github.com/Kawser420"
+                href="https://github.com/md-abu-kayser/"
                 class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition-colors"
               >
                 <i class="fab fa-github text-xs"></i>
@@ -953,7 +953,7 @@
               </li>
               <li>
                 <a
-                  href="https://github.com/microsoft/TypeScript"
+                  href="https://md-abu-kayser.github.io/professional-typescript-showcase/"
                   class="hover:text-white transition-colors"
                   >GitHub Repo</a
                 >
@@ -1000,7 +1000,7 @@
           class="mt-12 pt-8 border-t border-slate-800 text-center text-slate-400 text-sm"
         >
           <p>
-            &copy; 2025 TypeScript Pro Platform. Created with ❤️ by
+            &copy; 2025 TypeScript Pro Platform. Created with LOVE by
             <a
               href="https://github.com/Kawser420"
               class="text-sky-400 hover:text-sky-300 transition-colors"
@@ -1011,7 +1011,7 @@
         </div>
       </div>
     </footer>
-    <!-- Enhanced AI Chatbot -->
+    <!-- AI Chatbot -->
     <div
       id="chat-drawer"
       class="fixed right-6 bottom-6 w-96 max-h-[85vh] bg-theme-secondary rounded-2xl shadow-2xl border border-theme overflow-hidden transform translate-y-8 opacity-0 pointer-events-none transition-all duration-500 z-50 flex flex-col backdrop-blur-md"
@@ -1127,7 +1127,7 @@
         class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs animate-pulse"
       ></span>
     </button>
-    <!-- Scripts -->
+    <!-- js script link -->
     <script src="js/script.js"></script>
   </body>
 </html>
