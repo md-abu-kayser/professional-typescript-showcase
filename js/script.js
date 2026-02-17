@@ -1,5 +1,5 @@
 // all javascript code here:
-// ------------------------------------------------------->>>
+// ------------------------------------------------------->
 // Theme Management
 const availableThemes = [
   "light",
@@ -662,7 +662,7 @@ function initExamples() {
           example.difficulty
         }</div>
       </button>
-    `
+    `,
       )
       .join("");
   }
@@ -672,7 +672,7 @@ function initExamples() {
       .map(
         (example, index) => `
       <li><button onclick="insertExampleIntoEditor(${index})" class="hover:bg-theme-secondary">${example.title}</button></li>
-    `
+    `,
       )
       .join("");
   }
@@ -1195,7 +1195,7 @@ function initFeatures() {
           </div>
         </div>
       </div>
-    `
+    `,
       )
       .join("");
   }
@@ -2807,7 +2807,7 @@ function initArticles() {
           </div>
         </div>
       </article>
-    `
+    `,
       )
       .join("");
   }
@@ -2987,7 +2987,7 @@ function insertExampleIntoEditor(exampleIndex) {
   const txt = examples[exampleIndex].code + "\n\n";
   aceEditor.session.insert(
     { row: aceEditor.session.getLength(), column: 0 },
-    "\n" + txt
+    "\n" + txt,
   );
   aceEditor.focus();
   showNotification(`Added "${examples[exampleIndex].title}" example to editor`);
@@ -3039,7 +3039,7 @@ function runEditorCode() {
       out +=
         args
           .map((a) =>
-            typeof a === "object" ? JSON.stringify(a, null, 2) : String(a)
+            typeof a === "object" ? JSON.stringify(a, null, 2) : String(a),
           )
           .join(" ") + "\n";
     };
@@ -3147,7 +3147,7 @@ function updateChatMessage(messageId, newContent) {
   const messageEl = document.getElementById(messageId);
   if (messageEl) {
     const contentEl = messageEl.querySelector(
-      ".text-theme-secondary, .text-theme-primary"
+      ".text-theme-secondary, .text-theme-primary",
     );
     if (contentEl) {
       contentEl.innerHTML = newContent;
@@ -3184,21 +3184,24 @@ function sendChat() {
   appendChat(text, "user");
   input.value = "";
   const typingId = appendChat("", "bot", true);
-  setTimeout(() => {
-    const typingEl = document.getElementById(typingId);
-    if (typingEl) {
-      typingEl.remove();
-    }
-    const reply = generateAIResponse(text);
-    appendChat(reply, "bot");
-    if (reply.includes("[insert example")) {
-      const found = reply.match(/\[insert example:(\d+)\]/);
-      if (found && found[1]) {
-        const idx = Number(found[1]);
-        insertExampleIntoEditor(idx);
+  setTimeout(
+    () => {
+      const typingEl = document.getElementById(typingId);
+      if (typingEl) {
+        typingEl.remove();
       }
-    }
-  }, 1000 + Math.random() * 1000);
+      const reply = generateAIResponse(text);
+      appendChat(reply, "bot");
+      if (reply.includes("[insert example")) {
+        const found = reply.match(/\[insert example:(\d+)\]/);
+        if (found && found[1]) {
+          const idx = Number(found[1]);
+          insertExampleIntoEditor(idx);
+        }
+      }
+    },
+    1000 + Math.random() * 1000,
+  );
 }
 function generateAIResponse(userText) {
   const text = userText.toLowerCase();
@@ -3281,8 +3284,8 @@ function showNotification(message, type = "info") {
         type === "info"
           ? "fa-info-circle text-sky-500"
           : type === "success"
-          ? "fa-check-circle text-emerald-500"
-          : "fa-exclamation-triangle text-amber-500"
+            ? "fa-check-circle text-emerald-500"
+            : "fa-exclamation-triangle text-amber-500"
       }"></i>
       <span class="font-medium">${message}</span>
     </div>
