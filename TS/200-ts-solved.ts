@@ -1,5 +1,5 @@
 // Solved 200 TypeScript Practice Problems:
-// ------------------------------------------------>
+// -------------------------------------------------->
 
 // Problem Solved----> 01: Basic types
 export function ex01(): void {
@@ -156,7 +156,7 @@ export function ex19(): ReturnOf<typeof ex08> {
 // Problem Solved----> 20: keyof and lookup types
 export function ex20<T extends object, K extends keyof T>(
   obj: T,
-  key: K
+  key: K,
 ): T[K] {
   return obj[key];
 }
@@ -267,7 +267,7 @@ export async function ex34<T extends any[]>(
 // Problem Solved----> 35: Utility: Zip two arrays into a record
 export function ex35<K extends string | number, V>(
   keys: K[],
-  values: V[]
+  values: V[],
 ): Record<K, V | undefined> {
   const out: any = {};
   keys.forEach((k, i) => (out[k] = values[i]));
@@ -331,7 +331,7 @@ export function ex42(): void {
 
     on<K extends keyof EventMap>(
       event: K,
-      listener: Listener<EventMap[K]>
+      listener: Listener<EventMap[K]>,
     ): void {
       if (!this.listeners[event]) {
         this.listeners[event] = [];
@@ -341,7 +341,7 @@ export function ex42(): void {
 
     off<K extends keyof EventMap>(
       event: K,
-      listener: Listener<EventMap[K]>
+      listener: Listener<EventMap[K]>,
     ): void {
       const arr = this.listeners[event];
       if (arr) {
@@ -397,7 +397,7 @@ export function ex44(): void {
   function logMethod(
     _target: any,
     key: string,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     const orig = descriptor.value;
     descriptor.value = function (...args: any[]) {
@@ -562,7 +562,7 @@ export function ex60() {
   }
   console.log(
     "ex60 ->",
-    update({ id: 1, name: "A", email: "e" }, { name: "B" })
+    update({ id: 1, name: "A", email: "e" }, { name: "B" }),
   );
 }
 
@@ -579,7 +579,7 @@ export function ex61(): void {
     "type Tup can be:",
     tuple[0],
     "or",
-    tuple[1]
+    tuple[1],
   );
 }
 
@@ -823,7 +823,7 @@ export function ex94(): void {
 // Problem Solved----> 95: Type level arithmetic note
 export function ex95(): void {
   console.log(
-    "ex95 -> type-level arithmetic is advanced (see TS type programming)"
+    "ex95 -> type-level arithmetic is advanced (see TS type programming)",
   );
 }
 
@@ -847,10 +847,10 @@ export function ex98(argv: string[]) {
 // Problem Solved----> 99: Using Flow control types (Promise + cancel token pattern)
 export function ex99<T>(
   promise: Promise<T>,
-  cancelToken: { cancelled?: boolean }
+  cancelToken: { cancelled?: boolean },
 ) {
   return promise.then((v) =>
-    cancelToken.cancelled ? Promise.reject(new Error("cancelled")) : v
+    cancelToken.cancelled ? Promise.reject(new Error("cancelled")) : v,
   );
 }
 
@@ -880,10 +880,10 @@ export async function ex100(): Promise<void> {
 // Problem Solved---->101 - Advanced generics: Extract keys with specific type
 export function ex101ExtractKeys<T extends object, U>(
   obj: T,
-  typeCheck: (v: any) => v is U
+  typeCheck: (v: any) => v is U,
 ): (keyof T)[] {
   return Object.keys(obj).filter((k) =>
-    typeCheck(obj[k as keyof T])
+    typeCheck(obj[k as keyof T]),
   ) as (keyof T)[];
 }
 
@@ -900,7 +900,7 @@ export function ex102(): void {
 
 // Problem Solved---->103 - Async function typing with generics
 export function ex103AsyncWrapper<T, Args extends any[]>(
-  fn: (...args: Args) => Promise<T>
+  fn: (...args: Args) => Promise<T>,
 ): (...args: Args) => Promise<T> {
   return async (...args) => {
     console.log("starting");
@@ -986,7 +986,7 @@ export class Ex111 {
 
 // Problem Solved---->112 - Extends with multiple constraints
 export function ex112<T extends { length: number } & { valueOf(): string }>(
-  x: T
+  x: T,
 ): string {
   return x.valueOf() + x.length;
 }
@@ -1018,7 +1018,7 @@ export function ex115(): void {
 
 // Problem Solved---->116 - Stringify with types
 export function ex116Stringify<T extends Record<string, string | number>>(
-  obj: T
+  obj: T,
 ): string {
   return JSON.stringify(obj);
 }
@@ -1071,7 +1071,7 @@ export function ex122(): void {
 // Problem Solved---->123 - Dynamic index access
 export function ex123Get<T extends object, K extends keyof T>(
   obj: T,
-  key: K
+  key: K,
 ): T[K] {
   return obj[key];
 }
@@ -1105,8 +1105,8 @@ export function ex126(): void {
 export type Split127<S extends string, D extends string> = string extends S
   ? string[]
   : S extends `${infer H}${D}${infer T}`
-  ? [H, ...Split127<T, D>]
-  : [S];
+    ? [H, ...Split127<T, D>]
+    : [S];
 export function ex127(): void {
   type Ex = Split127<"a-b-c", "-">; // ["a", "b", "c"]
   console.log("ex127 -> type demo");
@@ -1127,14 +1127,14 @@ export function ex129ToPositive(n: number): PositiveNumber129 {
 // Problem Solved---->130 - Immutable tuple operations
 export function ex130Concat<T extends readonly any[], U extends readonly any[]>(
   t1: T,
-  t2: U
+  t2: U,
 ): [...T, ...U] {
   return [...t1, ...t2];
 }
 
 // Problem Solved---->131 - Async error handling
 export async function ex131TryCatch<T>(
-  fn: () => Promise<T>
+  fn: () => Promise<T>,
 ): Promise<[Error | null, T | null]> {
   try {
     return [null, await fn()];
@@ -1157,7 +1157,7 @@ export function ex133(): void {
 
 // Problem Solved---->134 - Object from entries with types
 export function ex134FromEntries<K extends PropertyKey, V>(
-  entries: Iterable<[K, V]>
+  entries: Iterable<[K, V]>,
 ): Record<K, V> {
   return Object.fromEntries(entries) as Record<K, V>;
 }
@@ -1165,7 +1165,7 @@ export function ex134FromEntries<K extends PropertyKey, V>(
 // Problem Solved---->135 - Ensure all properties
 export function ex135EnsureRequired<T extends object>(
   obj: Partial<T>,
-  required: (keyof T)[]
+  required: (keyof T)[],
 ): asserts obj is T {
   for (const k of required) {
     if (obj[k] === undefined) throw new Error(`Missing ${String(k)}`);
@@ -1184,7 +1184,7 @@ export function ex136Curry(fn: Function): Function {
 export function ex137ZipWith<A, B, R>(
   a: A[],
   b: B[],
-  fn: (a: A, b: B) => R
+  fn: (a: A, b: B) => R,
 ): R[] {
   const len = Math.min(a.length, b.length);
   return Array.from({ length: len }, (_, i) => fn(a[i], b[i]));
@@ -1198,7 +1198,7 @@ export function ex138IsObject(x: unknown): x is object {
 // Problem Solved---->139 - Proxy for validation
 export function ex139ValidationProxy<T extends object>(
   target: T,
-  validator: (key: string, value: any) => boolean
+  validator: (key: string, value: any) => boolean,
 ): T {
   return new Proxy(target, {
     set(obj, key, value) {
@@ -1233,7 +1233,7 @@ export function ex141FirstNonNull<T>(...values: (T | null | undefined)[]): T {
 export function ex142Pipe<A, B>(ab: (a: A) => B): (a: A) => B;
 export function ex142Pipe<A, B, C>(
   ab: (a: A) => B,
-  bc: (b: B) => C
+  bc: (b: B) => C,
 ): (a: A) => C;
 export function ex142Pipe(...fns: Function[]): Function {
   return (x: any) => fns.reduce((v, f) => f(v), x);
@@ -1256,7 +1256,7 @@ export class TTL143<K, V> {
 
 // Problem Solved---->144 - Enum from string union
 export function ex144CreateEnum<T extends string>(
-  values: readonly T[]
+  values: readonly T[],
 ): Record<T, T> {
   return values.reduce((acc, v) => ({ ...acc, [v]: v }), {} as Record<T, T>);
 }
@@ -1264,18 +1264,18 @@ export function ex144CreateEnum<T extends string>(
 // Problem Solved---->145 - Partition array
 export function ex145Partition<T>(
   arr: T[],
-  pred: (t: T) => boolean
+  pred: (t: T) => boolean,
 ): [T[], T[]] {
   return arr.reduce(
     ([yes, no], t) => (pred(t) ? [[...yes, t], no] : [yes, [...no, t]]),
-    [[], []] as [T[], T[]]
+    [[], []] as [T[], T[]],
   );
 }
 
 // Problem Solved---->146 - Cancelable debounce
 export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ): { debounced: (...args: Parameters<F>) => void; cancel: () => void } {
   let timeout: NodeJS.Timeout | null = null;
   return {
@@ -1292,7 +1292,7 @@ export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
 // Problem Solved---->147 - Leading throttle
 export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ): (...args: Parameters<F>) => void {
   let ready = true;
   return (...args) => {
@@ -1307,7 +1307,7 @@ export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
 // Problem Solved---->148 - Recursive deep merge
 export function ex148RecursiveMerge<T extends object>(
   target: T,
-  source: Partial<T>
+  source: Partial<T>,
 ): T {
   for (const key in source) {
     if (
@@ -1317,7 +1317,7 @@ export function ex148RecursiveMerge<T extends object>(
     ) {
       (target as any)[key] = ex148RecursiveMerge(
         (target as any)[key] || {},
-        source[key] as Partial<(typeof target)[typeof key]>
+        source[key] as Partial<(typeof target)[typeof key]>,
       );
     } else {
       (target as any)[key] = source[key];
@@ -1345,7 +1345,7 @@ export function ex150UniqueBy<T>(arr: T[], key: keyof T): T[] {
 // Problem Solved---->151 - Cycle detection in graph
 export function ex151HasCycle(
   nodes: string[],
-  edges: [string, string][]
+  edges: [string, string][],
 ): boolean {
   const graph = new Map<string, string[]>();
   nodes.forEach((n) => graph.set(n, []));
@@ -1391,7 +1391,7 @@ export function ex154RgbToHex(r: number, g: number, b: number): string {
 // Problem Solved---->155 - Route params extractor advanced
 export function ex155ExtractParams(
   route: string,
-  path: string
+  path: string,
 ): Record<string, string> {
   const routeParts = route.split("/");
   const pathParts = path.split("/");
@@ -1406,19 +1406,22 @@ export function ex155ExtractParams(
 
 // Problem Solved---->156 - Parse query string with arrays
 export function ex156ParseQSAdvanced(
-  qs: string
+  qs: string,
 ): Record<string, string | string[]> {
   return qs
     .slice(1)
     .split("&")
-    .reduce((acc, pair) => {
-      const [k, v] = pair.split("=");
-      if (acc[k]) {
-        if (Array.isArray(acc[k])) (acc[k] as string[]).push(v);
-        else acc[k] = [acc[k] as string, v];
-      } else acc[k] = v;
-      return acc;
-    }, {} as Record<string, string | string[]>);
+    .reduce(
+      (acc, pair) => {
+        const [k, v] = pair.split("=");
+        if (acc[k]) {
+          if (Array.isArray(acc[k])) (acc[k] as string[]).push(v);
+          else acc[k] = [acc[k] as string, v];
+        } else acc[k] = v;
+        return acc;
+      },
+      {} as Record<string, string | string[]>,
+    );
 }
 
 // Problem Solved---->157 - Serialize with nested objects
@@ -1447,7 +1450,7 @@ export function ex158EncodeJwt(payload: object): string {
 export type AsyncValidator159<T> = (value: T) => Promise<string | null>;
 export async function ex159ValidateAsync<T>(
   value: T,
-  validators: AsyncValidator159<T>[]
+  validators: AsyncValidator159<T>[],
 ): Promise<string[]> {
   const errors = [];
   for (const v of validators) {
@@ -1460,7 +1463,10 @@ export async function ex159ValidateAsync<T>(
 // Problem Solved---->160 - Leaky bucket rate limiter
 export class LeakyBucket160 {
   private queue: number[] = [];
-  constructor(public capacity: number, public leakRate: number) {}
+  constructor(
+    public capacity: number,
+    public leakRate: number,
+  ) {}
   add(): boolean {
     const now = Date.now();
     if (this.queue.length && now - this.queue[0] >= this.leakRate)
@@ -1500,7 +1506,7 @@ export interface LinkedNode64<T> {
 }
 
 export function ex162Reverse<T>(
-  head: LinkedNode64<T> | undefined
+  head: LinkedNode64<T> | undefined,
 ): LinkedNode64<T> | undefined {
   let prev: LinkedNode64<T> | undefined = undefined;
   let curr = head;
@@ -1534,7 +1540,7 @@ export function ex163Preorder<T>(root?: {
 export function ex164Replace(
   s: string,
   re: RegExp,
-  fn: (match: string) => string
+  fn: (match: string) => string,
 ): string {
   return s.replace(re, fn);
 }
@@ -1583,7 +1589,7 @@ export function ex169ParseCSVObjects(csv: string): Record<string, string>[] {
 
 // Problem Solved---->170 - Memoize async
 export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
-  fn: F
+  fn: F,
 ): (...args: Parameters<F>) => ReturnType<F> {
   const cache = new Map<string, ReturnType<F>>();
 
@@ -1619,7 +1625,7 @@ export function ex171IsBalanced<T>(root?: Tree65<T>): boolean {
 // Problem Solved---->172 - Custom serializer
 export function ex172SerializeWithDates(obj: any): string {
   return JSON.stringify(obj, (_, v) =>
-    v instanceof Date ? v.toISOString() : v
+    v instanceof Date ? v.toISOString() : v,
   );
 }
 
@@ -1648,7 +1654,7 @@ export function ex175ResolvePath(base: string, relative: string): string {
 // Problem Solved---->176 - Role-based access control
 export function ex176HasAccess(
   user: { roles: string[]; perms: string[] },
-  requiredPerm: string
+  requiredPerm: string,
 ): boolean {
   return user.perms.includes(requiredPerm) || user.roles.includes("admin");
 }
@@ -1676,7 +1682,7 @@ export function ex179MultiBy<T>(...keys: (keyof T)[]): (a: T, b: T) => number {
 
 // Problem Solved---->180 - Promise sequence execution
 export async function ex180Sequence<T>(
-  promises: (() => Promise<T>)[]
+  promises: (() => Promise<T>)[],
 ): Promise<T[]> {
   const res: T[] = [];
   for (const p of promises) res.push(await p());
@@ -1691,9 +1697,9 @@ export function ex183StringifyCSV(data: string[][]): string {
         .map((cell) =>
           typeof cell === "string" && /[",\n]/.test(cell)
             ? `"${cell.replace(/"/g, '""')}"`
-            : cell
+            : cell,
         )
-        .join(",")
+        .join(","),
     )
     .join("\n");
 }
@@ -1704,7 +1710,7 @@ export function ex182NanoId(size = 21): string {
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
   return Array.from(
     { length: size },
-    () => chars[(Math.random() * 64) | 0]
+    () => chars[(Math.random() * 64) | 0],
   ).join("");
 }
 
@@ -1735,12 +1741,12 @@ export function ex185AlphaNumCompare(a: string, b: string): number {
 // Problem Solved---->186 - Promise with abort signal
 export function ex186Abortable<T>(
   p: Promise<T>,
-  signal: AbortSignal
+  signal: AbortSignal,
 ): Promise<T> {
   return Promise.race([
     p,
     new Promise<T>((_, rej) =>
-      signal.addEventListener("abort", () => rej(new Error("Aborted")))
+      signal.addEventListener("abort", () => rej(new Error("Aborted"))),
     ),
   ]);
 }
@@ -1759,7 +1765,7 @@ export function ex187UrlSafeB64Encode(s: string): string {
 // Problem Solved---->188 - JSON stringify with replacer
 export function ex188StringifyBigint(obj: any): string {
   return JSON.stringify(obj, (_, v) =>
-    typeof v === "bigint" ? v.toString() : v
+    typeof v === "bigint" ? v.toString() : v,
   );
 }
 
@@ -1842,13 +1848,16 @@ export function ex195Ulid(): string {
 // Problem Solved---->196 - Count by key
 export function ex196CountBy<T>(
   arr: T[],
-  key: keyof T
+  key: keyof T,
 ): Record<string, number> {
-  return arr.reduce((acc, item) => {
-    const k = String(item[key]);
-    acc[k] = (acc[k] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  return arr.reduce(
+    (acc, item) => {
+      const k = String(item[key]);
+      acc[k] = (acc[k] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 }
 
 // Problem Solved---->197 - Delete deep property
@@ -1861,7 +1870,7 @@ export function ex197DeleteDeep(obj: any, path: string): void {
 
 // Problem Solved---->198 - Runner extension
 export async function ex198RunExtended(
-  selected: number[]
+  selected: number[],
 ): Promise<Record<number, any>> {
   const out: Record<number, any> = {};
   for (const n of selected) {
@@ -2090,4 +2099,4 @@ const Examples = {
 export default Examples;
 
 // End of Solved 200 Problems
-// -------------------------------------------------------------->
+// ------------------------------------------------------------>

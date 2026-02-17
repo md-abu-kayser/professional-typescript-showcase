@@ -1,5 +1,5 @@
 // Unsolved 200 TypeScript Practice Problems:
-// ----------------------------------------------------------------------------->
+// ---------------------------------------------------------------------------->
 
 // ex01-----------> Basic Types
 // Problem--------> implement function that returns formatted string
@@ -66,7 +66,7 @@ export class Repository07<T> {
 // Problem--------> Given BaseUser, implement applyUpdate(original, patch) where patch is Partial<BaseUser>
 export function ex08(
   original: BaseUser05,
-  patch: Partial<BaseUser05>
+  patch: Partial<BaseUser05>,
 ): BaseUser05 {
   throw new Error("Not implemented");
 }
@@ -111,7 +111,7 @@ export function ex13<T extends { length: number }>(x: T): number {
 // ex14-----------> Decorators (note: optional)
 // Problem--------> Create a simple class decorator that adds a timestamp property (ts)
 export function ex14ClassDecorator<T extends { new (...args: any[]): {} }>(
-  Ctor: T
+  Ctor: T,
 ): T {
   throw new Error("Not implemented");
 }
@@ -162,7 +162,7 @@ export function ex19<T extends any[]>(
 // Problem--------> Implement zipObject(keys, values) -> Record
 export function ex20<K extends string | number, V>(
   keys: K[],
-  values: V[]
+  values: V[],
 ): Record<K, V | undefined> {
   throw new Error("Not implemented");
 }
@@ -200,7 +200,7 @@ export type PickByType24<T, U> = {
 // Problem--------> Create a typed dictionary and a helper getValue(key)
 export function ex25Get<T>(
   dict: Record<string, T>,
-  key: string
+  key: string,
 ): T | undefined {
   throw new Error("Not implemented");
 }
@@ -214,7 +214,7 @@ export function ex26Safe(o?: { a?: { b?: { c?: number } } }): number {
 // ex27-----------> Never & exhaustive checks
 // Problem--------> Implement exhaustive switch on Shape type
 export function ex27Area(
-  s: { kind: "circle"; r: number } | { kind: "rect"; w: number; h: number }
+  s: { kind: "circle"; r: number } | { kind: "rect"; w: number; h: number },
 ): number {
   throw new Error("Not implemented");
 }
@@ -252,7 +252,7 @@ export function ex32First<T>(t: readonly [T, ...T[]]): T {
 // ex33-----------> Promise error handling pattern
 // Problem--------> Implement safe<T>(p: Promise<T>) => Promise<[Error|null, T|null]>
 export async function ex33Safe<T>(
-  p: Promise<T>
+  p: Promise<T>,
 ): Promise<[Error | null, T | null]> {
   throw new Error("Not implemented");
 }
@@ -273,7 +273,7 @@ export function ex35First<T>(arr: T[]): T | undefined {
 // ex36-----------> Record and utility creation
 // Problem--------> Implement fromEntries<K extends string, V>(pairs: [K, V][]) => Record<K, V>
 export function ex36FromEntries<K extends string, V>(
-  pairs: [K, V][]
+  pairs: [K, V][],
 ): Record<K, V> {
   throw new Error("Not implemented");
 }
@@ -281,7 +281,7 @@ export function ex36FromEntries<K extends string, V>(
 // ex37-----------> Optional & Required utility
 // Problem--------> Use Required<T> to force properties and create sample function
 export function ex37Ensure<T extends object>(
-  obj: T & Partial<Record<keyof T, any>>
+  obj: T & Partial<Record<keyof T, any>>,
 ): Required<T> {
   throw new Error("Not implemented");
 }
@@ -345,7 +345,7 @@ export class LRU45<K, V> {
 // Problem--------> Create a StringUnion and helper to validate values
 export function ex46Validate<T extends string>(
   val: string,
-  allowed: readonly T[]
+  allowed: readonly T[],
 ): val is T {
   throw new Error("Not implemented");
 }
@@ -360,7 +360,7 @@ export function ex47Chunk<T>(arr: T[], size: number): T[][] {
 // Problem--------> Implement debounce<F extends (...args:any)=>any>(fn, ms)
 export function ex48Debounce<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ) {
   throw new Error("Not implemented");
 }
@@ -369,7 +369,7 @@ export function ex48Debounce<F extends (...args: any[]) => any>(
 // Problem--------> Implement throttle similar to debounce
 export function ex49Throttle<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ) {
   throw new Error("Not implemented");
 }
@@ -379,13 +379,13 @@ export function ex49Throttle<F extends (...args: any[]) => any>(
 // Problem--------> Implement shallowMerge and deepMerge signatures
 export function ex50ShallowMerge<T extends object, U extends object>(
   a: T,
-  b: U
+  b: U,
 ): T & U {
   throw new Error("Not implemented");
 }
 export function ex50DeepMerge<T extends object, U extends object>(
   a: T,
-  b: U
+  b: U,
 ): T & U {
   throw new Error("Not implemented");
 }
@@ -419,7 +419,7 @@ export function ex55DaysBetween(a: Date, b: Date): number {
 
 // ex56-----------> Color parse (hex -> rgb)
 export function ex56HexToRgb(
-  hex: string
+  hex: string,
 ): { r: number; g: number; b: number } | null {
   throw new Error("Not implemented");
 }
@@ -428,7 +428,7 @@ export function ex56HexToRgb(
 // Problem--------> Given route like "/users/:id" and path "/users/123" return params {id:123}
 export function ex57Match(
   route: string,
-  path: string
+  path: string,
 ): Record<string, string> | null {
   throw new Error("Not implemented");
 }
@@ -440,7 +440,7 @@ export function ex58ParseQS(qs: string): Record<string, string> {
 
 // ex59-----------> Serialize object to query string
 export function ex59SerializeQS(
-  obj: Record<string, string | number | boolean | undefined>
+  obj: Record<string, string | number | boolean | undefined>,
 ): string {
   throw new Error("Not implemented");
 }
@@ -455,7 +455,7 @@ export function ex60DecodeJwt(token: string): any {
 export type Validator61<T> = (value: T) => string | null;
 export function ex61Validate<T>(
   value: T,
-  validators: Validator61<T>[]
+  validators: Validator61<T>[],
 ): string[] {
   throw new Error("Not implemented");
 }
@@ -501,14 +501,14 @@ export function ex67Set(
   mat: Map<string, number>,
   r: number,
   c: number,
-  v: number
+  v: number,
 ) {
   mat.set(`${r},${c}`, v);
 }
 export function ex67Get(
   mat: Map<string, number>,
   r: number,
-  c: number
+  c: number,
 ): number | undefined {
   return mat.get(`${r},${c}`);
 }
@@ -518,7 +518,7 @@ export function ex68Delegate(
   selector: string,
   eventName: string,
   root: Element,
-  handler: (el: Element, ev: Event) => void
+  handler: (el: Element, ev: Event) => void,
 ) {
   throw new Error("Not implemented");
 }
@@ -527,7 +527,7 @@ export function ex68Delegate(
 export function ex69MergeUnique<T, K extends keyof T>(
   a: T[],
   b: T[],
-  key: K
+  key: K,
 ): T[] {
   throw new Error("Not implemented");
 }
@@ -545,7 +545,7 @@ export function ex71ParseCSV(csv: string): string[][] {
 // ex72-----------> Memoize with max size
 export function ex72Memoize<F extends (...args: any[]) => any>(
   fn: F,
-  max = 100
+  max = 100,
 ) {
   throw new Error("Not implemented");
 }
@@ -609,7 +609,7 @@ export function ex81By<T>(key: keyof T) {
 // ex82-----------> Debounce promise wrapper
 export function ex82DebouncePromise<T extends (...args: any[]) => Promise<any>>(
   fn: T,
-  ms: number
+  ms: number,
 ) {
   throw new Error("Not implemented");
 }
@@ -618,7 +618,7 @@ export function ex82DebouncePromise<T extends (...args: any[]) => Promise<any>>(
 export function ex83StringifyCSV(rows: string[][]): string {
   return rows
     .map((r) =>
-      r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(",")
+      r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(","),
     )
     .join("\n");
 }
@@ -636,7 +636,7 @@ export function ex85IsOk(status: number): boolean {
 // ex86-----------> Flatten typed nested object keys
 export function ex86FlattenKeys(
   obj: Record<string, any>,
-  prefix = ""
+  prefix = "",
 ): string[] {
   const out: string[] = [];
   for (const k in obj) {
@@ -756,11 +756,14 @@ export function ex97Uuid(): string {
 
 // ex98-----------> Group by key
 export function ex98GroupBy<T>(arr: T[], key: keyof T): Record<string, T[]> {
-  return arr.reduce((acc, cur) => {
-    const k = String(cur[key]);
-    (acc[k] ||= []).push(cur);
-    return acc;
-  }, {} as Record<string, T[]>);
+  return arr.reduce(
+    (acc, cur) => {
+      const k = String(cur[key]);
+      (acc[k] ||= []).push(cur);
+      return acc;
+    },
+    {} as Record<string, T[]>,
+  );
 }
 
 // ex99-----------> Safe property set with path
@@ -791,7 +794,7 @@ export async function ex100Run(selected: number[] = [1, 2, 3]) {
 // Problem--------> Implement a function that extracts keys of an object where values match a given type U
 export function ex101ExtractKeys<T extends object, U>(
   obj: T,
-  typeCheck: (v: any) => v is U
+  typeCheck: (v: any) => v is U,
 ): (keyof T)[] {
   throw new Error("Not implemented");
 }
@@ -807,7 +810,7 @@ export type Filter102<T extends any[], U> = T extends [infer H, ...infer R]
 // ex103-----------> Async function typing with generics
 // Problem--------> Implement a generic async wrapper that logs before/after
 export function ex103AsyncWrapper<T, Args extends any[]>(
-  fn: (...args: Args) => Promise<T>
+  fn: (...args: Args) => Promise<T>,
 ): (...args: Args) => Promise<T> {
   throw new Error("Not implemented");
 }
@@ -879,7 +882,7 @@ export class Ex111 {
 // ex112-----------> Extends with multiple constraints
 // Problem--------> Function that requires T to have length and valueOf
 export function ex112<T extends { length: number } & { valueOf(): string }>(
-  x: T
+  x: T,
 ): string {
   throw new Error("Not implemented");
 }
@@ -887,7 +890,7 @@ export function ex112<T extends { length: number } & { valueOf(): string }>(
 // ex113-----------> Property decorator
 // Problem--------> Create a property decorator that validates value
 export function ex113Validate<T extends { new (...args: any[]): {} }>(
-  Ctor: T
+  Ctor: T,
 ): T {
   throw new Error("Not implemented");
 }
@@ -907,7 +910,7 @@ export type DeepRequired115<T> = {
 // ex116-----------> Stringify with types
 // Problem--------> Implement typed stringify for simple objects
 export function ex116Stringify<T extends Record<string, string | number>>(
-  obj: T
+  obj: T,
 ): string {
   throw new Error("Not implemented");
 }
@@ -957,7 +960,7 @@ export type OptionalKeys122<T> = {
 // Problem--------> Function to get value with dynamic key
 export function ex123Get<T extends object, K extends keyof T>(
   obj: T,
-  key: K
+  key: K,
 ): T[K] {
   throw new Error("Not implemented");
 }
@@ -984,8 +987,8 @@ export type PartialReadonly126<T, K extends keyof T> = Readonly<Omit<T, K>> &
 export type Split127<S extends string, D extends string> = string extends S
   ? string[]
   : S extends `${infer H}${D}${infer T}`
-  ? [H, ...Split127<T, D>]
-  : [S];
+    ? [H, ...Split127<T, D>]
+    : [S];
 
 // ex128-----------> Random number in range
 // Problem--------> Implement randomInt(min, max)
@@ -1004,7 +1007,7 @@ export function ex129ToPositive(n: number): PositiveNumber129 {
 // Problem--------> Concat two readonly tuples
 export function ex130Concat<T extends readonly any[], U extends readonly any[]>(
   t1: T,
-  t2: U
+  t2: U,
 ): [...T, ...U] {
   throw new Error("Not implemented");
 }
@@ -1012,7 +1015,7 @@ export function ex130Concat<T extends readonly any[], U extends readonly any[]>(
 // ex131-----------> Async error handling
 // Problem--------> Implement asyncTryCatch
 export async function ex131TryCatch<T>(
-  fn: () => Promise<T>
+  fn: () => Promise<T>,
 ): Promise<[Error | null, T | null]> {
   throw new Error("Not implemented");
 }
@@ -1030,7 +1033,7 @@ export type ArrayElement133<T> = T extends (infer E)[] ? E : never;
 // ex134-----------> Object from entries with types
 // Problem--------> Typed Object.fromEntries
 export function ex134FromEntries<K extends PropertyKey, V>(
-  entries: Iterable<[K, V]>
+  entries: Iterable<[K, V]>,
 ): Record<K, V> {
   throw new Error("Not implemented");
 }
@@ -1039,7 +1042,7 @@ export function ex134FromEntries<K extends PropertyKey, V>(
 // Problem--------> Function to check required properties
 export function ex135EnsureRequired<T extends object>(
   obj: Partial<T>,
-  required: (keyof T)[]
+  required: (keyof T)[],
 ): asserts obj is T {
   throw new Error("Not implemented");
 }
@@ -1055,7 +1058,7 @@ export function ex136Curry(fn: Function): Function {
 export function ex137ZipWith<A, B, R>(
   a: A[],
   b: B[],
-  fn: (a: A, b: B) => R
+  fn: (a: A, b: B) => R,
 ): R[] {
   throw new Error("Not implemented");
 }
@@ -1070,7 +1073,7 @@ export function ex138IsObject(x: unknown): x is object {
 // Problem--------> Create proxy that validates sets
 export function ex139ValidationProxy<T extends object>(
   target: T,
-  validator: (key: string, value: any) => boolean
+  validator: (key: string, value: any) => boolean,
 ): T {
   throw new Error("Not implemented");
 }
@@ -1090,7 +1093,7 @@ export function ex141FirstNonNull<T>(...values: (T | null | undefined)[]): T {
 export function ex142Pipe<A, B>(ab: (a: A) => B): (a: A) => B;
 export function ex142Pipe<A, B, C>(
   ab: (a: A) => B,
-  bc: (b: B) => C
+  bc: (b: B) => C,
 ): (a: A) => C;
 
 export function ex142Pipe(...fns: Function[]): Function {
@@ -1112,7 +1115,7 @@ export class TTL143<K, V> {
 // ex144-----------> Enum from string union
 // Problem--------> Create runtime enum from union
 export function ex144CreateEnum<T extends string>(
-  values: readonly T[]
+  values: readonly T[],
 ): Record<T, T> {
   throw new Error("Not implemented");
 }
@@ -1121,7 +1124,7 @@ export function ex144CreateEnum<T extends string>(
 // Problem--------> Partition array based on predicate
 export function ex145Partition<T>(
   arr: T[],
-  pred: (t: T) => boolean
+  pred: (t: T) => boolean,
 ): [T[], T[]] {
   throw new Error("Not implemented");
 }
@@ -1130,7 +1133,7 @@ export function ex145Partition<T>(
 // Problem--------> Debounce with cancel method
 export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ): { debounced: (...args: Parameters<F>) => void; cancel: () => void } {
   throw new Error("Not implemented");
 }
@@ -1139,7 +1142,7 @@ export function ex146CancelableDebounce<F extends (...args: any[]) => any>(
 // Problem--------> Implement leading-edge throttle
 export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
   fn: F,
-  ms: number
+  ms: number,
 ): (...args: Parameters<F>) => void {
   throw new Error("Not implemented");
 }
@@ -1148,7 +1151,7 @@ export function ex147LeadingThrottle<F extends (...args: any[]) => any>(
 // Problem--------> Implement recursive deep merge
 export function ex148RecursiveMerge<T extends object>(
   target: T,
-  source: Partial<T>
+  source: Partial<T>,
 ): T {
   throw new Error("Not implemented");
 }
@@ -1169,7 +1172,7 @@ export function ex150UniqueBy<T>(arr: T[], key: keyof T): T[] {
 // Problem--------> Detect cycle in directed graph
 export function ex151HasCycle(
   nodes: string[],
-  edges: [string, string][]
+  edges: [string, string][],
 ): boolean {
   throw new Error("Not implemented");
 }
@@ -1196,7 +1199,7 @@ export function ex154RgbToHex(r: number, g: number, b: number): string {
 // Problem--------> Extract params from route with types
 export function ex155ExtractParams(
   route: string,
-  path: string
+  path: string,
 ): Record<string, string> {
   throw new Error("Not implemented");
 }
@@ -1204,7 +1207,7 @@ export function ex155ExtractParams(
 // ex156-----------> Parse query string with arrays
 // Problem--------> Parse QS supporting arrays
 export function ex156ParseQSAdvanced(
-  qs: string
+  qs: string,
 ): Record<string, string | string[]> {
   throw new Error("Not implemented");
 }
@@ -1227,7 +1230,7 @@ export function ex158EncodeJwt(payload: object): string {
 export type AsyncValidator159<T> = (value: T) => Promise<string | null>;
 export async function ex159ValidateAsync<T>(
   value: T,
-  validators: AsyncValidator159<T>[]
+  validators: AsyncValidator159<T>[],
 ): Promise<string[]> {
   throw new Error("Not implemented");
 }
@@ -1235,7 +1238,10 @@ export async function ex159ValidateAsync<T>(
 // ex160-----------> Leaky bucket rate limiter
 // Problem--------> Implement leaky bucket
 export class LeakyBucket160 {
-  constructor(public capacity: number, public leakRate: number) {}
+  constructor(
+    public capacity: number,
+    public leakRate: number,
+  ) {}
   add(): boolean {
     throw new Error("Not implemented");
   }
@@ -1255,7 +1261,7 @@ export class XorSigner161 implements Signer63 {
 // ex162-----------> Reverse linked list
 // Problem--------> Reverse a linked list
 export function ex162Reverse<T>(
-  head: LinkedNode64<T> | undefined
+  head: LinkedNode64<T> | undefined,
 ): LinkedNode64<T> | undefined {
   throw new Error("Not implemented");
 }
@@ -1271,7 +1277,7 @@ export function ex163Preorder<T>(root?: Tree65<T>): T[] {
 export function ex164Replace(
   s: string,
   re: RegExp,
-  fn: (match: string) => string
+  fn: (match: string) => string,
 ): string {
   throw new Error("Not implemented");
 }
@@ -1307,7 +1313,7 @@ export function ex169ParseCSVObjects(csv: string): Record<string, string>[] {
 // ex170-----------> Memoize async
 // Problem--------> Memoize async function
 export function ex170MemoizeAsync<F extends (...args: any[]) => Promise<any>>(
-  fn: F
+  fn: F,
 ): (...args: Parameters<F>) => ReturnType<F> {
   throw new Error("Not implemented");
 }
@@ -1346,7 +1352,7 @@ export function ex175ResolvePath(base: string, relative: string): string {
 // Problem--------> Check access with roles and permissions
 export function ex176HasAccess(
   user: { roles: string[]; perms: string[] },
-  requiredPerm: string
+  requiredPerm: string,
 ): boolean {
   throw new Error("Not implemented");
 }
@@ -1373,7 +1379,7 @@ export function ex179MultiBy<T>(...keys: (keyof T)[]): (a: T, b: T) => number {
 
 // Problem--------> Run promises in sequence
 export async function ex180Sequence<T>(
-  promises: (() => Promise<T>)[]
+  promises: (() => Promise<T>)[],
 ): Promise<T[]> {
   throw new Error("Not implemented");
 }
@@ -1382,7 +1388,7 @@ export async function ex180Sequence<T>(
 // Problem--------> Stringify with optional headers
 export function ex181StringifyCSVWithHeaders(
   rows: Record<string, any>[],
-  headers?: string[]
+  headers?: string[],
 ): string {
   throw new Error("Not implemented");
 }
@@ -1415,7 +1421,7 @@ export function ex185AlphaNumCompare(a: string, b: string): number {
 // Problem--------> Wrap promise with abort
 export function ex186Abortable<T>(
   p: Promise<T>,
-  signal: AbortSignal
+  signal: AbortSignal,
 ): Promise<T> {
   throw new Error("Not implemented");
 }
@@ -1478,7 +1484,7 @@ export function ex195Ulid(): string {
 // Problem--------> Count occurrences by key
 export function ex196CountBy<T>(
   arr: T[],
-  key: keyof T
+  key: keyof T,
 ): Record<string, number> {
   throw new Error("Not implemented");
 }
@@ -1492,7 +1498,7 @@ export function ex197DeleteDeep(obj: any, path: string): void {
 // ex198-----------> Runner extension
 // Problem--------> Extend runner to log outputs
 export async function ex198RunExtended(
-  selected: number[]
+  selected: number[],
 ): Promise<Record<number, any>> {
   throw new Error("Not implemented");
 }
@@ -1511,4 +1517,4 @@ export async function ex200RunAll(): Promise<void> {
 }
 
 // End Unsolved 200 Problems
-// ------------------------------------------------------------------------------------------->
+// ----------------------------------------------------------------------------------------->
