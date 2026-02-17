@@ -1489,7 +1489,7 @@ export function ex196CountBy<T>(
   throw new Error("Not implemented");
 }
 
-// ex197-----------> Delete deep property
+// ex197----------> Delete deep property
 // Problem--------> Delete property at path
 export function ex197DeleteDeep(obj: any, path: string): void {
   throw new Error("Not implemented");
@@ -1517,4 +1517,3 @@ export async function ex200RunAll(): Promise<void> {
 }
 
 // End Unsolved 200 Problems
-// ----------------------------------------------------------------------------------------->
